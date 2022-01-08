@@ -1,0 +1,57 @@
+= Learning Management System
+
+== Website for the best English language school in Zhodino
+
+Outdated project: link:http://lolclub.by/[OLD]
+
+New project plan: link:https://www.figma.com/file/lN12yGvlcSS1LxWMxDTSI1/Lol-Club?node-id=315%3A18477[NEW]
+
+==== What problem does this project solve or what does it bring new to users?
+
+* The goal of the project is to create a user-friendly website for an English school with a laconic and minimalist design, which is intended to form the first
+impression about it and keep visitors
+* Instead of the old divider page, there will be a new main page: from it you can immediately take a test, choose a course, leave a review, read the latest news from the blog
+* Now there will be no side menu where reviews were on a separate page
+* Blog now has a separate page (old page - news)
+* The header is changing: the old pages "English for adults, for children and teenagers and special tasks" will be inside the "Courses", as well as when switching from the main page
+* There will be no side menu, the menu is only at the top in the header
+* Tuition rules and fees on the 'Courses' page, now it is not a separate page
+* Reviews will be on the home page
+* The student's office has changed, now there will be a division into groups by age and class time
+* The entrance for everyone is common as now, but inside everyone selects their own group, clicks on it and gets inside, there are 2 tabs Homework and Books & Materials
+* Previously, textbooks were in the side menu, now in the student's office under the Books & Materials tab
+* The process of passing the test is changing, it is now divided into stages
+* New beautiful and comfortable footer
+* Now each student will be able to pay online for their studies in their personal account
+* There will be student registration on the site
+* Captcha is planned to be added
+* Mailing to students' mails, confirmation of registration via mail
+* Encrypting passwords
+
+==== Potential users
+
+* Schoolchildren - for self-development, pulling up the school curriculum or with the aim of entering a foreign university
+* Preschoolers. Considering that today kindergartens are already being taught to read and write, as well as the trend of parents to want to raise a child prodigy, this group is also growing and increasing demand
+* Students to expand their knowledge and prepare an excellent CV
+* Young people seeking to get a job in a foreign company
+* Experienced professional development workers
+* And also a group of people who just want to learn a language because they consider it necessary
+* As for any other differences, they are not here. Potential clients include both men and women, children and even the elderly
+
+==== Similar applications
+
+* link:https://str.by/adults/minsk/english[Streamline]
+* link:https://www.ih.by/[International House]
+* link:https://englishpapa.by/[EnglishPapa]
+* link:https://2english.by/[2English]
+* link:https://www.windsor.ru/[WINDSOR]
+
+==== Competitive advantages
+
+* Laconic design
+* New development technologies
+* Convenient to use
+* User-friendly
+* Safety
+* Fast work
+* We do not store IP address logs ;)
