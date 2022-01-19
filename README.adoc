@@ -1,6 +1,6 @@
 = Learning Management System
 
-== Website for the best English language school in Zhodino
+== Description
 
 Outdated project: link:http://lolclub.by/[OLD]
 
