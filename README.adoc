@@ -55,3 +55,7 @@ impression about it and keep visitors
 * Safety
 * Fast work
 * We do not store IP address logs ;)
+
+== Business Analysis
+
+* link:https://miro.com/app/board/uXjVOTCZLTw=/[Mind Map]
