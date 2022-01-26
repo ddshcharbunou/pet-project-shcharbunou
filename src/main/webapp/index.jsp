@@ -11,10 +11,7 @@
 <body>
 <header>
     <div class="logo">
-        <div class="rectangle__1"></div>
-        <div class="rectangle__2"></div>
-        <div class="ellipse__1"></div>
-        <div class="ellipse__2"></div>
+        <p><img src="assets/img/logo.png" width="192" height="36" alt="Lol Club"></p>
     </div>
 </header>
 <script src="js/script.js"></script>
