@@ -21,12 +21,11 @@ header {
     height: 80px;
     left: 0;
     top: 0;
+
     background: #1B212D;
-    display: flex;
 }
 
 .logo {
-    text-transform: uppercase;
     position: absolute;
     width: 192px;
     height: 36px;
@@ -36,7 +35,7 @@ header {
 
 .rectangle__1 {
     position: absolute;
-    left: 0;
+    left: 0%;
     right: 83.85%;
     top: 5.56%;
     bottom: 8.33%;
@@ -47,54 +46,44 @@ header {
 
 .rectangle__2 {
     position: absolute;
-    width: 19.22px;
-    height: 8.06px;
-    top:19.36px;
-    left: 5.89px;
+    left: 3.07%;
+    right: 86.92%;
+    top: 53.78%;
+    bottom: 23.83%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 
-    -moz-border-radius-bottomleft: 30px 30px;
-    -moz-border-radius-bottomright: 30px 30px;
     background: #1B212D;
 }
-
-.rectangle__3 {
-    position: absolute;
-    left: 21.88%;
-    right: 42.5%;
-    top: 9.92%;
-    bottom: 9.86%;
-
-    background: #FBFF41;
-}
-
-.lol {
-    position: absolute;
-    width: 51.89px;
-    height: 18.34px;
-    left: 0.58px;
-    top: 0.2px;
-
-    background: #000000;
-}
-
-
 
 .ellipse__1 {
     position: absolute;
-    width: 6.2px;
-    height: 3.1px;
-    top: 9.44px;
-    left: 6.2px;
+    left: 3.23%;
+    right: 93.54%;
+    top: 26.22%;
+    bottom: 65.17%;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 
-    background: #1B212D;
+    border: 2px solid #1B212D;
+    border-bottom: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .ellipse__2 {
     position: absolute;
-    width: 6.2px;
-    height: 3.1px;
-    top: 9.44px;
-    left: 18.29px;
+    left: 9.53%;
+    right: 87.24%;
+    top: 26.22%;
+    bottom: 65.17%;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 
-    background: #1B212D;
+    border: 2px solid #1B212D;
+    border-bottom: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }

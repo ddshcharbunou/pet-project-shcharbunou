@@ -11,18 +11,12 @@
 <body>
 <header>
     <div class="logo">
-        <div class="rectangle__1">
-            <div class="rectangle__2"></div>
-            <div class="ellipse__1"></div>
-            <div class="ellipse__2"></div>
-        </div>
+        <div class="rectangle__1"></div>
+        <div class="rectangle__2"></div>
+        <div class="ellipse__1"></div>
+        <div class="ellipse__2"></div>
     </div>
 </header>
-<p>ПРОИСХОДИТ РАЗРАБОТКА</p>
-<p>ПРОИСХОДИТ РАЗРАБОТКА</p>
-<p>ПРОИСХОДИТ РАЗРАБОТКА</p>
-<p>ПРОИСХОДИТ РАЗРАБОТКА</p>
-<p>ПРОИСХОДИТ РАЗРАБОТКА</p>
 <script src="js/script.js"></script>
 </body>
 </html>
