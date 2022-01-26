@@ -1,5 +1,7 @@
 = Learning Management System
 
+link:http://ec2-54-145-133-219.compute-1.amazonaws.com:8080/lolclub/[Lol Club]
+
 == Description
 
 Outdated project: link:http://lolclub.by/[OLD]
