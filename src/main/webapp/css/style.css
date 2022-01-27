@@ -32,3 +32,130 @@ header {
     left: 140px;
     top: 22px;
 }
+
+.header__divider {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    left: 0;
+    top: 80px;
+
+    border: 1px solid #17121C;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+
+    position: absolute;
+    width: 566px;
+    height: 28px;
+    left: calc((100% - 566px) / 2);
+    top: 26px;
+}
+
+.menu a {
+    position: relative;
+    height: 28px;
+    top: 0;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    transition: .4s ease-out;
+
+    color: #FFFFFF;
+
+    flex: none;
+    flex-grow: 0;
+    margin: 0 14px;
+}
+
+.menu a::after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #FBFF41;
+    content: "";
+    transition: width .4s ease-out;
+}
+
+.menu a:hover:after,
+.menu a:focus:after {
+    width: 100%;
+}
+
+.menu a:hover {
+    color: #FBFF41;
+    transition: .4s ease-out;
+}
+
+.current__link {
+    color: #FBFF41;
+}
+
+.sign__in {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: absolute;
+    width: 105px;
+    height: 48px;
+    right: 114px;
+    top: calc(50% - 48px/2);
+
+    border-radius: 8px;
+}
+
+.sign__in__logo {
+    position: static;
+    width: 24px;
+    height: 24px;
+    left: 25px;
+    top: 12px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 5px;
+}
+
+.sign__in__text {
+    position: static;
+    width: 54px;
+    height: 28px;
+    left: 54px;
+    top: 10px;
+
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+
+    text-align: center;
+
+    color: #FBFF41;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 5px;
+}
+
+.sign__in img {
+    transform: rotate(0);
+    transition: .4s ease-out;
+}
+
+.sign__in:hover img {
+    transform: rotate(180deg);
+    transition: .4s ease-out;
+}
+
