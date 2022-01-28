@@ -14,7 +14,6 @@
     <div class="logo">
         <p><img src="assets/img/logo.png" width="192px" height="36px" alt="Lol Club"></p>
     </div>
-    <div class="header__divider"></div>
     <nav>
         <div class="menu" id="menu">
             <a href="index.jsp"><span class="current__link">Главная</span></a>
