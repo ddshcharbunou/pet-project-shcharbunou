@@ -13,6 +13,7 @@ li {
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background: #1B212D;
 }
 
 header {
@@ -148,4 +149,12 @@ nav {
 .sign__in:hover img {
     transform: rotate(180deg);
     transition: .4s ease-out;
+}
+
+.sign__in__page__logo {
+    position: absolute;
+    width: 246px;
+    height: 46px;
+    top: 150px;
+    left: calc(50% - 246px / 2);
 }

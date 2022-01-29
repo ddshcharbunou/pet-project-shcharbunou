@@ -33,6 +33,9 @@
         </div>
     </a>
 </header>
+<div class="sign__in__page__logo">
+    <p><img src="../assets/img/logo.png" width="246px" height="46px" alt="Lol Club"></p>
+</div>
 <script src="../js/script.js"></script>
 </body>
 </html>
