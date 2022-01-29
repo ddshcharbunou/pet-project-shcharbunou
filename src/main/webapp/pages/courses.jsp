@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lol Club</title>
+    <title>Lol Club - Курсы</title>
+    <link rel="shortcut icon" href="../assets/img/sign-in.png" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

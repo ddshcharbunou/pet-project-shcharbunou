@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lol Club</title>
+    <title>Lol Club - Вход</title>
+    <link rel="shortcut icon" href="../assets/img/sign-in.png" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +37,7 @@
 <div class="sign__in__page__logo">
     <p><img src="../assets/img/logo.png" width="246px" height="46px" alt="Lol Club"></p>
 </div>
+<div class="student__office__text">Кабинет студента</div>
 <script src="../js/script.js"></script>
 </body>
 </html>

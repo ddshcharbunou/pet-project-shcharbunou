@@ -155,6 +155,23 @@ nav {
     position: absolute;
     width: 246px;
     height: 46px;
-    top: 150px;
+    top: 130px;
     left: calc(50% - 246px / 2);
 }
+
+.student__office__text {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 48px;
+    color: #FFFFFF;
+    line-height: 56px;
+    width: 467px;
+    height: 56px;
+    left: calc(50% - 497px / 2);
+    top: 206px;
+}
+
+
+
