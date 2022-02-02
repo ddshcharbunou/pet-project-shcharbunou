@@ -171,7 +171,120 @@ nav {
     height: 56px;
     left: calc(50% - 497px / 2);
     top: 206px;
+    text-align: center;
 }
 
+.sign__in__form {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    left: calc(50% - 400px / 2);
+    top: 302px;
+    text-align: center;
+}
 
+.sign__in__form input[type=text], .sign__in__form input[type=password] {
+    background: #1B212D;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    border: 3px solid #FBFF41;
+    width: 70%;
+    height: 15%;
+    outline: none;
+    color: #FFFFFF;
+    border-radius: 15px;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    transition: .4s;
+}
+
+.sign__in__form input[type=text]:focus, .sign__in__form input[type=password]:focus {
+    width: 390px;
+    background-color: #FBFF41;
+    border-color: #FBFF41;
+    color: #1B212D;
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]::-webkit-input-placeholder {
+    color: #FBFF41;
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]:focus::-webkit-input-placeholder {
+    color: #1B212D;
+    font-size: 11px;
+    transform: translateY(100px);
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]::-moz-placeholder {
+    color: #FBFF41;
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]:focus::-moz-placeholder {
+    color: #1B212D;
+    font-size: 11px;
+    transform: translateY(100px);
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]:-moz-placeholder {
+    color: #FBFF41;
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]:focus:-moz-placeholder {
+    color: #1B212D;
+    font-size: 11px;
+    transform: translateY(100px);
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]:-ms-input-placeholder {
+    color: #FBFF41;
+    transition: .4s;
+}
+
+.sign__in__form input[placeholder]:focus:-ms-input-placeholder {
+    color: #1B212D;
+    font-size: 11px;
+    transform: translateY(100px);
+    transition: .4s;
+}
+
+.sign__in__button {
+    background: #1B212D;
+    display: block;
+    text-align: center;
+    border: 3px solid #FBFF41;
+    width: 20%;
+    height: 15%;
+    outline: none;
+    color: #FBFF41;
+    border-radius: 15px;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    transition: .4s;
+}
+
+.sign__up__button {
+    background: #1B212D;
+    display: block;
+    text-align: center;
+    border: 3px solid #FBFF41;
+    width: 30%;
+    height: 15%;
+    outline: none;
+    color: #FBFF41;
+    border-radius: 15px;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    transition: .4s;
+}
 
