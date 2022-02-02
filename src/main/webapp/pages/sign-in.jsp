@@ -44,7 +44,7 @@
     </label>
     <div class="buttons">
         <button type="submit" class="sign__in__button">Войти</button>
-        <a href="sign_up.jsp">
+        <a href="sign-up.jsp">
             <button type="button" class="sign__up__button">Регистрация</button>
         </a>
     </div>

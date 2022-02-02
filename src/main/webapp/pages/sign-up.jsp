@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lol Club - Вход</title>
+    <title>Lol Club - Регистрация</title>
     <link rel="shortcut icon" href="../assets/img/sign-in.png" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,12 +37,19 @@
 <div class="sign__in__page__logo">
     <p><img src="../assets/img/logo.png" width="246px" height="46px" alt="Lol Club"></p>
 </div>
-<form class="sign__in__form" action="sign-in.jsp" method="get">
+<form class="sign__up__form" action="sign-up.jsp" method="post">
     <label>
+        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="phone_number" placeholder="Телефон">
+        <input type="text" name="name" placeholder="Имя">
+        <input type="text" name="surname" placeholder="Фамилия">
         <input type="text" name="username" placeholder="Логин">
         <input type="password" name="password" placeholder="Пароль">
+        <input type="password" name="repeat_password" placeholder="Повторите пароль">
     </label>
-    <a href="sign_up.jsp"><button type="button" class="sign__up__button">Регистрация</button></a>
+    <div class="buttons">
+        <button type="submit" class="sign__up__page__button">Регистрация</button>
+    </div>
 </form>
 <div class="student__office__text">Регистрация</div>
 <script src="../js/script.js"></script>
