@@ -259,7 +259,7 @@ nav {
 .sign__in__button {
     background: #1B212D;
     display: block;
-    margin: 0 35px;
+    margin-right: 100px;
     text-align: center;
     border: 3px solid #FBFF41;
     width: 150px;
@@ -294,4 +294,16 @@ nav {
     flex-wrap: nowrap;
     width: 400px;
     height: 50px;
+}
+
+.sign__in__button:hover {
+    background: #FBFF41;
+    color: #1B212D;
+    transition: .4s;
+}
+
+.sign__up__button:hover {
+    background: #FBFF41;
+    color: #1B212D;
+    transition: .4s;
 }
