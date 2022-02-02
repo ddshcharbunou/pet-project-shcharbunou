@@ -189,8 +189,8 @@ nav {
     margin: 30px auto;
     text-align: center;
     border: 3px solid #FBFF41;
-    width: 70%;
-    height: 15%;
+    width: 280px;
+    height: 45px;
     outline: none;
     color: #FFFFFF;
     border-radius: 15px;
@@ -330,7 +330,7 @@ nav {
 .sign__up__form {
     position: absolute;
     width: 400px;
-    height: 300px;
+    height: 680px;
     left: calc(50% - 400px / 2);
     top: 302px;
     text-align: center;
@@ -342,8 +342,8 @@ nav {
     margin: 30px auto;
     text-align: center;
     border: 3px solid #FBFF41;
-    width: 70%;
-    height: 15%;
+    width: 280px;
+    height: 45px;
     outline: none;
     color: #FFFFFF;
     border-radius: 15px;
