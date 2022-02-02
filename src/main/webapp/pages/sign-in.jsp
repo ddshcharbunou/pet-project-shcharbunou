@@ -42,8 +42,12 @@
         <input type="text" name="username" placeholder="Логин">
         <input type="password" name="password" placeholder="Пароль">
     </label>
-    <button type="submit" class="sign__in__button">Войти</button>
-    <a href="sign_up.jsp"><button type="button" class="sign__up__button">Регистрация</button></a>
+    <div class="buttons">
+        <button type="submit" class="sign__in__button">Войти</button>
+        <a href="sign_up.jsp">
+            <button type="button" class="sign__up__button">Регистрация</button>
+        </a>
+    </div>
 </form>
 <div class="student__office__text">Кабинет студента</div>
 <script src="../js/script.js"></script>

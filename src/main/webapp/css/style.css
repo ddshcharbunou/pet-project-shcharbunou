@@ -259,10 +259,11 @@ nav {
 .sign__in__button {
     background: #1B212D;
     display: block;
+    margin: 0 35px;
     text-align: center;
     border: 3px solid #FBFF41;
-    width: 20%;
-    height: 15%;
+    width: 150px;
+    height: 100%;
     outline: none;
     color: #FBFF41;
     border-radius: 15px;
@@ -277,8 +278,8 @@ nav {
     display: block;
     text-align: center;
     border: 3px solid #FBFF41;
-    width: 30%;
-    height: 15%;
+    width: 150px;
+    height: 100%;
     outline: none;
     color: #FBFF41;
     border-radius: 15px;
@@ -288,3 +289,9 @@ nav {
     transition: .4s;
 }
 
+.buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 400px;
+    height: 50px;
+}
