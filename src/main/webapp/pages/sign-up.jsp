@@ -37,7 +37,7 @@
 <div class="sign__in__page__logo">
     <p><img src="../assets/img/logo.png" width="246px" height="46px" alt="Lol Club"></p>
 </div>
-<form class="sign__up__form" action="sign-up.jsp" method="post">
+<form class="sign__up__form" action="sign-up" method="post">
     <label>
         <input type="text" name="email" placeholder="Email">
         <input type="text" name="phone_number" placeholder="Телефон">

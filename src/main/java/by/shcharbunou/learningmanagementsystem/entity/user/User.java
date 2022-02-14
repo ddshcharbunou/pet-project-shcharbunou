@@ -1,4 +1,4 @@
-package by.shcharbunou.learningmanagementsystem.entity;
+package by.shcharbunou.learningmanagementsystem.entity.user;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,10 +12,11 @@ import java.util.UUID;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "users")
+@Table
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @Column
     private UUID id;
     @Column
     private String name;
