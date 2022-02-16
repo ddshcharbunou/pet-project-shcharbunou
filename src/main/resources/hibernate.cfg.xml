@@ -4,6 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <!-- properties -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://jd2-86.cmgdvs7pj9sv.us-east-1.rds.amazonaws.com:5432/lolclub-db</property>
         <property name="hibernate.connection.username">postgres</property>
