@@ -12,23 +12,29 @@ import java.util.UUID;
 @AllArgsConstructor
 
 @Entity
-@Table
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(generator = "UUID")
-    @Column
+    @Column(name = "user_id")
     private UUID id;
-    @Column
+
+    @Column(name = "name")
     private String name;
-    @Column
+
+    @Column(name = "surname")
     private String surname;
-    @Column
+
+    @Column(name = "username")
     private String username;
-    @Column
+
+    @Column(name = "email")
     private String email;
-    @Column
+
+    @Column(name = "phone")
     private String phone;
-    @Column
+
+    @Column(name = "password")
     private String password;
 
     @Deprecated
