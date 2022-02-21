@@ -35,6 +35,7 @@
         <log4j.version>2.17.1</log4j.version>
         <dal.version>1.0-SNAPSHOT</dal.version>
         <core.version>1.0-SNAPSHOT</core.version>
+        <spring-context.version>5.3.16</spring-context.version>
     </properties>
 
     <dependencyManagement>
@@ -91,6 +92,12 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-context.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
