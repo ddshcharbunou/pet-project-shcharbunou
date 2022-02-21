@@ -1,9 +1,10 @@
 package by.shcharbunou.dal.dao;
 
-import java.io.Serializable;
+import by.shcharbunou.dal.entity.BaseEntity;
+
 import java.util.List;
 
-public interface BaseDao<T extends Serializable> {
+public interface BaseDao<T extends BaseEntity> {
     void save(T entity);
 
     void update(T entity);

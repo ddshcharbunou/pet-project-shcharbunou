@@ -1,5 +1,6 @@
 package by.shcharbunou.dal.entity.user;
 
+import by.shcharbunou.dal.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,12 +9,12 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @Column(name = "user_id")
