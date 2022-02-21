@@ -1,5 +1,6 @@
 package by.shcharbunou.dal.util;
 
+import by.shcharbunou.dal.dao.user.impl.UserDaoImpl;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -23,5 +24,11 @@ public class HibernateUtil {
             sessionFactory = buildSessionFactory();
         }
         return sessionFactory;
+    }
+
+    public static void shutdown() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
