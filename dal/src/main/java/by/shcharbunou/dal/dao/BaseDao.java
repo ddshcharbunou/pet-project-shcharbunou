@@ -11,7 +11,7 @@ public interface BaseDao<T extends BaseEntity> {
 
     void delete(T entity);
 
-    List<T> findAll();
+    List<T> findAll(Class<T> clazz);
 
-    void deleteAll();
+    void deleteAll(Class<T> clazz);
 }

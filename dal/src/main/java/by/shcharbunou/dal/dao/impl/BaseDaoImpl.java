@@ -45,20 +45,20 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
     }
 
     @Override
-    public List<T> findAll() {
+    public List<T> findAll(Class<T> clazz) {
         Session session = HibernateUtil.openSession();
         session.getTransaction().begin();
 
-        List<T> entityList = null;
+        List<T> entityList = session.createQuery("select * from " + clazz.getSimpleName(), clazz).getResultList();
 
         session.getTransaction().commit();
         session.close();
-        return null;
+        return entityList;
     }
 
     @Override
-    public void deleteAll() {
-        List<T> entityList = findAll();
+    public void deleteAll(Class<T> clazz) {
+        List<T> entityList = findAll(clazz);
 
         Session session = HibernateUtil.openSession();
         session.getTransaction().begin();
