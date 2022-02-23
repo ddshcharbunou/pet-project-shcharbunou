@@ -1,22 +1,24 @@
 package by.shcharbunou.dal.dao.user.impl;
 
-import by.shcharbunou.dal.dao.BaseDao;
+import by.shcharbunou.dal.dao.impl.BaseDaoImpl;
 import by.shcharbunou.dal.dao.user.UserDao;
 import by.shcharbunou.dal.entity.user.User;
+import by.shcharbunou.dal.util.HibernateUtil;
+import org.hibernate.Session;
 
-import java.util.List;
+import java.util.Objects;
 
-public class UserDaoImpl implements BaseDao<User>, UserDao {
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     private static UserDaoImpl instance = null;
 
     private UserDaoImpl() {}
 
     public static UserDaoImpl getInstance() {
         UserDaoImpl localInstance = instance;
-        if (localInstance == null) {
+        if (Objects.isNull(localInstance)) {
             synchronized (UserDaoImpl.class) {
                 localInstance = instance;
-                if (localInstance == null) {
+                if (Objects.isNull(localInstance)) {
                     instance = localInstance = new UserDaoImpl();
                 }
             }
@@ -25,32 +27,15 @@ public class UserDaoImpl implements BaseDao<User>, UserDao {
     }
 
     @Override
-    public void save(User entity) {
-
-    }
-
-    @Override
-    public void update(User entity) {
-
-    }
-
-    @Override
-    public void delete(User entity) {
-
-    }
-
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
     public User findByUsername(String username) {
-        return null;
+        Session session = HibernateUtil.openSession();
+        session.getTransaction().begin();
+
+        User user = session.createQuery("select u from User u where u.username=:username", User.class)
+                .setParameter("username", username)
+                .getSingleResult();
+
+        session.close();
+        return user;
     }
 }

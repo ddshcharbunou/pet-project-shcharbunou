@@ -1,5 +1,6 @@
 package by.shcharbunou.dal.util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -25,8 +26,8 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    public static void openSession() {
-        getSessionFactory().openSession();
+    public static Session openSession() {
+        return getSessionFactory().openSession();
     }
 
     public static void shutdown() {
