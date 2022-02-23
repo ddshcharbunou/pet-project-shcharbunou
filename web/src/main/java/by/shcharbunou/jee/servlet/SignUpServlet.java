@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "SignUpServlet", value = "/sign-up")
+@WebServlet(name = "SignUpServlet", value = "/pages/sign-up")
 public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +29,6 @@ public class SignUpServlet extends HttpServlet {
         user.setPhone(phone);
         user.setPassword(password);
         userDao.save(user);
-        getServletContext().getRequestDispatcher("pages/sign-in.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/pages/sign-in.jsp").forward(req, resp);
     }
 }
