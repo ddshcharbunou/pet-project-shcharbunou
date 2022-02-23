@@ -39,5 +39,5 @@ public class User extends BaseEntity {
     private String password;
 
     @Deprecated
-    protected User() {}
+    public User() {}
 }
