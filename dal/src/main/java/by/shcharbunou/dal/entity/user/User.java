@@ -4,8 +4,6 @@ import by.shcharbunou.dal.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @ToString
@@ -14,12 +12,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "users")
+@AttributeOverride(name = "id", column = @Column(name = "user_id"))
 public class User extends BaseEntity {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @Column(name = "user_id", nullable = false)
-    private UUID id;
-
     @Column(name = "name", nullable = false)
     private String name;
 
