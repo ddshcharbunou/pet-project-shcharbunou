@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.dao.impl;
+package by.shcharbunou.core.service;
 
 import by.shcharbunou.dal.dao.BaseDao;
 import by.shcharbunou.dal.entity.BaseEntity;
@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
+public class BaseService<T extends BaseEntity> implements BaseDao<T> {
     @Override
     public void save(T entity) {
         Session session = HibernateUtil.openSession();

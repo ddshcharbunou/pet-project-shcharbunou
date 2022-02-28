@@ -1,6 +1,6 @@
-package by.shcharbunou.dal.dao.user.impl;
+package by.shcharbunou.core.service.user;
 
-import by.shcharbunou.dal.dao.impl.BaseDaoImpl;
+import by.shcharbunou.core.service.BaseService;
 import by.shcharbunou.dal.dao.user.UserDao;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.util.HibernateUtil;
@@ -8,18 +8,18 @@ import org.hibernate.Session;
 
 import java.util.Objects;
 
-public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
-    private static UserDaoImpl instance = null;
+public class UserService extends BaseService<User> implements UserDao {
+    private static UserService instance = null;
 
-    private UserDaoImpl() {}
+    private UserService() {}
 
-    public static UserDaoImpl getInstance() {
-        UserDaoImpl localInstance = instance;
+    public static UserService getInstance() {
+        UserService localInstance = instance;
         if (Objects.isNull(localInstance)) {
-            synchronized (UserDaoImpl.class) {
+            synchronized (UserService.class) {
                 localInstance = instance;
                 if (Objects.isNull(localInstance)) {
-                    instance = localInstance = new UserDaoImpl();
+                    instance = localInstance = new UserService();
                 }
             }
         }
