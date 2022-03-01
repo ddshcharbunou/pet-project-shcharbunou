@@ -1,6 +1,7 @@
 package by.shcharbunou.dal.entity.user;
 
 import by.shcharbunou.dal.entity.BaseEntity;
+import by.shcharbunou.dal.entity.group.Group;
 import by.shcharbunou.dal.entity.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,6 +37,10 @@ public class User extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     @Deprecated
     public User() {}
