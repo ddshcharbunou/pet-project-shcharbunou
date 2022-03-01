@@ -42,6 +42,16 @@ public class Group extends BaseEntity {
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private Set<User> users = new HashSet<>();
 
+    public void connectUser(User user) {
+        this.users.add(user);
+        user.setGroup(this);
+    }
+
+    public void disconnectUser(User user) {
+        this.users.remove(user);
+        user.setGroup(null);
+    }
+
     @Deprecated
     public Group() {}
 }
