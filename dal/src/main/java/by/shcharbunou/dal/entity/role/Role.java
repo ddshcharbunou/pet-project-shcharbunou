@@ -1,11 +1,10 @@
 package by.shcharbunou.dal.entity.role;
 
 import by.shcharbunou.dal.entity.BaseEntity;
-import by.shcharbunou.dal.entity.enums.RoleDesignation;
+import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
 
 import java.util.HashSet;
 import java.util.Set;

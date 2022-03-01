@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.entity.enums;
+package by.shcharbunou.dal.entity.enums.role;
 
 public enum RoleDesignation {
     ADMIN,
