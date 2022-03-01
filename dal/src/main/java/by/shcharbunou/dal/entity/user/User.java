@@ -1,6 +1,7 @@
 package by.shcharbunou.dal.entity.user;
 
 import by.shcharbunou.dal.entity.BaseEntity;
+import by.shcharbunou.dal.entity.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +32,10 @@ public class User extends BaseEntity {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
     @Deprecated
     public User() {}

@@ -1,9 +1,8 @@
 package by.shcharbunou.dal.entity.role;
 
+import by.shcharbunou.dal.entity.enums.RoleDesignation;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,11 +12,11 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "role")
+@AttributeOverride(name = "id", column = @Column(name = "role_id"))
 public class Role {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @Column(name = "role_id")
-    private UUID id;
+    @Column(name = "role_designation")
+    @Enumerated(EnumType.STRING)
+    private RoleDesignation roleDesignation;
 
     @Deprecated
     public Role() {}
