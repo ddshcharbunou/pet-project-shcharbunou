@@ -36,6 +36,7 @@
         <dal.version>1.0-SNAPSHOT</dal.version>
         <core.version>1.0-SNAPSHOT</core.version>
         <spring-context.version>5.3.16</spring-context.version>
+        <spring-orm.version>5.3.16</spring-orm.version>
     </properties>
 
     <dependencyManagement>
@@ -98,6 +99,12 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring-context.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-orm.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
