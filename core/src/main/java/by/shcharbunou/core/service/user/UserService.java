@@ -2,6 +2,7 @@ package by.shcharbunou.core.service.user;
 
 import by.shcharbunou.dal.dao.user.UserDao;
 import by.shcharbunou.dal.dao.user.impl.UserDaoImpl;
+import by.shcharbunou.dal.entity.group.Group;
 import by.shcharbunou.dal.entity.user.User;
 
 import java.util.List;
@@ -50,5 +51,9 @@ public class UserService {
 
     public void deleteAll(Class<User> clazz) {
         userDao.deleteAll(clazz);
+    }
+
+    public List<User> findByGroup(Group group) {
+        return userDao.findByGroup(group);
     }
 }
