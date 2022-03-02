@@ -4,6 +4,7 @@ import by.shcharbunou.dal.dao.user.UserDao;
 import by.shcharbunou.dal.dao.user.impl.UserDaoImpl;
 import by.shcharbunou.dal.entity.user.User;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UserService {
@@ -29,5 +30,25 @@ public class UserService {
 
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
+    }
+
+    public void save(User user) {
+        userDao.save(user);
+    }
+
+    public void update(User user) {
+        userDao.update(user);
+    }
+
+    public void delete(User user) {
+        userDao.delete(user);
+    }
+
+    public List<User> findAll(Class<User> clazz) {
+        return userDao.findAll(clazz);
+    }
+
+    public void deleteAll(Class<User> clazz) {
+        userDao.deleteAll(clazz);
     }
 }

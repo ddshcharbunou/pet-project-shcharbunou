@@ -22,7 +22,7 @@ public class SignUpServlet extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone_number");
         String password = req.getParameter("password");
-        UserDao userService = UserDaoImpl.getInstance();
+        UserService userService = UserService.getInstance();
         User user = new User();
         user.setName(name);
         user.setSurname(surname);
@@ -30,7 +30,7 @@ public class SignUpServlet extends HttpServlet {
         user.setEmail(email);
         user.setPhone(phone);
         user.setPassword(password);
-        // userService.save(user);
+        userService.save(user);
         getServletContext().getRequestDispatcher("/pages/sign-in.jsp").forward(req, resp);
     }
 }
