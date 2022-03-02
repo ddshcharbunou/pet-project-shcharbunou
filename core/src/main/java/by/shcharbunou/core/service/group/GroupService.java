@@ -42,4 +42,24 @@ public class GroupService {
     public List<Group> findByLevel(GroupLevel level) {
         return groupDao.findByLevel(level);
     }
+
+    public void save(Group group) {
+        groupDao.save(group);
+    }
+
+    public void update(Group group) {
+        groupDao.update(group);
+    }
+
+    public void delete(Group group) {
+        groupDao.delete(group);
+    }
+
+    public List<Group> findAll(Class<Group> groupClass) {
+        return groupDao.findAll(groupClass);
+    }
+
+    public void deleteAll(Class<Group> groupClass) {
+        groupDao.deleteAll(groupClass);
+    }
 }

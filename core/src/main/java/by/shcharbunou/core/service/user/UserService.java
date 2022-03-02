@@ -45,12 +45,12 @@ public class UserService {
         userDao.delete(user);
     }
 
-    public List<User> findAll(Class<User> clazz) {
-        return userDao.findAll(clazz);
+    public List<User> findAll(Class<User> userClass) {
+        return userDao.findAll(userClass);
     }
 
-    public void deleteAll(Class<User> clazz) {
-        userDao.deleteAll(clazz);
+    public void deleteAll(Class<User> userClass) {
+        userDao.deleteAll(userClass);
     }
 
     public List<User> findByGroup(Group group) {
