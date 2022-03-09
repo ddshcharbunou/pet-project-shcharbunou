@@ -4,30 +4,13 @@ import by.shcharbunou.dal.dao.role.RoleDao;
 import by.shcharbunou.dal.dao.role.impl.RoleDaoImpl;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.role.Role;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
+@Service
 public class RoleService {
-    private static RoleService instance = null;
-    private final RoleDao roleDao;
-
-    private RoleService() {
-        roleDao = RoleDaoImpl.getInstance();
-    }
-
-    public static RoleService getInstance() {
-        RoleService localInstance = instance;
-        if (Objects.isNull(localInstance)) {
-            synchronized (RoleService.class) {
-                localInstance = instance;
-                if (Objects.isNull(localInstance)) {
-                    instance = localInstance = new RoleService();
-                }
-            }
-        }
-        return localInstance;
-    }
+    private final RoleDao roleDao = RoleDaoImpl.getInstance();
 
     public List<Role> findByDesignation(RoleDesignation roleDesignation) {
         return roleDao.findByDesignation(roleDesignation);
