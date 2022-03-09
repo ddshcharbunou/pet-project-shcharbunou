@@ -8,28 +8,12 @@ import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import by.shcharbunou.dal.entity.group.Group;
 import by.shcharbunou.dal.util.HibernateUtil;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Objects;
 
+@Repository
 public class GroupDaoImpl extends BaseDaoImpl<Group> implements GroupDao {
-    private static GroupDaoImpl instance = null;
-
-    private GroupDaoImpl() {}
-
-    public static GroupDaoImpl getInstance() {
-        GroupDaoImpl localInstance = instance;
-        if (Objects.isNull(localInstance)) {
-            synchronized (GroupDaoImpl.class) {
-                localInstance = instance;
-                if (Objects.isNull(localInstance)) {
-                    instance = localInstance = new GroupDaoImpl();
-                }
-            }
-        }
-        return localInstance;
-    }
-
     @Override
     public List<Group> findByDesignation(GroupDesignation designation) {
         Session session = HibernateUtil.openSession();

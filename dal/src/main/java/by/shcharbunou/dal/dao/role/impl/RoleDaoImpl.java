@@ -6,28 +6,12 @@ import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.role.Role;
 import by.shcharbunou.dal.util.HibernateUtil;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Objects;
 
+@Repository
 public class RoleDaoImpl extends BaseDaoImpl<Role> implements RoleDao {
-    private static RoleDaoImpl instance = null;
-
-    private RoleDaoImpl() {}
-
-    public static RoleDaoImpl getInstance() {
-        RoleDaoImpl localInstance = instance;
-        if (Objects.isNull(localInstance)) {
-            synchronized (RoleDaoImpl.class) {
-                localInstance = instance;
-                if (Objects.isNull(localInstance)) {
-                    instance = localInstance = new RoleDaoImpl();
-                }
-            }
-        }
-        return localInstance;
-    }
-
     @Override
     public List<Role> findByDesignation(RoleDesignation roleDesignation) {
         Session session = HibernateUtil.openSession();
