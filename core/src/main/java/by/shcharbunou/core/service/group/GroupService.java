@@ -6,13 +6,19 @@ import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import by.shcharbunou.dal.entity.group.Group;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("groupService")
 public class GroupService {
-    private final GroupDao groupDao = GroupDaoImpl.getInstance();
+    private final GroupDao groupDao;
+
+    @Autowired
+    public GroupService(GroupDaoImpl groupDao) {
+        this.groupDao = groupDao;
+    }
 
     public List<Group> findByDesignation(GroupDesignation designation) {
         return groupDao.findByDesignation(designation);

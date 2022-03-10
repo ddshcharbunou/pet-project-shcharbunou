@@ -4,13 +4,19 @@ import by.shcharbunou.dal.dao.user.UserDao;
 import by.shcharbunou.dal.dao.user.impl.UserDaoImpl;
 import by.shcharbunou.dal.entity.group.Group;
 import by.shcharbunou.dal.entity.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("userService")
 public class UserService {
-    private final UserDao userDao = UserDaoImpl.getInstance();
+    private final UserDao userDao;
+
+    @Autowired
+    public UserService(UserDaoImpl userDao) {
+        this.userDao = userDao;
+    }
 
     public User findByUsername(String username) {
         return userDao.findByUsername(username);

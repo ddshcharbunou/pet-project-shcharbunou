@@ -4,13 +4,19 @@ import by.shcharbunou.dal.dao.role.RoleDao;
 import by.shcharbunou.dal.dao.role.impl.RoleDaoImpl;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.role.Role;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("roleService")
 public class RoleService {
-    private final RoleDao roleDao = RoleDaoImpl.getInstance();
+    private final RoleDao roleDao;
+
+    @Autowired
+    public RoleService(RoleDaoImpl roleDao) {
+        this.roleDao = roleDao;
+    }
 
     public List<Role> findByDesignation(RoleDesignation roleDesignation) {
         return roleDao.findByDesignation(roleDesignation);
