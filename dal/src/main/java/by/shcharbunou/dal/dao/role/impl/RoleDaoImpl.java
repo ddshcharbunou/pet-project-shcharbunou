@@ -15,14 +15,11 @@ import java.util.List;
 public class RoleDaoImpl extends BaseDaoImpl<Role> implements RoleDao {
     @Override
     public List<Role> findByDesignation(RoleDesignation roleDesignation) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
 
-        List<Role> roles = session.createQuery("select r from Role r where r.roleDesignation=:roleDesignation",
+        return session.createQuery("select r from Role r where r.roleDesignation=:roleDesignation",
                 Role.class)
                 .setParameter("roleDesignation", roleDesignation)
                 .getResultList();
-
-        session.close();
-        return roles;
     }
 }

@@ -15,25 +15,19 @@ import java.util.List;
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     @Override
     public User findByUsername(String username) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
 
-        User user = session.createQuery("select u from User u where u.username=:username", User.class)
+        return session.createQuery("select u from User u where u.username=:username", User.class)
                 .setParameter("username", username)
                 .getSingleResult();
-
-        session.close();
-        return user;
     }
 
     @Override
     public List<User> findByGroup(Group group) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
 
-        List<User> users = session.createQuery("select u from User u where u.group.id=:groupId", User.class)
+        return session.createQuery("select u from User u where u.group.id=:groupId", User.class)
                 .setParameter("groupId", group.getId())
                 .getResultList();
-
-        session.close();
-        return users;
     }
 }

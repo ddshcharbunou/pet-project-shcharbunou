@@ -22,55 +22,44 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
     @Override
     public void save(T entity) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
         session.persist(entity);
         session.flush();
-
-        session.close();
     }
 
     @Override
     public void update(T entity) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
         session.merge(entity);
         session.flush();
-
-        session.close();
     }
 
     @Override
     public void delete(T entity) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
         session.remove(entity);
         session.flush();
-
-        session.close();
     }
 
     @Override
     public List<T> findAll(Class<T> clazz) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
-        List<T> entityList = session.createQuery("select * from " + clazz.getSimpleName(), clazz).getResultList();
-
-        session.close();
-        return entityList;
+        return session.createQuery("select * from " + clazz.getSimpleName(), clazz).getResultList();
     }
 
     @Override
     public void deleteAll(Class<T> clazz) {
         List<T> entityList = findAll(clazz);
 
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
         for (T entity : entityList) {
             session.remove(entity);
         }
         session.flush();
-
-        session.close();
     }
 }

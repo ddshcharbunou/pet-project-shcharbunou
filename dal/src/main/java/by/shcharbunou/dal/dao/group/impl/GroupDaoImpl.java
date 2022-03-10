@@ -17,37 +17,28 @@ import java.util.List;
 public class GroupDaoImpl extends BaseDaoImpl<Group> implements GroupDao {
     @Override
     public List<Group> findByDesignation(GroupDesignation designation) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
 
-        List<Group> groups = session.createQuery("select g from Group g where g.designation=:designation", Group.class)
+        return session.createQuery("select g from Group g where g.designation=:designation", Group.class)
                 .setParameter("designation", designation)
                 .getResultList();
-
-        session.close();
-        return groups;
     }
 
     @Override
     public List<Group> findByAge(GroupAge age) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
 
-        List<Group> groups = session.createQuery("select g from Group g where g.age=:age", Group.class)
+        return session.createQuery("select g from Group g where g.age=:age", Group.class)
                 .setParameter("age", age)
                 .getResultList();
-
-        session.close();
-        return groups;
     }
 
     @Override
     public List<Group> findByLevel(GroupLevel level) {
-        Session session = getSessionFactory().openSession();
+        Session session = getSessionFactory().getCurrentSession();
 
-        List<Group> groups = session.createQuery("select g from Group g where g.level=:level", Group.class)
+        return session.createQuery("select g from Group g where g.level=:level", Group.class)
                 .setParameter("level", level)
                 .getResultList();
-
-        session.close();
-        return groups;
     }
 }

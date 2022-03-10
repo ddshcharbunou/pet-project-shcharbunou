@@ -1,8 +1,9 @@
 package by.shcharbunou.jee.servlet;
 
 import by.shcharbunou.core.service.user.UserService;
-import by.shcharbunou.dal.dao.user.UserDao;
 import by.shcharbunou.dal.dao.user.impl.UserDaoImpl;
+import by.shcharbunou.dal.entity.group.Group;
+import by.shcharbunou.dal.entity.role.Role;
 import by.shcharbunou.dal.entity.user.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +23,7 @@ public class SignUpServlet extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone_number");
         String password = req.getParameter("password");
-        //UserService userService = UserService.getInstance();
+        UserService userService = new UserService(new UserDaoImpl());
         User user = new User();
         user.setName(name);
         user.setSurname(surname);
@@ -30,7 +31,9 @@ public class SignUpServlet extends HttpServlet {
         user.setEmail(email);
         user.setPhone(phone);
         user.setPassword(password);
-        //userService.save(user);
+        user.setGroup(null);
+        user.setRole(null);
+        userService.save(user);
         getServletContext().getRequestDispatcher("/pages/sign-in.jsp").forward(req, resp);
     }
 }
