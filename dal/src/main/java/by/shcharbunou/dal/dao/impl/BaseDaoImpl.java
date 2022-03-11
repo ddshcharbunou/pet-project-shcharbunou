@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Transactional
-public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
+public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
     @Autowired
     private SessionFactory sessionFactory;
 
