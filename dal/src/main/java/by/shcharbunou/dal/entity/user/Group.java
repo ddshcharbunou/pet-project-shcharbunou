@@ -1,10 +1,9 @@
-package by.shcharbunou.dal.entity.group;
+package by.shcharbunou.dal.entity.user;
 
 import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
-import by.shcharbunou.dal.entity.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 

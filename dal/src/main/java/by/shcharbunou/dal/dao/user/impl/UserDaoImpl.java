@@ -2,7 +2,7 @@ package by.shcharbunou.dal.dao.user.impl;
 
 import by.shcharbunou.dal.dao.impl.BaseDaoImpl;
 import by.shcharbunou.dal.dao.user.UserDao;
-import by.shcharbunou.dal.entity.group.Group;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;

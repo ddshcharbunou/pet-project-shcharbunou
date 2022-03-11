@@ -1,8 +1,7 @@
-package by.shcharbunou.dal.entity.role;
+package by.shcharbunou.dal.entity.user;
 
 import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
-import by.shcharbunou.dal.entity.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 

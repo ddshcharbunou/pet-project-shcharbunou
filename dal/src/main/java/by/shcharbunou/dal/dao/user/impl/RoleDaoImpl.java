@@ -1,9 +1,9 @@
-package by.shcharbunou.dal.dao.role.impl;
+package by.shcharbunou.dal.dao.user.impl;
 
 import by.shcharbunou.dal.dao.impl.BaseDaoImpl;
-import by.shcharbunou.dal.dao.role.RoleDao;
+import by.shcharbunou.dal.dao.user.RoleDao;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
-import by.shcharbunou.dal.entity.role.Role;
+import by.shcharbunou.dal.entity.user.Role;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

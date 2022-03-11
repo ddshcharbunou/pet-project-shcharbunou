@@ -1,10 +1,10 @@
-package by.shcharbunou.dal.dao.group;
+package by.shcharbunou.dal.dao.user;
 
 import by.shcharbunou.dal.dao.BaseDao;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
-import by.shcharbunou.dal.entity.group.Group;
+import by.shcharbunou.dal.entity.user.Group;
 
 import java.util.List;
 

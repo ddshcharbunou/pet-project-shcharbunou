@@ -1,21 +1,18 @@
 package by.shcharbunou.jee.servlet;
 
 import by.shcharbunou.core.service.user.UserService;
+import by.shcharbunou.dal.dao.user.impl.UserDaoImpl;
 import by.shcharbunou.dal.entity.user.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
 @WebServlet(name = "SignUpServlet", value = "/pages/sign-up")
 public class SignUpServlet extends HttpServlet {
-    @Autowired
-    private UserService userService;
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -24,6 +21,7 @@ public class SignUpServlet extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone_number");
         String password = req.getParameter("password");
+        UserService userService = new UserService(new UserDaoImpl());
         User user = new User();
         user.setName(name);
         user.setSurname(surname);

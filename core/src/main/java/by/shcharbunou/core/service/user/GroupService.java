@@ -1,11 +1,11 @@
-package by.shcharbunou.core.service.group;
+package by.shcharbunou.core.service.user;
 
-import by.shcharbunou.dal.dao.group.GroupDao;
-import by.shcharbunou.dal.dao.group.impl.GroupDaoImpl;
+import by.shcharbunou.dal.dao.user.GroupDao;
+import by.shcharbunou.dal.dao.user.impl.GroupDaoImpl;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
-import by.shcharbunou.dal.entity.group.Group;
+import by.shcharbunou.dal.entity.user.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

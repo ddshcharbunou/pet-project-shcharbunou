@@ -1,11 +1,11 @@
-package by.shcharbunou.dal.dao.group.impl;
+package by.shcharbunou.dal.dao.user.impl;
 
-import by.shcharbunou.dal.dao.group.GroupDao;
+import by.shcharbunou.dal.dao.user.GroupDao;
 import by.shcharbunou.dal.dao.impl.BaseDaoImpl;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
-import by.shcharbunou.dal.entity.group.Group;
+import by.shcharbunou.dal.entity.user.Group;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,9 +1,9 @@
-package by.shcharbunou.core.service.role;
+package by.shcharbunou.core.service.user;
 
-import by.shcharbunou.dal.dao.role.RoleDao;
-import by.shcharbunou.dal.dao.role.impl.RoleDaoImpl;
+import by.shcharbunou.dal.dao.user.RoleDao;
+import by.shcharbunou.dal.dao.user.impl.RoleDaoImpl;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
-import by.shcharbunou.dal.entity.role.Role;
+import by.shcharbunou.dal.entity.user.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

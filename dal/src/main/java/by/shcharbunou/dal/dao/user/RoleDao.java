@@ -1,8 +1,8 @@
-package by.shcharbunou.dal.dao.role;
+package by.shcharbunou.dal.dao.user;
 
 import by.shcharbunou.dal.dao.BaseDao;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
-import by.shcharbunou.dal.entity.role.Role;
+import by.shcharbunou.dal.entity.user.Role;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package by.shcharbunou.dal.dao.user;
 
 import by.shcharbunou.dal.dao.BaseDao;
-import by.shcharbunou.dal.entity.group.Group;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 
 import java.util.List;
