@@ -39,6 +39,10 @@
         <spring-orm.version>5.3.16</spring-orm.version>
         <spring-webmvc.version>5.3.16</spring-webmvc.version>
         <spring-boot-starter.version>2.6.4</spring-boot-starter.version>
+        <javax.servlet.version>4.0.1</javax.servlet.version>
+        <javax.jsp.version>2.3.3</javax.jsp.version>
+        <javax.jstl.version>1.2</javax.jstl.version>
+        <javax.persistence.version>2.2</javax.persistence.version>
     </properties>
 
     <dependencyManagement>
@@ -119,6 +123,32 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring-boot-starter.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>javax.servlet.jsp-api</artifactId>
+                <version>${javax.jsp.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${javax.jstl.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>javax.persistence-api</artifactId>
+                <version>${javax.persistence.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
