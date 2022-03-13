@@ -19,12 +19,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
-        <servlet.version>5.0.0</servlet.version>
-        <jstl.version>2.0.0</jstl.version>
-        <postgresql.version>42.3.2</postgresql.version>
-        <hibernate-core.version>6.0.0.CR1</hibernate-core.version>
-        <lombok.version>1.18.22</lombok.version>
-        <jpa.version>3.0.0</jpa.version>
         <maven-war.version>3.3.2</maven-war.version>
         <maven-clean.version>3.1.0</maven-clean.version>
         <maven-resources.version>3.0.2</maven-resources.version>
@@ -32,13 +26,19 @@
         <maven-surefire.version>2.22.1</maven-surefire.version>
         <maven-install.version>2.5.2</maven-install.version>
         <maven-deploy.version>2.8.2</maven-deploy.version>
-        <log4j.version>2.17.1</log4j.version>
         <dal.version>1.0-SNAPSHOT</dal.version>
         <core.version>1.0-SNAPSHOT</core.version>
         <spring-context.version>5.3.16</spring-context.version>
         <spring-orm.version>5.3.16</spring-orm.version>
         <spring-webmvc.version>5.3.16</spring-webmvc.version>
         <spring-boot-starter.version>2.6.4</spring-boot-starter.version>
+        <servlet.version>5.0.0</servlet.version>
+        <jstl.version>2.0.0</jstl.version>
+        <postgresql.version>42.3.2</postgresql.version>
+        <jpa.version>3.0.0</jpa.version>
+        <hibernate-core.version>6.0.0.CR1</hibernate-core.version>
+        <lombok.version>1.18.22</lombok.version>
+        <log4j.version>2.17.1</log4j.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
         <javax.jsp.version>2.3.3</javax.jsp.version>
         <javax.jstl.version>1.2</javax.jstl.version>
