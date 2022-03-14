@@ -14,7 +14,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan("by.shcharbunou.dal")
-@PropertySource("file:D:\\home\\shcharbunou\\dev\\learning-management-system\\dal\\src\\main\\resources\\application.properties")
+//@PropertySource("file:/application.properties")
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class DalConfig {
