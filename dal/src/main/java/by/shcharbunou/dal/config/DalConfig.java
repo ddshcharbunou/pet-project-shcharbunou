@@ -1,6 +1,7 @@
 package by.shcharbunou.dal.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -9,14 +10,15 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.sql.DataSource;
 import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
 @ComponentScan("by.shcharbunou.dal")
-//@PropertySource("file:/application.properties")
+// @PropertySource("file:/application.properties")
 @EnableTransactionManagement
-@EnableAspectJAutoProxy(proxyTargetClass = true)
+// @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class DalConfig {
     private Environment environment;
 
@@ -35,13 +37,9 @@ public class DalConfig {
     }
 
     @Bean
-    public DriverManagerDataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("jdbc.driver")));
-        dataSource.setUrl(environment.getProperty("jdbc.url"));
-        dataSource.setUsername(environment.getProperty("jdbc.username"));
-        dataSource.setPassword(environment.getProperty("jdbc.password"));
-        return dataSource;
+    public DataSource dataSource() {
+        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
+        return dataSourceBuilder.build();
     }
 
     @Bean
