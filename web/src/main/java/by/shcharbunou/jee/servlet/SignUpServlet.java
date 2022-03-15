@@ -1,9 +1,10 @@
 package by.shcharbunou.jee.servlet;
 
 import by.shcharbunou.core.service.user.UserService;
+import by.shcharbunou.dal.config.DalConfig;
 import by.shcharbunou.dal.entity.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -18,7 +19,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        context = (ApplicationContext) config.getServletContext().getAttribute("context");
+        context = new AnnotationConfigApplicationContext(DalConfig.class);
     }
 
     @Override
