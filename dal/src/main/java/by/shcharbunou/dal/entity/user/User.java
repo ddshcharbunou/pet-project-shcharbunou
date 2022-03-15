@@ -1,7 +1,7 @@
 package by.shcharbunou.dal.entity.user;
 
 import by.shcharbunou.dal.entity.BaseEntity;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 @Getter
