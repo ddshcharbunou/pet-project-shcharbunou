@@ -17,7 +17,7 @@
     </div>
     <nav>
         <div class="menu" id="menu">
-            <a href="../index.jsp">Главная</a>
+            <a href="index.jsp">Главная</a>
             <a href="courses.jsp">Курсы</a>
             <a href="about.jsp"><span class="current__link">О школе</span></a>
             <a href="test.jsp">Тест</a>

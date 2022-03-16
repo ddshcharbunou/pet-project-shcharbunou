@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("by.shcharbunou.jee.servlet")
+@ComponentScan("by.shcharbunou.jee.controller")
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
     @Bean
