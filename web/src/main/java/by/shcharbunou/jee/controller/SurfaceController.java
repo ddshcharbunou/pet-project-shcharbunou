@@ -17,4 +17,34 @@ public class SurfaceController {
     public ModelAndView getCoursesPage() {
         return new ModelAndView("courses");
     }
+
+    @GetMapping("/about")
+    public ModelAndView getAboutPage() {
+        return new ModelAndView("about");
+    }
+
+    @GetMapping("/blog")
+    public ModelAndView getBlogPage() {
+        return new ModelAndView("blog");
+    }
+
+    @GetMapping("/contacts")
+    public ModelAndView getContactsPage() {
+        return new ModelAndView("contacts");
+    }
+
+    @GetMapping("/sign-in")
+    public ModelAndView getSignInPage() {
+        return new ModelAndView("sign-in");
+    }
+
+    @GetMapping("/sign-up")
+    public ModelAndView getSignUpPage() {
+        return new ModelAndView("sign-up");
+    }
+
+    @GetMapping("/test")
+    public ModelAndView getTestPage() {
+        return new ModelAndView("test");
+    }
 }
