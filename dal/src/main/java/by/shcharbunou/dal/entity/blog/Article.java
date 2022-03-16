@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.*;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @ToString
@@ -18,7 +20,13 @@ import lombok.*;
 @AttributeOverride(name = "id", column = @Column(name = "article_id"))
 public class Article extends BaseEntity {
     @Column(name = "header", nullable = false)
-    public String header;
+    private String header;
+
+    @Column(name = "content", nullable = false)
+    private String content;
+
+    @Column(name = "date", nullable = false)
+    private Instant date;
 
     @Deprecated
     public Article() {}
