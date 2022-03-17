@@ -1,6 +1,7 @@
 package by.shcharbunou.dal.entity.user.office.homework;
 
 import by.shcharbunou.dal.entity.BaseEntity;
+import by.shcharbunou.dal.entity.user.Group;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,10 @@ public class Homework extends BaseEntity {
 
     @Column(name = "homework_date", nullable = false)
     private Instant date;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id", nullable = false)
+    private Group group;
 
     @ElementCollection
     @AttributeOverride(name = "designation", column = @Column(name = "homework_sub_theme"))

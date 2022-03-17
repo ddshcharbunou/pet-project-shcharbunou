@@ -7,6 +7,7 @@ import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import javax.persistence.*;
 
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
+import by.shcharbunou.dal.entity.user.office.homework.Homework;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -45,6 +46,18 @@ public class Group extends BaseEntity {
 
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private Set<User> users = new HashSet<>();
+
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    private Set<Homework> homeworks = new HashSet<>();
+
+    public void addHomework(Homework homework) {
+        this.homeworks.add(homework);
+        homework.setGroup(this);
+    }
+
+    public void deleteHomework(Homework homework) {
+        this.homeworks.remove(homework);
+    }
 
     public void connectUser(User user) {
         this.users.add(user);
