@@ -23,6 +23,11 @@ public class Gallery extends BaseEntity {
     @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL)
     private Set<Image> images = new HashSet<>();
 
+    public void connectImage(Image image) {
+        this.images.add(image);
+        image.setGallery(this);
+    }
+
     @Deprecated
     public Gallery() {}
 }
