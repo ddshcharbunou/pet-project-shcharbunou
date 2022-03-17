@@ -1,11 +1,11 @@
 package by.shcharbunou.dal.entity.blog;
 
 import by.shcharbunou.dal.entity.BaseEntity;
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.time.Instant;
 
@@ -23,6 +23,7 @@ public class Article extends BaseEntity {
     private String header;
 
     @Column(name = "article_content", nullable = false)
+    @Lob
     private String content;
 
     @Column(name = "article_date", nullable = false)

@@ -21,6 +21,7 @@ public class Review {
     private int grade;
 
     @Column(name = "review_content", nullable = false)
+    @Lob
     private String content;
 
     @Column(name = "review_date", nullable = false)
