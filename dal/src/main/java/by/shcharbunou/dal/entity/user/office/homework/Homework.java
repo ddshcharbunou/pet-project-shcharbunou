@@ -18,5 +18,6 @@ import javax.persistence.Table;
 @Table(name = "homework")
 @AttributeOverride(name = "id", column = @Column(name = "homework_id"))
 public class Homework extends BaseEntity {
-
+    @Column(name = "homework_theme", nullable = false)
+    private String theme;
 }

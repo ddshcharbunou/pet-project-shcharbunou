@@ -20,7 +20,7 @@ import java.util.Set;
 public class Role extends BaseEntity {
     @Column(name = "role_designation")
     @Enumerated(EnumType.STRING)
-    private RoleDesignation roleDesignation;
+    private RoleDesignation designation;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<User> users = new HashSet<>();
