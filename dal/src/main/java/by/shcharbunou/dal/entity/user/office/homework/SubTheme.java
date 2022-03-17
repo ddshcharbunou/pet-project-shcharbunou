@@ -12,10 +12,10 @@ import java.util.List;
 @Getter
 @Setter
 @Embeddable
-@AttributeOverride(name = "link", column = @Column(name = "homework_link"))
 public class SubTheme {
     private String designation;
 
     @ElementCollection
+    @AttributeOverride(name = "link", column = @Column(name = "homework_link"))
     private List<HomeworkLink> links;
 }

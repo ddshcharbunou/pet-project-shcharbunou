@@ -15,11 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "homework")
-@AttributeOverrides({
-        @AttributeOverride(name = "id", column = @Column(name = "homework_id")),
-        @AttributeOverride(name = "designation", column = @Column(name = "homework_sub_theme_designation")),
-        @AttributeOverride(name = "links", column = @Column(name = "homework_link"))
-})
+@AttributeOverride(name = "id", column = @Column(name = "homework_id"))
 public class Homework extends BaseEntity {
     @Column(name = "homework_theme", nullable = false)
     private String theme;
@@ -27,7 +23,7 @@ public class Homework extends BaseEntity {
     @Column(name = "homework_date", nullable = false)
     private Instant date;
 
-    @Column(name = "homework_sub_theme")
     @ElementCollection
+    @AttributeOverride(name = "designation", column = @Column(name = "homework_sub_theme"))
     private List<SubTheme> subThemes;
 }
