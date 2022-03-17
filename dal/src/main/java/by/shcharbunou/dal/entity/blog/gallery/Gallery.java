@@ -28,6 +28,11 @@ public class Gallery extends BaseEntity {
         image.setGallery(this);
     }
 
+    public void disconnectImage(Image image) {
+        this.images.remove(image);
+        image.setGallery(null);
+    }
+
     @Deprecated
     public Gallery() {}
 }
