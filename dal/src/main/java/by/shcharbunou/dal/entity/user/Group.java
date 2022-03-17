@@ -5,9 +5,12 @@ import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import javax.persistence.*;
+
+import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -33,7 +36,8 @@ public class Group extends BaseEntity {
     private GroupAge age;
 
     @Column(name = "group_days")
-    private String days;
+    @ElementCollection
+    private List<EmbeddableDay> days;
 
     @Column(name = "group_time")
     private String time;

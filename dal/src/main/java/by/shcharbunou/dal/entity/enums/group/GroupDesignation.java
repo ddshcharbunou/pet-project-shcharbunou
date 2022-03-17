@@ -1,7 +1,10 @@
 package by.shcharbunou.dal.entity.enums.group;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@Getter
+@AllArgsConstructor
 public enum GroupDesignation {
     BEGINNER("Beginner"),
     ELEMENTARY1_3("Elementary 1-3"),
@@ -15,10 +18,5 @@ public enum GroupDesignation {
     LOWER_ADVANCED1_3("Lower-advanced 1-3"),
     UPPER_ADVANCED1_3("Upper-advanced 1-3");
 
-    @Getter
     private final String designation;
-
-    GroupDesignation(String designation) {
-        this.designation = designation;
-    }
 }
