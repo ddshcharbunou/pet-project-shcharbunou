@@ -9,6 +9,7 @@ import javax.persistence.*;
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,7 @@ public class Group extends BaseEntity {
 
     @Column(name = "group_days")
     @ElementCollection
-    private List<EmbeddableDay> days;
+    private List<EmbeddableDay> days = new ArrayList<>(7);
 
     @Column(name = "group_time")
     private String time;

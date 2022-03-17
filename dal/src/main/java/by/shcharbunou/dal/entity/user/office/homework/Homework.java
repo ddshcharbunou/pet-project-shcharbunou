@@ -26,4 +26,8 @@ public class Homework extends BaseEntity {
     @ElementCollection
     @AttributeOverride(name = "designation", column = @Column(name = "homework_sub_theme"))
     private List<SubTheme> subThemes;
+
+    public void connectSubTheme(SubTheme subTheme) {
+        this.subThemes.add(subTheme);
+    }
 }
