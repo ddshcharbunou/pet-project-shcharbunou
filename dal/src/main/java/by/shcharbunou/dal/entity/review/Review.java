@@ -17,13 +17,13 @@ import java.time.Instant;
 @Table(name = "review")
 @AttributeOverride(name = "id", column = @Column(name = "review_id"))
 public class Review {
-    @Column(name = "grade", nullable = false)
+    @Column(name = "review_grade", nullable = false)
     private int grade;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "review_content", nullable = false)
     private String content;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "review_date", nullable = false)
     private Instant date;
 
     @ManyToOne

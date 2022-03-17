@@ -16,7 +16,7 @@ import lombok.*;
 @Table(name = "image")
 @AttributeOverride(name = "id", column = @Column(name = "image_id"))
 public class Image extends BaseEntity {
-    @Column(name = "designation", nullable = false)
+    @Column(name = "image_designation", nullable = false)
     private String designation;
 
     @ManyToOne

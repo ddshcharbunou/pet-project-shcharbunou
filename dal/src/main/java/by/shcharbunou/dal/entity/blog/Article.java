@@ -19,13 +19,13 @@ import java.time.Instant;
 @Table(name = "article")
 @AttributeOverride(name = "id", column = @Column(name = "article_id"))
 public class Article extends BaseEntity {
-    @Column(name = "header", nullable = false)
+    @Column(name = "article_header", nullable = false)
     private String header;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "article_content", nullable = false)
     private String content;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "article_date", nullable = false)
     private Instant date;
 
     @Deprecated

@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name = "gallery")
 @AttributeOverride(name = "id", column = @Column(name = "gallery_id"))
 public class Gallery extends BaseEntity {
-    @Column(name = "year", nullable = false)
+    @Column(name = "gallery_year", nullable = false)
     private int year;
 
     @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL)
