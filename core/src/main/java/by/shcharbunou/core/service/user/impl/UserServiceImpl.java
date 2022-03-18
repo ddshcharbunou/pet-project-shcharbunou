@@ -1,5 +1,7 @@
 package by.shcharbunou.core.service.user.impl;
 
+import by.shcharbunou.core.exception.UserNotFoundException;
+import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
@@ -25,22 +27,31 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(UUID id) {
-        return null;
+    public User findUserById(UUID id) throws UserNotFoundException {
+        return userRepository.findById(id).orElseThrow(() ->
+                new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage()));
     }
 
     @Override
     public void deleteUser(User user) {
-
+        userRepository.delete(user);
     }
 
     @Override
-    public User findUserByUsername(String username) {
-        return null;
+    public User findUserByUsername(String username) throws UserNotFoundException {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            return user;
+        }
+        throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
     }
 
     @Override
-    public User findUserByUsernameAndEmail(String username, String email) {
-        return null;
+    public User findUserByUsernameAndEmail(String username, String email) throws UserNotFoundException {
+        User user = userRepository.findByUsernameAndEmail(username, email);
+        if (user != null) {
+            return user;
+        }
+        throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
     }
 }

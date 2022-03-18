@@ -1,5 +1,6 @@
 package by.shcharbunou.core.service.user;
 
+import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.dal.entity.user.User;
 
 import java.util.UUID;
@@ -19,8 +20,9 @@ public interface UserService {
      * Find user by id.
      * @param id id
      * @return user {@link User}
+     * @throws UserNotFoundException user not found
      */
-    User findUserById(UUID id);
+    User findUserById(UUID id) throws UserNotFoundException;
 
     /**
      * Delete user;
@@ -32,14 +34,16 @@ public interface UserService {
      * Find user by username.
      * @param username username
      * @return user {@link User}
+     * @throws UserNotFoundException user not found
      */
-    User findUserByUsername(String username);
+    User findUserByUsername(String username) throws UserNotFoundException;
 
     /**
      * Find user by username and email.
      * @param username username
      * @param email email
      * @return user {@link User}
+     * @throws UserNotFoundException user not found
      */
-    User findUserByUsernameAndEmail(String username, String email);
+    User findUserByUsernameAndEmail(String username, String email) throws UserNotFoundException;
 }
