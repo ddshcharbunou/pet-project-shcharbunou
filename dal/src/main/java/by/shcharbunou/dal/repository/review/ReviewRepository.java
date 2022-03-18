@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Repository for Review entity.
+ */
 @Repository("reviewRepository")
 public interface ReviewRepository extends JpaRepository<Review, UUID> {
 }

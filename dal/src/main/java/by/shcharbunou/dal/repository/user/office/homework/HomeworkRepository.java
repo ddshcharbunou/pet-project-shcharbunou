@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Repository for Homework entity.
+ */
 @Repository("homeworkRepository")
 public interface HomeworkRepository extends JpaRepository<Homework, UUID> {
 }

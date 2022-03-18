@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Repository for Group entity.
+ */
 @Repository("groupRepository")
 public interface GroupRepository extends JpaRepository<Group, UUID> {
 }

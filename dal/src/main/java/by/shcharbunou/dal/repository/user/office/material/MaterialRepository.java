@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Repository for Material entity.
+ */
 @Repository("materialRepository")
 public interface MaterialRepository extends JpaRepository<Material, UUID> {
 }

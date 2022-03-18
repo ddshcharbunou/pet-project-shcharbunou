@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Repository for Image entity.
+ */
 @Repository("imageRepository")
 public interface ImageRepository extends JpaRepository<Image, UUID> {
 }
