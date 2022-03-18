@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.dao.review;
+package by.shcharbunou.dal.repository.review;
 
 import by.shcharbunou.dal.entity.review.Review;
 import org.springframework.data.jpa.repository.JpaRepository;

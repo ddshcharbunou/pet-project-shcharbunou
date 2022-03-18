@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.dao.blog.gallery;
+package by.shcharbunou.dal.repository.blog.gallery;
 
 import by.shcharbunou.dal.entity.blog.gallery.Image;
 import org.springframework.data.jpa.repository.JpaRepository;

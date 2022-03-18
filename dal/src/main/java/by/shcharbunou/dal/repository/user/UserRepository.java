@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.dao.user;
+package by.shcharbunou.dal.repository.user;
 
 import by.shcharbunou.dal.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

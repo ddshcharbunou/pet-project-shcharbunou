@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.dao.user.office.homework;
+package by.shcharbunou.dal.repository.user.office.homework;
 
 import by.shcharbunou.dal.entity.user.office.homework.Homework;
 import org.springframework.data.jpa.repository.JpaRepository;

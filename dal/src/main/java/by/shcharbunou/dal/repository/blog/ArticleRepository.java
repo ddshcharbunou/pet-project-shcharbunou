@@ -1,4 +1,4 @@
-package by.shcharbunou.dal.dao.blog;
+package by.shcharbunou.dal.repository.blog;
 
 import by.shcharbunou.dal.entity.blog.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
