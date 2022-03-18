@@ -3,6 +3,7 @@ package by.shcharbunou.dal.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -17,6 +18,7 @@ import java.util.Properties;
 @ComponentScan("by.shcharbunou.dal")
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
+@EnableJpaRepositories
 // @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class DalConfig {
     private Environment environment;
