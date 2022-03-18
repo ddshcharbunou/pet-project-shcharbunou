@@ -9,12 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
+    private static final Pattern PHONE_PATTERN =
+            Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -53,5 +58,23 @@ public class UserServiceImpl implements UserService {
             return user;
         }
         throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
+    }
+
+    @Override
+    public User createUser(HttpServletRequest request) {
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String repeatedPassword = request.getParameter("repeated_password");
+        boolean isValidated = validate(email, phone, name, surname, username, password, repeatedPassword);
+        return new User();
+    }
+
+    private boolean validate(String email, String phone, String name, String surname,
+                             String username, String password, String repeatedPassword) {
+        return true;
     }
 }

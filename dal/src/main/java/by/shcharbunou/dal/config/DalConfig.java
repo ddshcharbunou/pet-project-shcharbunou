@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan("by.shcharbunou.dal")
+@ComponentScan("by.shcharbunou")
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories

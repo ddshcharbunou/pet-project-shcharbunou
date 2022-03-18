@@ -39,13 +39,20 @@
 </div>
 <form class="sign__up__form" action="sign-up" method="post">
     <label>
-        <input type="text" name="email" placeholder="Email">
-        <input type="text" name="phone_number" placeholder="Телефон">
-        <input type="text" name="name" placeholder="Имя">
-        <input type="text" name="surname" placeholder="Фамилия">
-        <input type="text" name="username" placeholder="Логин">
-        <input type="password" name="password" placeholder="Пароль">
-        <input type="password" name="repeat_password" placeholder="Повторите пароль">
+        <input type="email" name="email" placeholder="Email" required
+               oninvalid="this.setCustomValidity('Введите email')" oninput="setCustomValidity('')">
+        <input type="text" name="phone" placeholder="Телефон"
+               oninvalid="this.setCustomValidity('Введите телефон')" oninput="setCustomValidity('')">
+        <input type="text" name="name" placeholder="Имя"
+               oninvalid="this.setCustomValidity('Введите имя')" oninput="setCustomValidity('')">
+        <input type="text" name="surname" placeholder="Фамилия"
+               oninvalid="this.setCustomValidity('Введите фамилию')" oninput="setCustomValidity('')">
+        <input type="text" name="username" placeholder="Логин"
+               oninvalid="this.setCustomValidity('Введите логин')" oninput="setCustomValidity('')">
+        <input type="password" name="password" placeholder="Пароль"
+               oninvalid="this.setCustomValidity('Введите пароль')" oninput="setCustomValidity('')">
+        <input type="password" name="repeated_password" placeholder="Повторите пароль"
+               oninvalid="this.setCustomValidity('Подтвердите пароль')" oninput="setCustomValidity('')">
     </label>
     <div class="buttons">
         <button type="submit" class="sign__up__page__button">Регистрация</button>

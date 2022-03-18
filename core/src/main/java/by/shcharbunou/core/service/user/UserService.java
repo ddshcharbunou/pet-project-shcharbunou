@@ -3,6 +3,7 @@ package by.shcharbunou.core.service.user;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.dal.entity.user.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 /**
@@ -46,4 +47,6 @@ public interface UserService {
      * @throws UserNotFoundException user not found
      */
     User findUserByUsernameAndEmail(String username, String email) throws UserNotFoundException;
+
+    User createUser(HttpServletRequest request);
 }
