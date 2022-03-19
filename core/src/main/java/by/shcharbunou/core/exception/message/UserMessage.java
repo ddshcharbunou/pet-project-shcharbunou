@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum UserMessage {
-    USER_NOT_FOUND("Error: User not found");
+    USER_NOT_FOUND("Ошибка: Пользователь не найден");
 
     private final String message;
 }

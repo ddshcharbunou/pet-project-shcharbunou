@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user;
 
 import by.shcharbunou.core.exception.UserNotFoundException;
+import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,5 +49,11 @@ public interface UserService {
      */
     User findUserByUsernameAndEmail(String username, String email) throws UserNotFoundException;
 
-    User createUser(HttpServletRequest request);
+    User findUserByEmail(String email) throws UserNotFoundException;
+
+    User createUser(HttpServletRequest request, User user) throws ValidationException;
+
+    boolean checkUsernameAvailability(User user) throws ValidationException;
+
+    boolean checkEmailAvailability(User user) throws ValidationException;
 }
