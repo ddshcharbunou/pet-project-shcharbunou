@@ -21,6 +21,7 @@ public class SubTheme extends BaseEntity {
     private String designation;
 
     @ElementCollection
+    @CollectionTable(name = "subtheme_content", joinColumns = @JoinColumn(name = "subtheme_id"))
     @AttributeOverrides({
             @AttributeOverride(name = "link", column = @Column(name = "homework_link")),
             @AttributeOverride(name = "taskType", column = @Column(name = "homework_task_type"))

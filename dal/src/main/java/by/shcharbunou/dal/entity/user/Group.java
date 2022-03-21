@@ -22,7 +22,7 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "group")
+@Table(name = "groups")
 @AttributeOverride(name = "id", column = @Column(name = "group_id"))
 public class Group extends BaseEntity {
     @Column(name = "group_designation")
@@ -37,8 +37,9 @@ public class Group extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private GroupAge age;
 
-    @Column(name = "group_days")
     @ElementCollection
+    @CollectionTable(name = "group_days", joinColumns = @JoinColumn(name = "group_id"))
+    @AttributeOverride(name = "day", column = @Column(name = "day"))
     private List<EmbeddableDay> days = new ArrayList<>(7);
 
     @Column(name = "group_time")
