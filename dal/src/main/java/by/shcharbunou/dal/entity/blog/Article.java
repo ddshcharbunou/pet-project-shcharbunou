@@ -5,7 +5,6 @@ import by.shcharbunou.dal.entity.BaseEntity;
 import javax.persistence.*;
 
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import java.time.Instant;
 

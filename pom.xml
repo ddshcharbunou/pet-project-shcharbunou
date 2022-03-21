@@ -32,11 +32,8 @@
         <spring-orm.version>5.3.16</spring-orm.version>
         <spring-webmvc.version>5.3.16</spring-webmvc.version>
         <spring-data-jpa.version>2.6.2</spring-data-jpa.version>
-        <servlet.version>5.0.0</servlet.version>
-        <jstl.version>2.0.0</jstl.version>
         <postgresql.version>42.3.2</postgresql.version>
-        <jpa.version>3.0.0</jpa.version>
-        <hibernate-core.version>6.0.0.CR1</hibernate-core.version>
+        <hibernate-core.version>5.6.7.Final</hibernate-core.version>
         <lombok.version>1.18.22</lombok.version>
         <log4j.version>2.17.1</log4j.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
@@ -81,29 +78,11 @@
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring-data-jpa.version}</version>
             </dependency>
-            <dependency>
-                <groupId>jakarta.servlet</groupId>
-                <artifactId>jakarta.servlet-api</artifactId>
-                <version>${servlet.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
-            <dependency>
-                <groupId>org.glassfish.web</groupId>
-                <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-                <version>${jstl.version}</version>
-            </dependency>
             <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
-            <dependency>
-                <groupId>jakarta.persistence</groupId>
-                <artifactId>jakarta.persistence-api</artifactId>
-                <version>${jpa.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
             <dependency>
