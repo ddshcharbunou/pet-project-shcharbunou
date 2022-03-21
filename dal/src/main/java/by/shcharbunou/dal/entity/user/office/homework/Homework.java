@@ -2,11 +2,15 @@ package by.shcharbunou.dal.entity.user.office.homework;
 
 import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.user.Group;
+import by.shcharbunou.dal.entity.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,11 +32,13 @@ public class Homework extends BaseEntity {
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
-    @ElementCollection
-    @AttributeOverride(name = "designation", column = @Column(name = "homework_sub_theme"))
-    private List<SubTheme> subThemes;
+    @OneToMany(mappedBy = "homework", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SubTheme> subThemes = new ArrayList<>();
 
     public void connectSubTheme(SubTheme subTheme) {
         this.subThemes.add(subTheme);
     }
+
+    @Deprecated
+    public Homework() {}
 }

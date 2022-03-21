@@ -15,4 +15,7 @@ public class HomeworkLink {
     private String taskType;
 
     private String link;
+
+    @Deprecated
+    public HomeworkLink() {}
 }

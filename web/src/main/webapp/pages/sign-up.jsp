@@ -39,7 +39,7 @@
 </div>
 <form class="sign__up__form" action="sign-up" method="post">
     <label>
-        <input type="email" name="email" placeholder="Email" required
+        <input type="text" name="email" placeholder="Email" required
                oninvalid="this.setCustomValidity('Введите email')" oninput="setCustomValidity('')">
         <input type="text" name="phone" placeholder="Телефон"
                oninvalid="this.setCustomValidity('Введите телефон')" oninput="setCustomValidity('')">

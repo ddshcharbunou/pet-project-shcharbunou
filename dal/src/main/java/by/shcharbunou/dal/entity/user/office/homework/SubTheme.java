@@ -1,7 +1,7 @@
 package by.shcharbunou.dal.entity.user.office.homework;
 
-import lombok.Getter;
-import lombok.Setter;
+import by.shcharbunou.dal.entity.BaseEntity;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,9 +9,15 @@ import java.util.List;
 
 @Getter
 @Setter
+@EqualsAndHashCode(callSuper = false)
+@ToString
+@AllArgsConstructor
 
-@Embeddable
-public class SubTheme {
+@Entity
+@Table(name = "subtheme")
+@AttributeOverride(name = "id", column = @Column(name = "subtheme_id"))
+public class SubTheme extends BaseEntity {
+    @Column(name = "subtheme_designation", nullable = false)
     private String designation;
 
     @ElementCollection
@@ -21,7 +27,14 @@ public class SubTheme {
     })
     private List<HomeworkLink> links = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "homework_id", nullable = false)
+    private Homework homework;
+
     public void connectLink(HomeworkLink link) {
         this.links.add(link);
     }
+
+    @Deprecated
+    public SubTheme() {}
 }

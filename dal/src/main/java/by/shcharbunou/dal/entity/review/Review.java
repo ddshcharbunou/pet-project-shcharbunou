@@ -1,5 +1,6 @@
 package by.shcharbunou.dal.entity.review;
 
+import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.user.User;
 import javax.persistence.*;
 import lombok.*;
@@ -16,7 +17,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "review")
 @AttributeOverride(name = "id", column = @Column(name = "review_id"))
-public class Review {
+public class Review extends BaseEntity {
     @Column(name = "review_grade", nullable = false)
     private int grade;
 
