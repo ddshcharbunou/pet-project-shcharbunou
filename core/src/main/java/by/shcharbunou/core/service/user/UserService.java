@@ -49,11 +49,36 @@ public interface UserService {
      */
     User findUserByUsernameAndEmail(String username, String email) throws UserNotFoundException;
 
+    /**
+     * Find user by email.
+     * @param email email
+     * @return user {@link User}
+     * @throws UserNotFoundException user not found
+     */
     User findUserByEmail(String email) throws UserNotFoundException;
 
+    /**
+     * Create new user in system.
+     * @param request http request
+     * @param user user
+     * @return user {@link User}
+     * @throws ValidationException user not created
+     */
     User createUser(HttpServletRequest request, User user) throws ValidationException;
 
+    /**
+     * Check username for duplicate.
+     * @param user user
+     * @return check result
+     * @throws ValidationException username is duplicated
+     */
     boolean checkUsernameAvailability(User user) throws ValidationException;
 
+    /**
+     * Check email for duplicate.
+     * @param user user
+     * @return check result
+     * @throws ValidationException email is duplicated
+     */
     boolean checkEmailAvailability(User user) throws ValidationException;
 }

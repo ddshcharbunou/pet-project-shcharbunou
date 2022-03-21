@@ -32,7 +32,6 @@
         <spring-orm.version>5.3.16</spring-orm.version>
         <spring-webmvc.version>5.3.16</spring-webmvc.version>
         <spring-data-jpa.version>2.6.2</spring-data-jpa.version>
-        <spring-boot-starter.version>2.6.4</spring-boot-starter.version>
         <servlet.version>5.0.0</servlet.version>
         <jstl.version>2.0.0</jstl.version>
         <postgresql.version>42.3.2</postgresql.version>
@@ -81,12 +80,6 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring-data-jpa.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${spring-boot-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.servlet</groupId>

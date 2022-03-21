@@ -5,6 +5,8 @@ import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.exception.message.ValidationMessage;
 import by.shcharbunou.core.service.user.UserService;
+import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
+import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +94,9 @@ public class UserServiceImpl implements UserService {
             user.setSurname(surname);
             user.setUsername(username);
             user.setPassword(password);
-            user.setRole(null);
+            Role role = new Role();
+            role.setDesignation(RoleDesignation.USER);
+            user.setRole(role);
             user.setGroup(null);
         }
         return user;
