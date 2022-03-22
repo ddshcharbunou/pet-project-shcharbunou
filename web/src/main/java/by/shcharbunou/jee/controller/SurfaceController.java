@@ -1,5 +1,6 @@
 package by.shcharbunou.jee.controller;
 
+import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +41,9 @@ public class SurfaceController {
 
     @GetMapping("/sign-up")
     public ModelAndView getSignUpPage() {
-        return new ModelAndView("sign-up");
+        ModelAndView mav = new ModelAndView("sign-up");
+        mav.addObject("user", new User());
+        return mav;
     }
 
     @GetMapping("/test")
