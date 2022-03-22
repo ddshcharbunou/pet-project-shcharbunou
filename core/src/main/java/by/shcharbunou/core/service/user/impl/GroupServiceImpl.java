@@ -41,7 +41,7 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public Group findGroupByAllParameters(GroupDesignation designation, GroupLevel level, GroupAge age,
                                           List<EmbeddableDay> days, String time) throws GroupNotFoundException {
-        Group group = groupRepository.findByDesignationAndLevelAndAgeAndDaysAndTime(designation, level, age,
+        Group group = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTime(designation, level, age,
                 days, time);
         if (Objects.nonNull(group)) {
             return group;
