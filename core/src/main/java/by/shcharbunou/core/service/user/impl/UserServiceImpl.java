@@ -7,6 +7,7 @@ import by.shcharbunou.core.exception.message.ValidationMessage;
 import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
+import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(HttpServletRequest request, User user) throws ValidationException {
+        Role userRole = roleService.findRoleByDesignation(RoleDesignation.USER);
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String name = request.getParameter("name");
@@ -96,9 +98,10 @@ public class UserServiceImpl implements UserService {
             user.setSurname(surname);
             user.setUsername(username);
             user.setPassword(password);
-            user.setRole(roleService.findRoleByDesignation(RoleDesignation.USER));
+            user.setRole(userRole);
             user.setGroup(null);
         }
+        userRole.connectUser(user);
         return user;
     }
 
