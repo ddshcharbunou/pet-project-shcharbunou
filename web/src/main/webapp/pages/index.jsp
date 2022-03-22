@@ -34,6 +34,15 @@
         </div>
     </a>
 </header>
+<div class="main__page__text__block">
+    <div class="main__page__text__sub__block">
+        <div class="main__page__lol__text"><p>LOTS OF LOVE</p></div>
+        <div class="main__page__main__text"><p>Английский<br>для детей и взрослых<br>в Жодино</p></div>
+    </div>
+    <div class="main__page__description__text"><p>Обучайтесь английскому языку у опытного преподавателя<br>
+        по уникальному методу полного погружения в атмосферу языка.<br>
+        С нуля до свободного владения!</p></div>
+</div>
 <script src="js/script.js"></script>
 </body>
 </html>
