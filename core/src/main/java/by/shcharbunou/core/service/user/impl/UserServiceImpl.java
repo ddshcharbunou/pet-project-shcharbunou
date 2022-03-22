@@ -7,7 +7,6 @@ import by.shcharbunou.core.exception.message.ValidationMessage;
 import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
-import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 @Service("userService")
-@Transactional
+@Transactional(transactionManager = "transactionManager")
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleService roleService;

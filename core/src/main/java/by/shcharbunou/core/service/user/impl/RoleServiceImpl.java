@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("roleService")
-@Transactional
+@Transactional(transactionManager = "transactionManager")
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 
