@@ -37,7 +37,7 @@
 <div class="sign__in__page__logo">
     <p><img src="assets/img/logo.png" width="246px" height="46px" alt="Lol Club"></p>
 </div>
-<form class="sign__in__form" action="sign-in" method="get">
+<form class="sign__in__form" action="sign-in" method="post">
     <label>
         <input type="text" name="username" placeholder="Логин">
         <input type="password" name="password" placeholder="Пароль">
