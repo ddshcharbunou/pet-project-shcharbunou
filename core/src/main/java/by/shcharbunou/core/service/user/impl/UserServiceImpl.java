@@ -4,6 +4,7 @@ import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.exception.message.ValidationMessage;
+import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.user.Role;
@@ -22,6 +23,7 @@ import java.util.regex.Pattern;
 @Transactional
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final RoleService roleService;
     private static final int MIN_NAME_AND_SURNAME_LENGTH = 2;
     private static final int MIN_USERNAME_LENGTH = 4;
     private static final int MIN_PASSWORD_LENGTH = 8;
@@ -30,8 +32,9 @@ public class UserServiceImpl implements UserService {
             Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService) {
         this.userRepository = userRepository;
+        this.roleService = roleService;
     }
 
     @Override
@@ -94,9 +97,7 @@ public class UserServiceImpl implements UserService {
             user.setSurname(surname);
             user.setUsername(username);
             user.setPassword(password);
-            Role role = new Role();
-            role.setDesignation(RoleDesignation.USER);
-            user.setRole(role);
+            user.setRole(roleService.findRoleByDesignation(RoleDesignation.USER));
             user.setGroup(null);
         }
         return user;
