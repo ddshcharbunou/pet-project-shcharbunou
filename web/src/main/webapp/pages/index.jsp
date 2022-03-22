@@ -43,6 +43,11 @@
         по уникальному методу полного погружения в атмосферу языка.<br>
         С нуля до свободного владения!</p></div>
 </div>
+<div class="main__page__back__rectangle"></div>
+<div class="main__page__front__rectangle"></div>
+<div class="main__page__woman">
+    <p><img src="assets/img/woman-main.png" alt="ERROR"></p>
+</div>
 <script src="js/script.js"></script>
 </body>
 </html>

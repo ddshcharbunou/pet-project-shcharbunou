@@ -421,7 +421,7 @@ nav {
     width: 664px;
     height: 433px;
     left: 140px;
-    top: 200px;
+    top: 180px;
 }
 
 .main__page__lol__text {
@@ -506,4 +506,38 @@ nav {
     order: 1;
     flex-grow: 0;
     margin: 30px 0;
+}
+
+.main__page__back__rectangle {
+    position: absolute;
+    width: 376.68px;
+    height: 376.68px;
+    left: 943.57px;
+    top: 216px;
+
+    border: 2px solid #FBFF41;
+    border-radius: 45px;
+    transform: rotate(15deg);
+}
+
+.main__page__front__rectangle {
+    position: absolute;
+    width: 376.68px;
+    height: 376.68px;
+    left: 943.57px;
+    top: 216px;
+
+    background: #FBFF41;
+    border-radius: 45px;
+    transform: rotate(-15deg);
+}
+
+.main__page__woman {
+    position: absolute;
+    width: 360px;
+    height: 540px;
+    left: 907.23px;
+    top: 137px;
+
+    overflow: hidden;
 }
