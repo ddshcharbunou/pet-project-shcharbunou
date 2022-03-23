@@ -539,5 +539,5 @@ nav {
     left: 907.23px;
     top: 137px;
 
-    overflow: hidden;
+    object-fit: fill;
 }

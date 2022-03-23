@@ -14,6 +14,11 @@ public class SurfaceController {
         return new ModelAndView("index");
     }
 
+    @GetMapping("main")
+    public ModelAndView getMainPage() {
+        return new ModelAndView("index");
+    }
+
     @GetMapping("/courses")
     public ModelAndView getCoursesPage() {
         return new ModelAndView("courses");
