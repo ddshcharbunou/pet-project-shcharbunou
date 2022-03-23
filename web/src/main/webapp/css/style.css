@@ -532,12 +532,26 @@ nav {
     transform: rotate(-15deg);
 }
 
-.main__page__woman {
-    position: absolute;
-    width: 360px;
-    height: 540px;
-    left: 907.23px;
-    top: 137px;
+.main__page__front__rectangle__helper {
+    position: relative;
+    width: 376.68px;
+    height: 450px;
+    left: 933px;
+    top: 145px;
 
-    object-fit: fill;
+    border-radius: 45px;
+    transform: rotate(-15deg);
+    overflow: hidden;
+}
+
+.main__page__front__rectangle__helper:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 117%;
+    z-index: 10;
+    top: -10%;
+    background-image: url("../assets/img/woman-main.png");
+    background-position: bottom;
+    transform: rotate(15deg);
 }

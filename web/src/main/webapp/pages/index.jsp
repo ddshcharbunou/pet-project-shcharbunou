@@ -45,8 +45,7 @@
 </div>
 <div class="main__page__back__rectangle"></div>
 <div class="main__page__front__rectangle"></div>
-<div class="main__page__woman">
-    <p><img src="assets/img/woman-main.png" alt="ERROR"></p>
+<div class="main__page__front__rectangle__helper">
 </div>
 <script src="js/script.js"></script>
 </body>
