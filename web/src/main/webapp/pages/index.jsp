@@ -61,6 +61,14 @@
 <div class="star__5">
     <p><img src="assets/img/star.png" width="70px" height="70px" alt="STAR"></p>
 </div>
+<div class="main__buttons">
+    <a href="test">
+        <button type="button" class="test__button">Пройти тест</button>
+    </a>
+    <a href="contacts">
+        <button type="button" class="connect__button">Связаться</button>
+    </a>
+</div>
 <script src="js/script.js"></script>
 </body>
 </html>
