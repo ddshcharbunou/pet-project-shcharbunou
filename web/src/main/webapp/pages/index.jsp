@@ -45,7 +45,21 @@
 </div>
 <div class="main__page__back__rectangle"></div>
 <div class="main__page__front__rectangle"></div>
-<div class="main__page__front__rectangle__helper">
+<div class="main__page__front__rectangle__helper"></div>
+<div class="star">
+    <p><img src="assets/img/star.png" width="81px" height="81px" alt="STAR"></p>
+</div>
+<div class="star__2">
+    <p><img src="assets/img/star.png" width="62px" height="62px" alt="STAR"></p>
+</div>
+<div class="star__3">
+    <p><img src="assets/img/star.png" width="103px" height="103px" alt="STAR"></p>
+</div>
+<div class="star__4">
+    <p><img src="assets/img/star.png" width="62px" height="62px" alt="STAR"></p>
+</div>
+<div class="star__5">
+    <p><img src="assets/img/star.png" width="70px" height="70px" alt="STAR"></p>
 </div>
 <script src="js/script.js"></script>
 </body>

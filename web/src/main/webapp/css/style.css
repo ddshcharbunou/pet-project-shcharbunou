@@ -100,7 +100,7 @@ nav {
     width: 105px;
     height: 48px;
     right: 114px;
-    top: calc(50% - 48px/2);
+    top: calc(50% - 48px / 2);
 
     border-radius: 8px;
 }
@@ -555,3 +555,101 @@ nav {
     background-position: bottom;
     transform: rotate(15deg);
 }
+
+.star {
+    position: absolute;
+    width: 81px;
+    height: 81px;
+    left: 1310px;
+    top: 91px;
+}
+
+.star img {
+    -webkit-transition:all 1s ease-in-out;
+    -o-transition:all 1s ease-in-out;
+    -moz-transition:all 1s ease-in-out;
+    transition:all 1s ease-in-out;
+    -webkit-animation:blink normal 2s infinite ease-in-out;
+    -moz-animation:blink normal 2s infinite ease-in-out;
+    animation:blink normal 2s infinite ease-in-out;
+}
+
+.star__2 {
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    left: 782px;
+    top: 221px;
+}
+
+.star__2 img {
+    -webkit-transition:all 1.5s ease-in-out;
+    -o-transition:all 1.5s ease-in-out;
+    -moz-transition:all 1.5s ease-in-out;
+    transition:all 1.5s ease-in-out;
+    -webkit-animation:blink normal 2.5s infinite ease-in-out;
+    -moz-animation:blink normal 2.5s infinite ease-in-out;
+    animation:blink normal 2.5s infinite ease-in-out;
+}
+
+.star__3 {
+    position: absolute;
+    width: 103px;
+    height: 103px;
+    left: 1410px;
+    top: 500px;
+}
+
+.star__3 img {
+    -webkit-transition:all 1.8s ease-in-out;
+    -o-transition:all 1.8s ease-in-out;
+    -moz-transition:all 1.8s ease-in-out;
+    transition:all 1.8s ease-in-out;
+    -webkit-animation:blink normal 2.8s infinite ease-in-out;
+    -moz-animation:blink normal 2.8s infinite ease-in-out;
+    animation:blink normal 2.8s infinite ease-in-out;
+}
+
+.star__4 {
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    left: 31px;
+    top: 431px;
+}
+
+.star__4 img {
+    -webkit-transition:all 1.2s ease-in-out;
+    -o-transition:all 1.2s ease-in-out;
+    -moz-transition:all 1.2s ease-in-out;
+    transition:all 1.2s ease-in-out;
+    -webkit-animation:blink normal 2.2s infinite ease-in-out;
+    -moz-animation:blink normal 2.2s infinite ease-in-out;
+    animation:blink normal 2.2s infinite ease-in-out;
+}
+
+.star__5 {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    left: 100px;
+    top: 100px;
+}
+
+.star__5 img {
+    -webkit-transition:all 0.8s ease-in-out;
+    -o-transition:all 0.8s ease-in-out;
+    -moz-transition:all 0.8s ease-in-out;
+    transition:all 0.8s ease-in-out;
+    -webkit-animation:blink normal 1.8s infinite ease-in-out;
+    -moz-animation:blink normal 1.8s infinite ease-in-out;
+    animation:blink normal 1.8s infinite ease-in-out;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
