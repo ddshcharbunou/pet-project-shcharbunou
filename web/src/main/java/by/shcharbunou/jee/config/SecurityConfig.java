@@ -38,12 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasAuthority(RoleDesignation.ADMIN.name())
                 .antMatchers("/office/**").hasAuthority(RoleDesignation.USER.name())
-                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/sign-in").loginProcessingUrl("/login").successHandler(successHandler())
+                .loginPage("/sign-in").loginProcessingUrl("/sign-in").successHandler(successHandler())
                 .and()
-                .logout().logoutUrl("/sign-out").logoutSuccessUrl("/login")
+                .logout().logoutUrl("/sign-out").logoutSuccessUrl("/sign-in")
                 .and()
                 .csrf().disable();
         http.userDetailsService(userDetailsService);
