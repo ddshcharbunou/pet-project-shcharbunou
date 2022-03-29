@@ -11,5 +11,10 @@ import java.util.UUID;
  */
 @Repository("articleRepository")
 public interface ArticleRepository extends JpaRepository<Article, UUID> {
-
+    /**
+     * Find article by it header.
+     * @param header header
+     * @return article {@link Article}
+     */
+    Article findByHeader(String header);
 }
