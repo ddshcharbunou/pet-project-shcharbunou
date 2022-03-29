@@ -156,7 +156,7 @@ nav {
     width: 246px;
     height: 46px;
     top: 130px;
-    left: calc(50% - 246px / 2);
+    left: 650px;
 }
 
 .student__office__text {
@@ -169,7 +169,7 @@ nav {
     line-height: 56px;
     width: 467px;
     height: 56px;
-    left: calc(50% - 497px / 2);
+    left: 530px;
     top: 206px;
     text-align: center;
 }
@@ -178,7 +178,7 @@ nav {
     position: absolute;
     width: 400px;
     height: 300px;
-    left: calc(50% - 400px / 2);
+    left: 570px;
     top: 302px;
     text-align: center;
 }
@@ -334,7 +334,7 @@ nav {
     position: absolute;
     width: 400px;
     height: 680px;
-    left: calc(50% - 400px / 2);
+    left: 570px;
     top: 302px;
     text-align: center;
 }
