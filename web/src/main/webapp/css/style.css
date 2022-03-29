@@ -44,7 +44,7 @@ nav {
     position: absolute;
     width: 566px;
     height: 28px;
-    left: calc((100% - 566px) / 2);
+    left: 500px;
     top: 26px;
 }
 
@@ -99,7 +99,7 @@ nav {
     position: absolute;
     width: 105px;
     height: 48px;
-    right: 114px;
+    left: 1300px;
     top: calc(50% - 48px / 2);
 
     border-radius: 8px;
