@@ -192,11 +192,9 @@
                             </path>
                             <path>
                                 <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding -->
-                                <dependency>
-                                    <groupId>org.projectlombok</groupId>
-                                    <artifactId>lombok-mapstruct-binding</artifactId>
-                                    <version>0.2.0</version>
-                                </dependency>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok-mapstruct-binding</artifactId>
+                                <version>0.2.0</version>
                             </path>
                         </annotationProcessorPaths>
                         <showWarnings>true</showWarnings>
