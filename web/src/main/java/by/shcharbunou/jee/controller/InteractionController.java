@@ -1,16 +1,14 @@
 package by.shcharbunou.jee.controller;
 
+import by.shcharbunou.core.dto.UserDto;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Log4j2
 @Controller
@@ -23,10 +21,10 @@ public class InteractionController {
     }
 
     @PostMapping("/sign-up")
-    public ModelAndView contributeUser(HttpServletRequest request, @ModelAttribute("user") User user) {
+    public ModelAndView contributeUser(UserDto userDto) {
         ModelAndView mav = new ModelAndView();
         try {
-            User candidate = userService.createUser(request, user);
+            User candidate = userService.createUser(userDto);
             boolean usernameAdmitted = userService.checkUsernameAvailability(candidate);
             boolean emailAdmitted = userService.checkEmailAvailability(candidate);
             if (usernameAdmitted && emailAdmitted) {

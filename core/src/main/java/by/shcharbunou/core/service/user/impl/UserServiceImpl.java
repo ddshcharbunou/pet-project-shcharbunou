@@ -1,5 +1,6 @@
 package by.shcharbunou.core.service.user.impl;
 
+import by.shcharbunou.core.dto.UserDto;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
@@ -11,6 +12,7 @@ import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -81,23 +83,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(HttpServletRequest request, User user) throws ValidationException {
+    public User createUser(UserDto userDto) throws ValidationException {
+        boolean isValidated = validate(userDto);
         Role userRole = roleService.findRoleByDesignation(RoleDesignation.USER);
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String name = request.getParameter("name");
-        String surname = request.getParameter("surname");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String repeatedPassword = request.getParameter("repeated_password");
-        boolean isValidated = validate(email, phone, name, surname, username, password, repeatedPassword);
+        User user = new User();
         if (isValidated) {
-            user.setEmail(email);
-            user.setPhone(phone);
-            user.setName(name);
-            user.setSurname(surname);
-            user.setUsername(username);
-            user.setPassword(password);
+            user.setEmail(userDto.getEmail());
+            user.setPhone(userDto.getPhone());
+            user.setName(userDto.getName());
+            user.setSurname(userDto.getSurname());
+            user.setUsername(userDto.getUsername());
+            user.setPassword(userDto.getPassword());
             user.setRole(userRole);
             user.setGroup(null);
         }
@@ -129,27 +125,27 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private boolean validate(String email, String phone, String name, String surname, String username,
-                             String password, String repeatedPassword) throws ValidationException {
-        if (Objects.isNull(email) || !(EMAIL_PATTERN.matcher(email).matches())) {
+    private boolean validate(UserDto userDto) throws ValidationException {
+        if (Objects.isNull(userDto.getEmail()) || !(EMAIL_PATTERN.matcher(userDto.getEmail()).matches())) {
             throw new ValidationException(ValidationMessage.EMAIL_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(phone) || !(PHONE_PATTERN.matcher(phone).matches())) {
+        if (Objects.isNull(userDto.getPhone()) || !(PHONE_PATTERN.matcher(userDto.getPhone()).matches())) {
             throw new ValidationException(ValidationMessage.PHONE_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(name) || name.length() < MIN_NAME_AND_SURNAME_LENGTH) {
+        if (Objects.isNull(userDto.getName()) || userDto.getName().length() < MIN_NAME_AND_SURNAME_LENGTH) {
             throw new ValidationException(ValidationMessage.NAME_AND_SURNAME_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(surname) || surname.length() < MIN_NAME_AND_SURNAME_LENGTH) {
+        if (Objects.isNull(userDto.getSurname()) || userDto.getSurname().length() < MIN_NAME_AND_SURNAME_LENGTH) {
             throw new ValidationException(ValidationMessage.NAME_AND_SURNAME_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(username) || username.length() < MIN_USERNAME_LENGTH) {
+        if (Objects.isNull(userDto.getUsername()) || userDto.getUsername().length() < MIN_USERNAME_LENGTH) {
             throw new ValidationException(ValidationMessage.USERNAME_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(password) || password.length() < MIN_PASSWORD_LENGTH) {
+        if (Objects.isNull(userDto.getPassword()) || userDto.getPassword().length() < MIN_PASSWORD_LENGTH) {
             throw new ValidationException(ValidationMessage.PASSWORD_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(repeatedPassword) || !repeatedPassword.equals(password)) {
+        if (Objects.isNull(userDto.getRepeated_password())
+                || !userDto.getRepeated_password().equals(userDto.getPassword())) {
             throw new ValidationException(ValidationMessage.REPEATED_PASSWORD_VALIDATION_MESSAGE.getMessage());
         }
         return true;

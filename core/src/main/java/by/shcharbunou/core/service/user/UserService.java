@@ -1,10 +1,10 @@
 package by.shcharbunou.core.service.user;
 
+import by.shcharbunou.core.dto.UserDto;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 /**
@@ -57,14 +57,7 @@ public interface UserService {
      */
     User findUserByEmail(String email) throws UserNotFoundException;
 
-    /**
-     * Create new user in system.
-     * @param request http request
-     * @param user user
-     * @return user {@link User}
-     * @throws ValidationException user not created
-     */
-    User createUser(HttpServletRequest request, User user) throws ValidationException;
+    User createUser(UserDto userDto) throws ValidationException;
 
     /**
      * Check username for duplicate.
