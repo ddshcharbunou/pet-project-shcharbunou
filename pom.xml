@@ -33,6 +33,7 @@
         <spring-security.version>5.6.2</spring-security.version>
         <postgresql.version>42.3.2</postgresql.version>
         <hibernate-core.version>5.6.7.Final</hibernate-core.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
         <lombok.version>1.18.22</lombok.version>
         <log4j.version>2.17.1</log4j.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
@@ -112,6 +113,12 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate-core.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
             <dependency>
