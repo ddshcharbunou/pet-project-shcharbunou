@@ -1,7 +1,5 @@
 = Learning Management System
 
-Регистрация не работает из-за отсутствия ролей в базе данных!!!
-
 link:http://ec2-54-145-133-219.compute-1.amazonaws.com:8080/lolclub/[Lol Club]
 
 == Description
