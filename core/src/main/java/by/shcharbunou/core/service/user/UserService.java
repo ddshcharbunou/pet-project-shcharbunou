@@ -1,6 +1,6 @@
 package by.shcharbunou.core.service.user;
 
-import by.shcharbunou.core.dto.UserDto;
+import by.shcharbunou.core.dto.request.UserRequest;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
@@ -59,9 +59,9 @@ public interface UserService {
 
     /**
      * Create user with help of user DTO.
-     * @param userDto userDto
+     * @param userRequest userRequest
      * @return user {@link User}
      * @throws ValidationException validation exception
      */
-    User createUser(UserDto userDto) throws ValidationException;
+    User createUser(UserRequest userRequest) throws ValidationException;
 }

@@ -1,6 +1,6 @@
 package by.shcharbunou.jee.controller;
 
-import by.shcharbunou.core.dto.UserDto;
+import by.shcharbunou.core.dto.request.UserRequest;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
@@ -21,10 +21,10 @@ public class InteractionController {
     }
 
     @PostMapping("/sign-up")
-    public ModelAndView contributeUser(UserDto userDto) {
+    public ModelAndView contributeUser(UserRequest userRequest) {
         ModelAndView mav = new ModelAndView();
         try {
-            User candidate = userService.createUser(userDto);
+            User candidate = userService.createUser(userRequest);
             User testUser = userService.saveUser(candidate);
             boolean isSaved = testUser.equals(candidate);
             if (isSaved) {

@@ -1,6 +1,6 @@
 package by.shcharbunou.core.service.user.impl;
 
-import by.shcharbunou.core.dto.UserDto;
+import by.shcharbunou.core.dto.request.UserRequest;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
@@ -12,6 +12,7 @@ import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ import java.util.regex.Pattern;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
     private static final int MIN_NAME_AND_SURNAME_LENGTH = 2;
     private static final int MIN_USERNAME_LENGTH = 4;
     private static final int MIN_PASSWORD_LENGTH = 8;
@@ -32,9 +34,10 @@ public class UserServiceImpl implements UserService {
             Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -81,17 +84,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(UserDto userDto) throws ValidationException {
-        boolean isValidated = validate(userDto);
+    public User createUser(UserRequest userRequest) throws ValidationException {
+        boolean isValidated = validate(userRequest);
         Role userRole = roleService.findRoleByDesignation(RoleDesignation.USER);
         User user = new User();
         if (isValidated) {
-            user.setEmail(userDto.getEmail());
-            user.setPhone(userDto.getPhone());
-            user.setName(userDto.getName());
-            user.setSurname(userDto.getSurname());
-            user.setUsername(userDto.getUsername());
-            user.setPassword(userDto.getPassword());
+            user.setEmail(userRequest.getEmail());
+            user.setPhone(userRequest.getPhone());
+            user.setName(userRequest.getName());
+            user.setSurname(userRequest.getSurname());
+            user.setUsername(userRequest.getUsername());
+            user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
             user.setRole(userRole);
             user.setGroup(null);
         }
@@ -99,9 +102,9 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    private boolean checkUsernameAvailability(UserDto userDto) {
+    private boolean checkUsernameAvailability(UserRequest userRequest) {
         try {
-            if (Objects.nonNull(findUserByUsername(userDto.getUsername()))) {
+            if (Objects.nonNull(findUserByUsername(userRequest.getUsername()))) {
                 return false;
             }
         } catch (UserNotFoundException e) {
@@ -110,9 +113,9 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private boolean checkEmailAvailability(UserDto userDto) {
+    private boolean checkEmailAvailability(UserRequest userRequest) {
         try {
-            if (Objects.nonNull(findUserByEmail(userDto.getEmail()))) {
+            if (Objects.nonNull(findUserByEmail(userRequest.getEmail()))) {
                 return false;
             }
         } catch (UserNotFoundException e) {
@@ -121,35 +124,35 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private boolean validate(UserDto userDto) throws ValidationException {
-        boolean usernameAdmitted = checkUsernameAvailability(userDto);
-        boolean emailAdmitted = checkEmailAvailability(userDto);
+    private boolean validate(UserRequest userRequest) throws ValidationException {
+        boolean usernameAdmitted = checkUsernameAvailability(userRequest);
+        boolean emailAdmitted = checkEmailAvailability(userRequest);
         if (!usernameAdmitted) {
             throw new ValidationException(ValidationMessage.USERNAME_EXISTS.getMessage());
         }
         if (!emailAdmitted) {
             throw new ValidationException(ValidationMessage.EMAIL_EXISTS.getMessage());
         }
-        if (Objects.isNull(userDto.getEmail()) || !(EMAIL_PATTERN.matcher(userDto.getEmail()).matches())) {
+        if (Objects.isNull(userRequest.getEmail()) || !(EMAIL_PATTERN.matcher(userRequest.getEmail()).matches())) {
             throw new ValidationException(ValidationMessage.EMAIL_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(userDto.getPhone()) || !(PHONE_PATTERN.matcher(userDto.getPhone()).matches())) {
+        if (Objects.isNull(userRequest.getPhone()) || !(PHONE_PATTERN.matcher(userRequest.getPhone()).matches())) {
             throw new ValidationException(ValidationMessage.PHONE_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(userDto.getName()) || userDto.getName().length() < MIN_NAME_AND_SURNAME_LENGTH) {
+        if (Objects.isNull(userRequest.getName()) || userRequest.getName().length() < MIN_NAME_AND_SURNAME_LENGTH) {
             throw new ValidationException(ValidationMessage.NAME_AND_SURNAME_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(userDto.getSurname()) || userDto.getSurname().length() < MIN_NAME_AND_SURNAME_LENGTH) {
+        if (Objects.isNull(userRequest.getSurname()) || userRequest.getSurname().length() < MIN_NAME_AND_SURNAME_LENGTH) {
             throw new ValidationException(ValidationMessage.NAME_AND_SURNAME_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(userDto.getUsername()) || userDto.getUsername().length() < MIN_USERNAME_LENGTH) {
+        if (Objects.isNull(userRequest.getUsername()) || userRequest.getUsername().length() < MIN_USERNAME_LENGTH) {
             throw new ValidationException(ValidationMessage.USERNAME_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(userDto.getPassword()) || userDto.getPassword().length() < MIN_PASSWORD_LENGTH) {
+        if (Objects.isNull(userRequest.getPassword()) || userRequest.getPassword().length() < MIN_PASSWORD_LENGTH) {
             throw new ValidationException(ValidationMessage.PASSWORD_VALIDATION_MESSAGE.getMessage());
         }
-        if (Objects.isNull(userDto.getRepeated_password())
-                || !userDto.getRepeated_password().equals(userDto.getPassword())) {
+        if (Objects.isNull(userRequest.getRepeated_password())
+                || !userRequest.getRepeated_password().equals(userRequest.getPassword())) {
             throw new ValidationException(ValidationMessage.REPEATED_PASSWORD_VALIDATION_MESSAGE.getMessage());
         }
         return true;
