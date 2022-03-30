@@ -58,20 +58,4 @@ public interface UserService {
     User findUserByEmail(String email) throws UserNotFoundException;
 
     User createUser(UserDto userDto) throws ValidationException;
-
-    /**
-     * Check username for duplicate.
-     * @param user user
-     * @return check result
-     * @throws ValidationException username is duplicated
-     */
-    boolean checkUsernameAvailability(User user) throws ValidationException;
-
-    /**
-     * Check email for duplicate.
-     * @param user user
-     * @return check result
-     * @throws ValidationException email is duplicated
-     */
-    boolean checkEmailAvailability(User user) throws ValidationException;
 }

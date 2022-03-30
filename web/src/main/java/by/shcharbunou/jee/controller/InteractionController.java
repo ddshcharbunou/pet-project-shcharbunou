@@ -25,9 +25,7 @@ public class InteractionController {
         ModelAndView mav = new ModelAndView();
         try {
             User candidate = userService.createUser(userDto);
-            boolean usernameAdmitted = userService.checkUsernameAvailability(candidate);
-            boolean emailAdmitted = userService.checkEmailAvailability(candidate);
-            if (usernameAdmitted && emailAdmitted) {
+            if (true) {
                 User testUser = userService.saveUser(candidate);
                 boolean isSaved = testUser.equals(candidate);
                 if (isSaved) {

@@ -99,11 +99,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    @Override
-    public boolean checkUsernameAvailability(User user) throws ValidationException {
+    public boolean checkUsernameAvailability(UserDto userDto) {
         try {
-            if (Objects.nonNull(findUserByUsername(user.getUsername()))) {
-                throw new ValidationException(ValidationMessage.USERNAME_EXISTS.getMessage());
+            if (Objects.nonNull(findUserByUsername(userDto.getUsername()))) {
+                return false;
             }
         } catch (UserNotFoundException e) {
             return true;
@@ -111,11 +110,10 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    @Override
-    public boolean checkEmailAvailability(User user) throws ValidationException {
+    public boolean checkEmailAvailability(UserDto userDto) {
         try {
-            if (Objects.nonNull(findUserByEmail(user.getEmail()))) {
-                throw new ValidationException(ValidationMessage.EMAIL_EXISTS.getMessage());
+            if (Objects.nonNull(findUserByEmail(userDto.getEmail()))) {
+                return false;
             }
         } catch (UserNotFoundException e) {
             return true;
@@ -124,6 +122,14 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean validate(UserDto userDto) throws ValidationException {
+        boolean usernameAdmitted = checkUsernameAvailability(userDto);
+        boolean emailAdmitted = checkEmailAvailability(userDto);
+        if (!usernameAdmitted) {
+            throw new ValidationException(ValidationMessage.USERNAME_EXISTS.getMessage());
+        }
+        if (!emailAdmitted) {
+            throw new ValidationException(ValidationMessage.EMAIL_EXISTS.getMessage());
+        }
         if (Objects.isNull(userDto.getEmail()) || !(EMAIL_PATTERN.matcher(userDto.getEmail()).matches())) {
             throw new ValidationException(ValidationMessage.EMAIL_VALIDATION_MESSAGE.getMessage());
         }
