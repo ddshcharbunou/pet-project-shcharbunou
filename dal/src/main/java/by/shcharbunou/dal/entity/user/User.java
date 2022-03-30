@@ -7,7 +7,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @EqualsAndHashCode(exclude = "role", callSuper = false)
 @AllArgsConstructor
 

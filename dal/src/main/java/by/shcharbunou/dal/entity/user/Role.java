@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(exclude = "users", callSuper = true)
 @AllArgsConstructor
 
 @Entity
