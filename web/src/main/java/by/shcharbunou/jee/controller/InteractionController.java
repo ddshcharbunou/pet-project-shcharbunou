@@ -25,13 +25,11 @@ public class InteractionController {
         ModelAndView mav = new ModelAndView();
         try {
             User candidate = userService.createUser(userDto);
-            if (true) {
-                User testUser = userService.saveUser(candidate);
-                boolean isSaved = testUser.equals(candidate);
-                if (isSaved) {
-                    mav.setViewName("sign-in");
-                    mav.addObject("message", "Вы зарегестрированы!");
-                }
+            User testUser = userService.saveUser(candidate);
+            boolean isSaved = testUser.equals(candidate);
+            if (isSaved) {
+                mav.setViewName("sign-in");
+                mav.addObject("message", "Вы зарегестрированы!");
             }
         } catch (ValidationException e) {
             mav.setViewName("sign-up");

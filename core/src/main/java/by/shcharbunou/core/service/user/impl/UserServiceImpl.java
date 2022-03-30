@@ -99,7 +99,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public boolean checkUsernameAvailability(UserDto userDto) {
+    private boolean checkUsernameAvailability(UserDto userDto) {
         try {
             if (Objects.nonNull(findUserByUsername(userDto.getUsername()))) {
                 return false;
@@ -110,7 +110,7 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    public boolean checkEmailAvailability(UserDto userDto) {
+    private boolean checkEmailAvailability(UserDto userDto) {
         try {
             if (Objects.nonNull(findUserByEmail(userDto.getEmail()))) {
                 return false;
