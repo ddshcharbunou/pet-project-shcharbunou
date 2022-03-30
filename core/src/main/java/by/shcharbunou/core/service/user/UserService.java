@@ -57,5 +57,11 @@ public interface UserService {
      */
     User findUserByEmail(String email) throws UserNotFoundException;
 
+    /**
+     * Create user with help of user DTO.
+     * @param userDto userDto
+     * @return user {@link User}
+     * @throws ValidationException validation exception
+     */
     User createUser(UserDto userDto) throws ValidationException;
 }
