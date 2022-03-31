@@ -39,22 +39,41 @@
     <p><img src="assets/img/logo.png" width="246px" height="46px" alt="Lol Club"></p>
 </div>
 <form class="sign__up__form" action="sign-up" method="post">
-    <label>
-        <input type="text" name="email" placeholder="Email" required
+    <div>
+        <label for="label-email"> </label>
+        <input id="label-email" type="text" name="email" placeholder="Email" required
                oninvalid="this.setCustomValidity('Введите email')" oninput="setCustomValidity('')">
-        <input type="text" name="phone" placeholder="Телефон"
+    </div>
+    <div>
+        <label for="label-phone"> </label>
+        <input id="label-phone" type="text" name="phone" placeholder="Телефон"
                oninvalid="this.setCustomValidity('Введите телефон')" oninput="setCustomValidity('')">
-        <input type="text" name="name" placeholder="Имя"
+    </div>
+    <div>
+        <label for="label-name"> </label>
+        <input id="label-name" type="text" name="name" placeholder="Имя"
                oninvalid="this.setCustomValidity('Введите имя')" oninput="setCustomValidity('')">
-        <input type="text" name="surname" placeholder="Фамилия"
+    </div>
+    <div>
+        <label for="label-surname"> </label>
+        <input id="label-surname" type="text" name="surname" placeholder="Фамилия"
                oninvalid="this.setCustomValidity('Введите фамилию')" oninput="setCustomValidity('')">
-        <input type="text" name="username" placeholder="Логин"
+    </div>
+    <div>
+        <label for="label-username"> </label>
+        <input id="label-username" type="text" name="username" placeholder="Логин"
                oninvalid="this.setCustomValidity('Введите логин')" oninput="setCustomValidity('')">
-        <input type="password" name="password" placeholder="Пароль"
+    </div>
+    <div>
+        <label for="label-password"> </label>
+        <input id="label-password" type="password" name="password" placeholder="Пароль"
                oninvalid="this.setCustomValidity('Введите пароль')" oninput="setCustomValidity('')">
-        <input type="password" name="repeated_password" placeholder="Повторите пароль"
+    </div>
+    <div>
+        <label for="label-repeated_password"> </label>
+        <input id="label-repeated_password" type="password" name="repeated_password" placeholder="Повторите пароль"
                oninvalid="this.setCustomValidity('Подтвердите пароль')" oninput="setCustomValidity('')">
-    </label>
+    </div>
     <div class="buttons">
         <button type="submit" class="sign__up__page__button">Регистрация</button>
     </div>
