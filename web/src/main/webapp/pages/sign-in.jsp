@@ -39,8 +39,10 @@
 </div>
 <form class="sign__in__form" action="sign-in" method="post">
     <label>
-        <input type="text" name="username" placeholder="Логин">
-        <input type="password" name="password" placeholder="Пароль">
+        <input type="text" name="username" placeholder="Логин" required
+               oninvalid="this.setCustomValidity('Введите логин')" oninput="setCustomValidity('')">
+        <input type="password" name="password" placeholder="Пароль" required
+               oninvalid="this.setCustomValidity('Введите пароль')" oninput="setCustomValidity('')">
     </label>
     <div class="buttons">
         <button type="submit" class="sign__in__button">Войти</button>
