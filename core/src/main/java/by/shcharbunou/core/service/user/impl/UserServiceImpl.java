@@ -5,6 +5,7 @@ import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.exception.message.ValidationMessage;
+import by.shcharbunou.core.mapper.UserMapper;
 import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
     private static final int MIN_NAME_AND_SURNAME_LENGTH = 2;
     private static final int MIN_USERNAME_LENGTH = 4;
     private static final int MIN_PASSWORD_LENGTH = 8;
@@ -34,10 +36,12 @@ public class UserServiceImpl implements UserService {
             Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder,
+                           UserMapper userMapper) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -87,14 +91,10 @@ public class UserServiceImpl implements UserService {
     public User createUser(UserRequest userRequest) throws ValidationException {
         boolean isValidated = validate(userRequest);
         Role userRole = roleService.findRoleByDesignation(RoleDesignation.USER);
-        User user = new User();
+        User user = null;
         if (isValidated) {
-            user.setEmail(userRequest.getEmail());
-            user.setPhone(userRequest.getPhone());
-            user.setName(userRequest.getName());
-            user.setSurname(userRequest.getSurname());
-            user.setUsername(userRequest.getUsername());
-            user.setPassword(userRequest.getPassword());
+            user = userMapper.userRequestToUser(userRequest);
+            user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
             user.setRole(userRole);
             user.setGroup(null);
         }
