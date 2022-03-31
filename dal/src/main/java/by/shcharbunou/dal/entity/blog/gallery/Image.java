@@ -1,10 +1,9 @@
 package by.shcharbunou.dal.entity.blog.gallery;
 
 import by.shcharbunou.dal.entity.BaseEntity;
+import lombok.*;
 
 import javax.persistence.*;
-
-import lombok.*;
 
 @Getter
 @Setter

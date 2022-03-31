@@ -4,12 +4,11 @@ import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
-import javax.persistence.*;
-
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import by.shcharbunou.dal.entity.user.office.homework.Homework;
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

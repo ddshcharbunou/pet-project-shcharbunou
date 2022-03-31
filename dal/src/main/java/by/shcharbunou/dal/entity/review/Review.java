@@ -2,10 +2,9 @@ package by.shcharbunou.dal.entity.review;
 
 import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.user.User;
-import javax.persistence.*;
 import lombok.*;
 
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.Instant;
 
 @Getter

@@ -1,11 +1,11 @@
 package by.shcharbunou.dal.entity;
 
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import lombok.*;
-
 import java.util.UUID;
 
 @MappedSuperclass

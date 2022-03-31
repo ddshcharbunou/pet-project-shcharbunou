@@ -1,11 +1,9 @@
 package by.shcharbunou.dal.entity.blog;
 
 import by.shcharbunou.dal.entity.BaseEntity;
-
-import javax.persistence.*;
-
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.Instant;
 
 @Getter

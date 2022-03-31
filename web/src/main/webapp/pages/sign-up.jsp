@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +59,11 @@
         <button type="submit" class="sign__up__page__button">Регистрация</button>
     </div>
 </form>
+<div class="sign__up__error__message">
+    <c:if test="${requestScope.error != null}">
+        <c:out value="${requestScope.error}"/>
+    </c:if>
+</div>
 <div class="student__office__text">Регистрация</div>
 <script src="js/script.js"></script>
 </body>

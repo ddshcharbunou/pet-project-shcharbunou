@@ -2,9 +2,9 @@ package by.shcharbunou.dal.entity.user;
 
 import by.shcharbunou.dal.entity.BaseEntity;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
-import javax.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
