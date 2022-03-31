@@ -64,5 +64,5 @@ public interface UserService {
      * @return user {@link User}
      * @throws ValidationException validation exception
      */
-    User createUser(UserRequest userRequest, PasswordEncoder passwordEncoder) throws ValidationException;
+    User createUser(UserRequest userRequest) throws ValidationException;
 }

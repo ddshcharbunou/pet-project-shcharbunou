@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleService roleService;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
     private static final int MIN_NAME_AND_SURNAME_LENGTH = 2;
     private static final int MIN_USERNAME_LENGTH = 4;
     private static final int MIN_PASSWORD_LENGTH = 8;
@@ -35,10 +36,12 @@ public class UserServiceImpl implements UserService {
             Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService, UserMapper userMapper,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -85,7 +88,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(UserRequest userRequest, PasswordEncoder passwordEncoder) throws ValidationException {
+    public User createUser(UserRequest userRequest) throws ValidationException {
         boolean isValidated = validate(userRequest);
         Role userRole = roleService.findRoleByDesignation(RoleDesignation.USER);
         User user = null;
