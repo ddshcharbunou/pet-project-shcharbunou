@@ -712,8 +712,9 @@ nav {
     position: absolute;
     width: 400px;
     left: 570px;
-    top: 985px;
+    top: 970px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: red;
+    padding-bottom: 25px;
 }
