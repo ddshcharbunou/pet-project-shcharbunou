@@ -46,33 +46,33 @@
     </div>
     <div>
         <label for="label-phone"> </label>
-        <input id="label-phone" type="text" name="phone" placeholder="Телефон"
+        <input id="label-phone" type="text" name="phone" placeholder="Телефон" required
                oninvalid="this.setCustomValidity('Введите телефон')" oninput="setCustomValidity('')">
     </div>
     <div>
         <label for="label-name"> </label>
-        <input id="label-name" type="text" name="name" placeholder="Имя"
+        <input id="label-name" type="text" name="name" placeholder="Имя" required
                oninvalid="this.setCustomValidity('Введите имя')" oninput="setCustomValidity('')">
     </div>
     <div>
         <label for="label-surname"> </label>
-        <input id="label-surname" type="text" name="surname" placeholder="Фамилия"
+        <input id="label-surname" type="text" name="surname" placeholder="Фамилия" required
                oninvalid="this.setCustomValidity('Введите фамилию')" oninput="setCustomValidity('')">
     </div>
     <div>
         <label for="label-username"> </label>
-        <input id="label-username" type="text" name="username" placeholder="Логин"
+        <input id="label-username" type="text" name="username" placeholder="Логин" required
                oninvalid="this.setCustomValidity('Введите логин')" oninput="setCustomValidity('')">
     </div>
     <div>
         <label for="label-password"> </label>
-        <input id="label-password" type="password" name="password" placeholder="Пароль"
+        <input id="label-password" type="password" name="password" placeholder="Пароль" required
                oninvalid="this.setCustomValidity('Введите пароль')" oninput="setCustomValidity('')">
     </div>
     <div>
         <label for="label-repeated_password"> </label>
         <input id="label-repeated_password" type="password" name="repeated_password" placeholder="Повторите пароль"
-               oninvalid="this.setCustomValidity('Подтвердите пароль')" oninput="setCustomValidity('')">
+               required oninvalid="this.setCustomValidity('Подтвердите пароль')" oninput="setCustomValidity('')">
     </div>
     <div class="buttons">
         <button type="submit" class="sign__up__page__button">Регистрация</button>
