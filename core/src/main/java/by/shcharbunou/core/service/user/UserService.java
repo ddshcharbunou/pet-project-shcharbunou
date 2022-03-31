@@ -4,7 +4,6 @@ import by.shcharbunou.core.dto.request.UserRequest;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 
