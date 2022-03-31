@@ -4,6 +4,7 @@ import by.shcharbunou.core.dto.request.UserRequest;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 
@@ -63,5 +64,5 @@ public interface UserService {
      * @return user {@link User}
      * @throws ValidationException validation exception
      */
-    User createUser(UserRequest userRequest) throws ValidationException;
+    User createUser(UserRequest userRequest, PasswordEncoder passwordEncoder) throws ValidationException;
 }
