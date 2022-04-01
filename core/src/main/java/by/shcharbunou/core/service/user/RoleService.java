@@ -3,6 +3,9 @@ package by.shcharbunou.core.service.user;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.user.Role;
 
+/**
+ * Service for role entity.
+ */
 public interface RoleService {
     /**
      * Save role entity.

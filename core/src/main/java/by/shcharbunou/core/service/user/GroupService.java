@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Service for Group entity.
+ */
 public interface GroupService {
     /**
      * Save group.
