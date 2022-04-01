@@ -1,4 +1,4 @@
-package by.shcharbunou.core.mapper;
+package by.shcharbunou.core.mapper.user;
 
 import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.dto.user.response.UserResponse;

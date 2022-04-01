@@ -1,9 +1,9 @@
 package by.shcharbunou.core.service.blog;
 
+import by.shcharbunou.core.dto.blog.ArticleDto;
 import by.shcharbunou.core.exception.ArticleNotFoundException;
 import by.shcharbunou.dal.entity.blog.Article;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 public interface ArticleService {
@@ -15,5 +15,5 @@ public interface ArticleService {
 
     Article findArticleByHeader(String header) throws ArticleNotFoundException;
 
-    Article createArticle(HttpServletRequest request, Article article);
+    Article createArticle(ArticleDto articleDto);
 }

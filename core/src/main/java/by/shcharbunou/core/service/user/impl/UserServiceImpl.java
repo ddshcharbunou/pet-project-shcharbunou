@@ -5,7 +5,7 @@ import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.exception.message.ValidationMessage;
-import by.shcharbunou.core.mapper.UserMapper;
+import by.shcharbunou.core.mapper.user.UserMapper;
 import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
