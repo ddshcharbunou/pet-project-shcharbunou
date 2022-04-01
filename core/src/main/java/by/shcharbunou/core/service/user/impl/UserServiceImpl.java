@@ -1,6 +1,6 @@
 package by.shcharbunou.core.service.user.impl;
 
-import by.shcharbunou.core.dto.request.UserRequest;
+import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;

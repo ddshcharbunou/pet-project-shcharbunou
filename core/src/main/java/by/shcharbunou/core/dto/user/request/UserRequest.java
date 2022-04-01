@@ -1,4 +1,4 @@
-package by.shcharbunou.core.dto.response;
+package by.shcharbunou.core.dto.user.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class UserRequest {
     private String name;
     private String surname;
     private String username;
     private String email;
     private String phone;
+    private String password;
+    private String repeated_password;
 }
