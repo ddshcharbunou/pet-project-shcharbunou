@@ -53,9 +53,4 @@ public class SurfaceController {
     public ModelAndView getTestPage() {
         return new ModelAndView("test");
     }
-
-    @GetMapping("/office")
-    public  ModelAndView getTestSignInPage(Authentication authentication) {
-        return new ModelAndView("index");
-    }
 }
