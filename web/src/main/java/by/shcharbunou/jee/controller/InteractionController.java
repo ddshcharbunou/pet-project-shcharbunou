@@ -1,12 +1,16 @@
 package by.shcharbunou.jee.controller;
 
 import by.shcharbunou.core.dto.request.UserRequest;
+import by.shcharbunou.core.dto.response.UserResponse;
+import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,6 +42,21 @@ public class InteractionController {
             mav.addObject("error", e.getMessage());
             return mav;
         }
+        return mav;
+    }
+
+    @GetMapping("/office")
+    public ModelAndView test(Authentication authentication) {
+        User user = null;
+        try {
+            user = userService.findUserByUsername(authentication.getName());
+        } catch (UserNotFoundException e) {
+
+        }
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("user", user);
+        mav.addObject("ROLE", authentication.getAuthorities().stream().findFirst().orElseThrow());
+        mav.setViewName("index");
         return mav;
     }
 }
