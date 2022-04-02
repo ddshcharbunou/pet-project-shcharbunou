@@ -26,44 +26,14 @@
             <a href="contacts">Контакты</a>
         </div>
     </nav>
-    <c:choose>
-        <c:when test="${sessionScope.user == null}">
-            <a href="sign-in">
-                <div class="sign__in">
-                    <div class="sign__in__logo">
-                        <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
-                    </div>
-                    <div class="sign__in__text">Войти</div>
-                </div>
-            </a>
-        </c:when>
-        <c:when test="${sessionScope.user != null}">
-            <c:if test="${sessionScope.ROLE ne 'ADMIN'}">
-                <a href="office">
-                    <div class="sign__in">
-                        <div class="sign__in__logo">
-                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
-                        </div>
-                        <div class="sign__in__text">
-                            <c:out value="${sessionScope.user.username}"/>
-                        </div>
-                    </div>
-                </a>
-            </c:if>
-            <c:if test="${sessionScope.ROLE eq 'ADMIN'}">
-                <a href="office">
-                    <div class="sign__in">
-                        <div class="sign__in__logo">
-                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
-                        </div>
-                        <div class="sign__in__text">
-                            <c:out value="${sessionScope.user.username}"/>
-                        </div>
-                    </div>
-                </a>
-            </c:if>
-        </c:when>
-    </c:choose>
+    <a href="sign-in">
+        <div class="sign__in">
+            <div class="sign__in__logo">
+                <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+            </div>
+            <div class="sign__in__text">Выйти</div>
+        </div>
+    </a>
 </header>
 <script src="js/script.js"></script>
 </body>
