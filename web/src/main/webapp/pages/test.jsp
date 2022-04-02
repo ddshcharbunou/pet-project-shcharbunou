@@ -39,7 +39,7 @@
         </c:when>
         <c:when test="${sessionScope.user != null}">
             <c:if test="${sessionScope.ROLE ne 'ADMIN'}">
-                <a href="about">
+                <a href="office">
                     <div class="sign__in">
                         <div class="sign__in__logo">
                             <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
@@ -51,7 +51,7 @@
                 </a>
             </c:if>
             <c:if test="${sessionScope.ROLE eq 'ADMIN'}">
-                <a href="about">
+                <a href="office">
                     <div class="sign__in">
                         <div class="sign__in__logo">
                             <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
