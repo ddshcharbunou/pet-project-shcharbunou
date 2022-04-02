@@ -18,7 +18,7 @@
     </div>
     <nav>
         <div class="menu" id="menu">
-            <a href="main"><span class="current__link">Пользователи</span></a>
+            <a href="main">Пользователи</a>
             <a href="courses">Группы</a>
             <a href="about">Домашка</a>
             <a href="test">Блог</a>
