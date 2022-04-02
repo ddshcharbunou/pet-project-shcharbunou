@@ -1,8 +1,10 @@
 package by.shcharbunou.jee.controller;
 
 import by.shcharbunou.core.dto.user.request.UserRequest;
+import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
+import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
@@ -46,14 +48,14 @@ public class InteractionController {
 
     @GetMapping("/office")
     public ModelAndView test(Authentication authentication) {
-        User user = null;
-        try {
-            user = userService.findUserByUsername(authentication.getName());
-        } catch (UserNotFoundException e) {
-
-        }
         ModelAndView mav = new ModelAndView();
-        mav.addObject("user", user);
+        UserResponse userResponse = null;
+        try {
+            userResponse = userService.findUserResponseByUsername(authentication.getName());
+        } catch (UserNotFoundException e) {
+            mav.addObject("error", e.getMessage());
+        }
+        mav.addObject("user", userResponse);
         mav.addObject("ROLE", authentication.getAuthorities().stream().findFirst().orElseThrow());
         mav.setViewName("index");
         return mav;

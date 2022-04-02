@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user;
 
 import by.shcharbunou.core.dto.user.request.UserRequest;
+import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
@@ -39,6 +40,14 @@ public interface UserService {
      * @throws UserNotFoundException user not found
      */
     User findUserByUsername(String username) throws UserNotFoundException;
+
+    /**
+     * Find user response by username.
+     * @param username username
+     * @return user response {@link UserResponse}
+     * @throws UserNotFoundException user not found
+     */
+    UserResponse findUserResponseByUsername(String username) throws UserNotFoundException;
 
     /**
      * Find user by username and email.

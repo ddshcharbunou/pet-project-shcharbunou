@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user.impl;
 
 import by.shcharbunou.core.dto.user.request.UserRequest;
+import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
@@ -65,6 +66,15 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(username);
         if (Objects.nonNull(user)) {
             return user;
+        }
+        throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
+    }
+
+    @Override
+    public UserResponse findUserResponseByUsername(String username) throws UserNotFoundException {
+        UserResponse userResponse = userMapper.userToUserResponse(userRepository.findByUsername(username));
+        if (Objects.nonNull(userResponse)) {
+            return userResponse;
         }
         throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
     }
