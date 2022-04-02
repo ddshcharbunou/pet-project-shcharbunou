@@ -729,3 +729,15 @@ nav {
     color: red;
     padding-bottom: 30px;
 }
+
+.admin__logo {
+    position: absolute;
+    width: 192px;
+    height: 36px;
+    left: 140px;
+    top: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: xx-large;
+    font-weight: 700;
+    color: #FBFF41;
+}

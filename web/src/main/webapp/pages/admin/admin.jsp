@@ -12,8 +12,8 @@
 </head>
 <body>
 <header>
-    <div class="logo">
-        <p><img src="assets/img/logo.png" width="192px" height="36px" alt="Lol Club"></p>
+    <div class="admin__logo">
+            <p>AdmPanel</p>
     </div>
     <nav>
         <div class="menu" id="menu">
