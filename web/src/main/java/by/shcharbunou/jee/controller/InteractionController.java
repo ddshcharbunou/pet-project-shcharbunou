@@ -57,7 +57,7 @@ public class InteractionController {
         }
         mav.addObject("user", userResponse);
         mav.addObject("ROLE", authentication.getAuthorities().stream().findFirst().orElseThrow());
-        mav.setViewName("index");
+        mav.setViewName("office/office");
         return mav;
     }
 }
