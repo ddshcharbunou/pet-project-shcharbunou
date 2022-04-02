@@ -741,3 +741,50 @@ nav {
     font-weight: 700;
     color: #FBFF41;
 }
+
+.admin__service__buttons {
+    position: absolute;
+    width: 300px;
+    height: 1000px;
+    left: 620px;
+    top: 250px;
+    text-align: center;
+}
+
+.admin__service__buttons__each {
+    background: #1B212D;
+    display: block;
+    text-align: center;
+    border: 3px solid #FBFF41;
+    width: 100%;
+    height: 50px;
+    outline: none;
+    color: #FBFF41;
+    border-radius: 15px;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+    transition: .4s;
+}
+
+.admin__service__buttons__each:hover {
+    background: #FBFF41;
+    color: #1B212D;
+    transition: .4s;
+}
+
+.adm__panel__text {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 620px;
+    top: 100px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: xxx-large;
+    color: #FBFF41;
+}
