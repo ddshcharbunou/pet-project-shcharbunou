@@ -4,7 +4,6 @@ import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
-import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
@@ -47,7 +46,7 @@ public class InteractionController {
     }
 
     @GetMapping("/office")
-    public ModelAndView test(Authentication authentication) {
+    public ModelAndView signInToOffice(Authentication authentication) {
         ModelAndView mav = new ModelAndView();
         UserResponse userResponse = null;
         try {

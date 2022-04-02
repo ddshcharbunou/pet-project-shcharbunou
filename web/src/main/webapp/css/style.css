@@ -718,3 +718,14 @@ nav {
     color: red;
     padding-bottom: 30px;
 }
+
+.sign__in__error__message {
+    position: absolute;
+    width: 400px;
+    left: 570px;
+    top: 700px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+    padding-bottom: 30px;
+}
