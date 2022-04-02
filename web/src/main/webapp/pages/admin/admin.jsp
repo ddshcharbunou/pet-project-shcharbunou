@@ -13,7 +13,7 @@
 <body>
 <header>
     <div class="admin__logo">
-            <p>AdmPanel</p>
+        <p>AdmPanel</p>
     </div>
     <nav>
         <div class="menu" id="menu">
