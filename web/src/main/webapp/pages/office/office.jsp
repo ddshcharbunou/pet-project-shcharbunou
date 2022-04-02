@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lol Club - О школе</title>
+    <title>Lol Club - Кабинет студента</title>
     <link rel="shortcut icon" href="assets/img/sign-in.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
