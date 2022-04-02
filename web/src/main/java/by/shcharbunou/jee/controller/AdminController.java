@@ -36,4 +36,9 @@ public class AdminController {
         mav.setViewName("admin/admin");
         return mav;
     }
+
+    @GetMapping("/admin/group/service")
+    public ModelAndView getGroupAdminPanel() {
+        return new ModelAndView("admin/group-adm");
+    }
 }

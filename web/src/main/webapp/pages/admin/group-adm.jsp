@@ -19,7 +19,7 @@
     <nav>
         <div class="menu" id="menu">
             <a href="main">Пользователи</a>
-            <a href="courses"><span class="current__link">Группы</span></a>
+            <a href="admin/group/service"><span class="current__link">Группы</span></a>
             <a href="about">Домашка</a>
             <a href="test">Блог</a>
             <a href="blog">Фото</a>
