@@ -25,7 +25,7 @@
             <a href="contacts">Что-то</a>
         </div>
     </nav>
-    <a href="sign-in">
+    <a href="sign-out">
         <div class="sign__in">
             <div class="sign__in__logo">
                 <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
