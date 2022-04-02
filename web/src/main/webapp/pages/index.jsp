@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,18 +38,30 @@
             </a>
         </c:when>
         <c:when test="${sessionScope.user != null}">
-            <:c:choose>
-                <c:when test="${sessionScope.ROLE ne 'ADMIN'}">
-                    <div class="sign__in__text">
-                        <c:out value="${sessionScope.user.username}"/>
+            <c:if test="${sessionScope.ROLE ne 'ADMIN'}">
+                <a href="about">
+                    <div class="sign__in">
+                        <div class="sign__in__logo">
+                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                        </div>
+                        <div class="sign__in__text">
+                            <c:out value="${sessionScope.user.username}"/>
+                        </div>
                     </div>
-                </c:when>
-                <c:when test="${sessionScope.ROLE eq 'ADMIN'}">
-                    <div class="sign__in__text">
-                        <c:out value="${sessionScope.user.username}"/>
+                </a>
+            </c:if>
+            <c:if test="${sessionScope.ROLE eq 'ADMIN'}">
+                <a href="about">
+                    <div class="sign__in">
+                        <div class="sign__in__logo">
+                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                        </div>
+                        <div class="sign__in__text">
+                            <c:out value="${sessionScope.user.username}"/>
+                        </div>
                     </div>
-                </c:when>
-            </:c:choose>
+                </a>
+            </c:if>
         </c:when>
     </c:choose>
 </header>

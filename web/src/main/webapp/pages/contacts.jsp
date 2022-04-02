@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +26,44 @@
             <a href="contacts"><span class="current__link">Контакты</span></a>
         </div>
     </nav>
-    <a href="sign-in">
-        <div class="sign__in">
-            <div class="sign__in__logo">
-                <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
-            </div>
-            <div class="sign__in__text">Войти</div>
-        </div>
-    </a>
+    <c:choose>
+        <c:when test="${sessionScope.user == null}">
+            <a href="sign-in">
+                <div class="sign__in">
+                    <div class="sign__in__logo">
+                        <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                    </div>
+                    <div class="sign__in__text">Войти</div>
+                </div>
+            </a>
+        </c:when>
+        <c:when test="${sessionScope.user != null}">
+            <c:if test="${sessionScope.ROLE ne 'ADMIN'}">
+                <a href="about">
+                    <div class="sign__in">
+                        <div class="sign__in__logo">
+                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                        </div>
+                        <div class="sign__in__text">
+                            <c:out value="${sessionScope.user.username}"/>
+                        </div>
+                    </div>
+                </a>
+            </c:if>
+            <c:if test="${sessionScope.ROLE eq 'ADMIN'}">
+                <a href="about">
+                    <div class="sign__in">
+                        <div class="sign__in__logo">
+                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                        </div>
+                        <div class="sign__in__text">
+                            <c:out value="${sessionScope.user.username}"/>
+                        </div>
+                    </div>
+                </a>
+            </c:if>
+        </c:when>
+    </c:choose>
 </header>
 <script src="js/script.js"></script>
 </body>
