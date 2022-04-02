@@ -20,7 +20,7 @@
         <div class="menu" id="menu">
             <a href="main">Главная</a>
             <a href="courses">Курсы</a>
-            <a href="about"><span class="current__link">О школе</span></a>
+            <a href="about">О школе</a>
             <a href="test">Тест</a>
             <a href="blog">Блог</a>
             <a href="contacts">Контакты</a>
