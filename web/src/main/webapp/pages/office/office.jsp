@@ -31,7 +31,7 @@
             <div class="sign__in__logo">
                 <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
             </div>
-            <div class="sign__in__text">Войти</div>
+            <div class="sign__in__text">Выйти</div>
         </div>
     </a>
 </header>
