@@ -37,8 +37,38 @@ public class AdminController {
         return mav;
     }
 
-    @GetMapping("/admin/group/service")
+    @GetMapping("/admin/group/control")
     public ModelAndView getGroupAdminPanel() {
-        return new ModelAndView("admin/group-adm");
+        return new ModelAndView("admin/group/group-adm");
+    }
+
+    @GetMapping("/admin/group/control/add-group")
+    public ModelAndView getAddGroupPanel() {
+        return new ModelAndView("admin/group/add-group");
+    }
+
+    @GetMapping("/admin/group/control/add-user-group")
+    public ModelAndView getAddUserGroupPanel() {
+        return new ModelAndView("admin/group/add-user-group");
+    }
+
+    @GetMapping("/admin/group/control/claims")
+    public ModelAndView getClaimsPanel() {
+        return new ModelAndView("admin/group/claims");
+    }
+
+    @GetMapping("/admin/group/control/del-group")
+    public ModelAndView getDeleteGroupPanel() {
+        return new ModelAndView("admin/group/del-group");
+    }
+
+    @GetMapping("/admin/group/control/del-user-group")
+    public ModelAndView getDeleteUserGroupPanel() {
+        return new ModelAndView("admin/group/del-user-group");
+    }
+
+    @GetMapping("/admin/group/control/show-groups")
+    public ModelAndView showGroups() {
+        return new ModelAndView("admin/group/show-groups");
     }
 }
