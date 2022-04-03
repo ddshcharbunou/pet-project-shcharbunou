@@ -58,7 +58,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group createGroup(HttpServletRequest request, Group group) {
+    public Group createGroup(HttpServletRequest request) {
         GroupDesignation designation = GroupDesignation.valueOf(request.getParameter("group_designation"));
         GroupLevel level = GroupLevel.valueOf(request.getParameter("group_level"));
         GroupAge age = GroupAge.valueOf(request.getParameter("group_age"));

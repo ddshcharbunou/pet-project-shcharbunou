@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Log4j2
 @Controller
@@ -70,5 +73,11 @@ public class AdminController {
     @GetMapping("/admin/group/control/show-groups")
     public ModelAndView showGroups() {
         return new ModelAndView("admin/group/show-groups");
+    }
+
+    @PostMapping("/admin/group/control/add-group")
+    public ModelAndView testGroupAdd(HttpServletRequest request) {
+        adminService.testCreate(request);
+        return new ModelAndView("admin/group/group-adm");
     }
 }

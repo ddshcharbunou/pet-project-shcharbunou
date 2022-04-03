@@ -4,20 +4,26 @@ import by.shcharbunou.core.exception.AdminNotFoundException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.message.AdminMessage;
 import by.shcharbunou.core.service.admin.AdminService;
+import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service("adminService")
 @Transactional(transactionManager = "transactionManager")
 public class AdminServiceImpl implements AdminService {
     private final UserService userService;
+    private final GroupService groupService;
 
     @Autowired
-    public AdminServiceImpl(UserService userService) {
+    public AdminServiceImpl(UserService userService, GroupService groupService) {
         this.userService = userService;
+        this.groupService = groupService;
     }
 
     @Override
@@ -29,5 +35,10 @@ public class AdminServiceImpl implements AdminService {
             throw new AdminNotFoundException(AdminMessage.ADMIN_NOT_FOUND.getMessage());
         }
         return admin;
+    }
+
+    @Override
+    public Group testCreate(HttpServletRequest request) {
+        return groupService.createGroup(request);
     }
 }

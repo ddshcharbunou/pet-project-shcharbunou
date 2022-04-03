@@ -39,7 +39,35 @@
     <p>AdmPanel</p>
 </div>
 <div class="admin__service__buttons">
-    
+    <form action="<c:url value="/admin/group/control/add-group"/>" method="post">
+        <p>
+            <label>
+                <select>
+                    <option disabled>Выберите название</option>
+                    <option name="group_designation" value="Beginner">Beginner</option>
+                    <option name="group_designation" value="Mid-intermediate">Mid-intermediate</option>
+                </select>
+                <select>
+                    <option disabled>Выберите возраст</option>
+                    <option name="group_age" value="Kids">Kids</option>
+                    <option name="group_age" value="Teens">Teens</option>
+                </select>
+                <select>
+                    <option disabled>Выберите уровень</option>
+                    <option name="group_level" value="A1">A1</option>
+                    <option name="group_level" value="A2">A2</option>
+                </select>
+                <select>
+                    <option disabled>Выберите день</option>
+                    <option name="Monday" value="Monday">Monday</option>
+                    <option name="Friday" value="Friday">Friday</option>
+                </select>
+                <input type="text" id="group_time" name="group_time" placeholder="time" required
+                       oninvalid="this.setCustomValidity('Введите time')" oninput="setCustomValidity('')">
+            </label>
+        </p>
+        <button type="submit">Gooo</button>
+    </form>
 </div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>

@@ -52,8 +52,7 @@ public interface GroupService {
     /**
      * Create new group is system.
      * @param request http request
-     * @param group group
      * @return group {@link Group}
      */
-    Group createGroup(HttpServletRequest request, Group group);
+    Group createGroup(HttpServletRequest request);
 }
