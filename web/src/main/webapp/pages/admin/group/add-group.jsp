@@ -38,6 +38,9 @@
 <div class="adm__panel__text">
     <p>AdmPanel</p>
 </div>
+<div class="admin__service__buttons">
+    
+</div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

@@ -4,8 +4,8 @@
 <html>
 <head>
     <title>Lol Club - Тест</title>
-    <link rel="shortcut icon" href="assets/img/sign-in.png" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="<c:url value="/assets/img/sign-in.png"/>" type="image/png">
+    <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@600&display=swap"
@@ -14,16 +14,16 @@
 <body>
 <header>
     <div class="logo">
-        <p><img src="assets/img/logo.png" width="192px" height="36px" alt="Lol Club"></p>
+        <p><img src="<c:url value="/assets/img/logo.png"/>" width="192px" height="36px" alt="Lol Club"></p>
     </div>
     <nav>
         <div class="menu" id="menu">
-            <a href="main">Главная</a>
-            <a href="courses">Курсы</a>
-            <a href="about">О школе</a>
-            <a href="test"><span class="current__link">Тест</span></a>
-            <a href="blog">Блог</a>
-            <a href="contacts">Контакты</a>
+            <a href="<c:url value="/main"/>">Главная</a>
+            <a href="<c:url value="/courses"/>">Курсы</a>
+            <a href="<c:url value="/about"/>">О школе</a>
+            <a href="<c:url value="/test"/>"><span class="current__link">Тест</span></a>
+            <a href="<c:url value="/blog"/>">Блог</a>
+            <a href="<c:url value="/contacts"/>">Контакты</a>
         </div>
     </nav>
     <c:choose>
@@ -31,7 +31,7 @@
             <a href="sign-in">
                 <div class="sign__in">
                     <div class="sign__in__logo">
-                        <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                        <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
                     </div>
                     <div class="sign__in__text">Войти</div>
                 </div>
@@ -42,7 +42,7 @@
                 <a href="office">
                     <div class="sign__in">
                         <div class="sign__in__logo">
-                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                            <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
                         </div>
                         <div class="sign__in__text">
                             <c:out value="${sessionScope.user.username}"/>
@@ -54,7 +54,7 @@
                 <a href="office">
                     <div class="sign__in">
                         <div class="sign__in__logo">
-                            <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                            <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
                         </div>
                         <div class="sign__in__text">
                             <c:out value="${sessionScope.user.username}"/>
@@ -65,6 +65,6 @@
         </c:when>
     </c:choose>
 </header>
-<script src="js/script.js"></script>
+<script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

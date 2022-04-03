@@ -4,8 +4,8 @@
 <html>
 <head>
     <title>Lol Club - Администрация</title>
-    <link rel="shortcut icon" href="assets/img/sign-in.png" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="<c:url value="/assets/img/sign-in.png"/>" type="image/png">
+    <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@600&display=swap"
@@ -26,15 +26,15 @@
             <a href="contacts">Прочее</a>
         </div>
     </nav>
-    <a href="sign-out">
+    <a href="<c:url value="/sign-out"/>">
         <div class="sign__in">
             <div class="sign__in__logo">
-                <p><img src="assets/img/sign-in.png" width="24px" height="24px" alt="Logo"></p>
+                <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
             </div>
             <div class="sign__in__text">Выйти</div>
         </div>
     </a>
 </header>
-<script src="js/script.js"></script>
+<script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
