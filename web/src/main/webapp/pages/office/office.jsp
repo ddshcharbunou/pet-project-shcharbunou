@@ -35,6 +35,6 @@
         </div>
     </a>
 </header>
-<script src="js/script.js"></script>
+<script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
