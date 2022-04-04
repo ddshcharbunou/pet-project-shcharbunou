@@ -58,6 +58,11 @@
         <button type="button" class="admin__service__buttons__each">Просмотреть группы</button>
     </a>
 </div>
+<div class="adm__message">
+    <c:if test="${requestScope.message != null}">
+        <c:out value="${requestScope.message}"/>
+    </c:if>
+</div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

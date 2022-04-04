@@ -808,9 +808,20 @@ nav {
     position: absolute;
     width: 400px;
     left: 570px;
-    top: 1400px;
+    top: 200px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: red;
+    padding-bottom: 30px;
+}
+
+.adm__message {
+    position: absolute;
+    width: 400px;
+    left: 570px;
+    top: 200px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
     padding-bottom: 30px;
 }

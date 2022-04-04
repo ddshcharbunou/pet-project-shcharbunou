@@ -92,6 +92,6 @@ public class AdminController {
         adminService.getGroupService().saveGroup(group);
         mav.setViewName("admin/group/group-adm");
         mav.addObject("message", "Группа успешно добавлена!");
-        return new ModelAndView("admin/group/group-adm");
+        return mav;
     }
 }
