@@ -40,33 +40,81 @@
 </div>
 <div class="admin__service__buttons">
     <form action="<c:url value="/admin/group/control/add-group"/>" method="post">
-        <p>
-            <label>
-                <select name="designation">
-                    <option disabled>Выберите название</option>
-                    <option value="BEGINNER">Beginner</option>
-                    <option value="MID_INTERMEDIATE">Mid-intermediate</option>
-                </select>
-                <select name="age">
-                    <option disabled>Выберите возраст</option>
-                    <option value="KIDS">Kids</option>
-                    <option value="TEENS">Teens</option>
-                </select>
-                <select name="level">
-                    <option disabled>Выберите уровень</option>
-                    <option value="A1">A1</option>
-                    <option value="A2">A2</option>
-                </select>
-                <select name="monday">
-                    <option disabled>Выберите день</option>
-                    <option value="MONDAY">Monday</option>
-                    <option value="FRIDAY">Friday</option>
-                </select>
-                <input type="text" id="time" name="time" placeholder="time" required
-                       oninvalid="this.setCustomValidity('Введите time')" oninput="setCustomValidity('')">
-            </label>
-        </p>
-        <button type="submit">Gooo</button>
+        <label>
+            <select class="admin__service__buttons__each" name="designation">
+                <option disabled>Выберите название</option>
+                <option value="BEGINNER">Beginner</option>
+                <option value="ELEMENTARY1_3">Elementary 1-3</option>
+                <option value="ELEMENTARY4">Elementary 4</option>
+                <option value="PRE_INTERMEDIATE1_3">Pre-intermediate 1-3</option>
+                <option value="PRE_INTERMEDIATE4">Pre-intermediate 4</option>
+                <option value="LOW_INTERMEDIATE">Low-intermediate</option>
+                <option value="MID_INTERMEDIATE">Mid-intermediate</option>
+                <option value="UPPER_INTERMEDIATE1_3">Upper-intermediate 1-3</option>
+                <option value="PRE_ADVANCED1_3">Pre-advanced 1-3</option>
+                <option value="LOWER_ADVANCED1_3">Lower-advanced 1-3</option>
+                <option value="UPPER_ADVANCED1_3">Upper-advanced 1-3</option>
+            </select>
+        </label>
+        <label>
+            <select class="admin__service__buttons__each" name="age">
+                <option disabled>Выберите возраст</option>
+                <option value="KIDS">Kids</option>
+                <option value="TEENS">Teens</option>
+                <option value="ADULTS">Adults</option>
+            </select>
+        </label>
+        <label>
+            <select class="admin__service__buttons__each" name="level">
+                <option disabled>Выберите уровень</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="C1">C1</option>
+                <option value="C2">C2</option>
+            </select>
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Понедельник</p>
+            <input class="group_checkbox" type="checkbox" name="monday" value="MONDAY">
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Вторник</p>
+            <input class="group_checkbox" type="checkbox" name="tuesday" value="TUESDAY">
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Среда</p>
+            <input class="group_checkbox" type="checkbox" name="wednesday" value="WEDNESDAY">
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Четверг</p>
+            <input class="group_checkbox" type="checkbox" name="thursday" value="THURSDAY">
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Пятница</p>
+            <input class="group_checkbox" type="checkbox" name="friday" value="FRIDAY">
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Суббота</p>
+            <input class="group_checkbox" type="checkbox" name="saturday" value="SATURDAY">
+        </label>
+        <label>
+            <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            margin-left: auto; margin-right: auto">Воскресенье</p>
+            <input class="group_checkbox" type="checkbox" name="sunday" value="SUNDAY">
+        </label>
+        <label>
+            <input class="admin__service__buttons__each" type="text" id="time" name="time" placeholder="Время (00:00)" required
+                   oninvalid="this.setCustomValidity('Введите time')" oninput="setCustomValidity('')">
+        </label>
+        <button class="admin__service__buttons__each" type="submit">Добавить</button>
     </form>
 </div>
 <script src="<c:url value="/js/script.js"/>"></script>

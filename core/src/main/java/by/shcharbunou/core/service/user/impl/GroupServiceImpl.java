@@ -103,7 +103,7 @@ public class GroupServiceImpl implements GroupService {
             saturday.setDay(Day.SATURDAY);
             days.add(saturday);
         }
-        if (Objects.nonNull(groupRequest.getFriday())) {
+        if (Objects.nonNull(groupRequest.getSunday())) {
             EmbeddableDay sunday = new EmbeddableDay();
             sunday.setDay(Day.SUNDAY);
             days.add(sunday);
