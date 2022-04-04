@@ -42,17 +42,17 @@
     <form action="<c:url value="/admin/group/control/add-group"/>" method="post">
         <p>
             <label>
-                <select name="group_designation">
+                <select name="designation">
                     <option disabled>Выберите название</option>
                     <option value="BEGINNER">Beginner</option>
                     <option value="MID_INTERMEDIATE">Mid-intermediate</option>
                 </select>
-                <select name="group_age">
+                <select name="age">
                     <option disabled>Выберите возраст</option>
                     <option value="KIDS">Kids</option>
                     <option value="TEENS">Teens</option>
                 </select>
-                <select name="group_level">
+                <select name="level">
                     <option disabled>Выберите уровень</option>
                     <option value="A1">A1</option>
                     <option value="A2">A2</option>
@@ -62,7 +62,7 @@
                     <option value="MONDAY">Monday</option>
                     <option value="FRIDAY">Friday</option>
                 </select>
-                <input type="text" id="group_time" name="group_time" placeholder="time" required
+                <input type="text" id="time" name="time" placeholder="time" required
                        oninvalid="this.setCustomValidity('Введите time')" oninput="setCustomValidity('')">
             </label>
         </p>

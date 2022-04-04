@@ -1,5 +1,6 @@
 package by.shcharbunou.jee.controller;
 
+import by.shcharbunou.core.dto.user.request.GroupRequest;
 import by.shcharbunou.core.exception.AdminNotFoundException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.service.admin.AdminService;
@@ -78,11 +79,11 @@ public class AdminController {
     }
 
     @PostMapping("/admin/group/control/add-group")
-    public ModelAndView testGroupAdd(HttpServletRequest request) {
+    public ModelAndView testGroupAdd(GroupRequest groupRequest) {
         ModelAndView mav = new ModelAndView();
         Group group;
         try {
-            group = adminService.getGroupService().createGroup(request);
+            group = adminService.getGroupService().createGroup(groupRequest);
         } catch (TimeFormatException e) {
             mav.addObject("error", e.getMessage());
             mav.setViewName("admin/group/add-group");

@@ -1,5 +1,6 @@
 package by.shcharbunou.core.service.user.impl;
 
+import by.shcharbunou.core.dto.user.request.GroupRequest;
 import by.shcharbunou.core.exception.GroupNotFoundException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.exception.message.GroupMessage;
@@ -62,47 +63,47 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group createGroup(HttpServletRequest request) throws TimeFormatException {
-        GroupDesignation designation = GroupDesignation.valueOf(request.getParameter("group_designation"));
-        GroupLevel level = GroupLevel.valueOf(request.getParameter("group_level"));
-        GroupAge age = GroupAge.valueOf(request.getParameter("group_age"));
-        String time = request.getParameter("group_time");
+    public Group createGroup(GroupRequest groupRequest) throws TimeFormatException {
+        GroupDesignation designation = groupRequest.getDesignation();
+        GroupLevel level = groupRequest.getLevel();
+        GroupAge age = groupRequest.getAge();
+        String time = groupRequest.getTime();
         boolean isValidTimeFormat = checkTimeFormat(time);
         if (!isValidTimeFormat) {
             throw new TimeFormatException(TimeMessage.INVALID_TIME_FORMAT.getMessage());
         }
         List<EmbeddableDay> days = new ArrayList<>(3);
-        if (Objects.nonNull(request.getParameter("monday"))) {
+        if (Objects.nonNull(groupRequest.getMonday())) {
             EmbeddableDay monday = new EmbeddableDay();
             monday.setDay(Day.MONDAY);
             days.add(monday);
         }
-        if (Objects.nonNull(request.getParameter("tuesday"))) {
+        if (Objects.nonNull(groupRequest.getTuesday())) {
             EmbeddableDay tuesday = new EmbeddableDay();
             tuesday.setDay(Day.TUESDAY);
             days.add(tuesday);
         }
-        if (Objects.nonNull(request.getParameter("wednesday"))) {
+        if (Objects.nonNull(groupRequest.getWednesday())) {
             EmbeddableDay wednesday = new EmbeddableDay();
             wednesday.setDay(Day.WEDNESDAY);
             days.add(wednesday);
         }
-        if (Objects.nonNull(request.getParameter("thursday"))) {
+        if (Objects.nonNull(groupRequest.getThursday())) {
             EmbeddableDay thursday = new EmbeddableDay();
             thursday.setDay(Day.THURSDAY);
             days.add(thursday);
         }
-        if (Objects.nonNull(request.getParameter("friday"))) {
+        if (Objects.nonNull(groupRequest.getFriday())) {
             EmbeddableDay friday = new EmbeddableDay();
             friday.setDay(Day.FRIDAY);
             days.add(friday);
         }
-        if (Objects.nonNull(request.getParameter("saturday"))) {
+        if (Objects.nonNull(groupRequest.getSaturday())) {
             EmbeddableDay saturday = new EmbeddableDay();
             saturday.setDay(Day.SATURDAY);
             days.add(saturday);
         }
-        if (Objects.nonNull(request.getParameter("sunday"))) {
+        if (Objects.nonNull(groupRequest.getFriday())) {
             EmbeddableDay sunday = new EmbeddableDay();
             sunday.setDay(Day.SUNDAY);
             days.add(sunday);
