@@ -825,3 +825,14 @@ nav {
     color: green;
     padding-bottom: 30px;
 }
+
+.confirm__sign__up__message {
+    position: absolute;
+    width: 400px;
+    left: 570px;
+    top: 280px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    padding-bottom: 30px;
+}

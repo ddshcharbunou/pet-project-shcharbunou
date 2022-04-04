@@ -58,6 +58,11 @@
     </c:if>
 </div>
 <div class="student__office__text">Кабинет студента</div>
+<div class="confirm__sign__up__message">
+    <c:if test="${requestScope.message != null}">
+        <c:out value="${requestScope.message}"/>
+    </c:if>
+</div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
