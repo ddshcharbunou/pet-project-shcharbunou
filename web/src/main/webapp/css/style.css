@@ -803,3 +803,14 @@ nav {
     font-size: xxx-large;
     color: #FBFF41;
 }
+
+.adm__error__message {
+    position: absolute;
+    width: 400px;
+    left: 570px;
+    top: 1400px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+    padding-bottom: 30px;
+}

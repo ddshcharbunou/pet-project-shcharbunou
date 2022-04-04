@@ -117,6 +117,11 @@
         <button class="admin__service__buttons__each" type="submit">Добавить</button>
     </form>
 </div>
+<div class="adm__error__message">
+    <c:if test="${requestScope.error != null}">
+        <c:out value="${requestScope.error}"/>
+    </c:if>
+</div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
