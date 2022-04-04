@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user;
 
 import by.shcharbunou.core.exception.GroupNotFoundException;
+import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
@@ -50,9 +51,10 @@ public interface GroupService {
     Group findGroupById(UUID id) throws GroupNotFoundException;
 
     /**
-     * Create new group is system.
-     * @param request http request
+     * Create new group.
+     * @param request request
      * @return group {@link Group}
+     * @throws TimeFormatException invalid time format (00:00)
      */
-    Group createGroup(HttpServletRequest request);
+    Group createGroup(HttpServletRequest request) throws TimeFormatException;
 }

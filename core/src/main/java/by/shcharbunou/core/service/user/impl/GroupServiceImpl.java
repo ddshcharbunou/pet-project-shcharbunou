@@ -1,7 +1,9 @@
 package by.shcharbunou.core.service.user.impl;
 
 import by.shcharbunou.core.exception.GroupNotFoundException;
+import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.exception.message.GroupMessage;
+import by.shcharbunou.core.exception.message.TimeMessage;
 import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.dal.entity.enums.group.Day;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
@@ -19,11 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 @Service("groupService")
 @Transactional(transactionManager = "transactionManager")
 public class GroupServiceImpl implements GroupService {
     private final GroupRepository groupRepository;
+    private static final Pattern TIME_PATTERN = Pattern.compile("^(([0,1][0-9])|(2[0-3])):[0-5][0-9]$");
 
     @Autowired
     public GroupServiceImpl(GroupRepository groupRepository) {
@@ -58,11 +62,15 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group createGroup(HttpServletRequest request) {
+    public Group createGroup(HttpServletRequest request) throws TimeFormatException {
         GroupDesignation designation = GroupDesignation.valueOf(request.getParameter("group_designation"));
         GroupLevel level = GroupLevel.valueOf(request.getParameter("group_level"));
         GroupAge age = GroupAge.valueOf(request.getParameter("group_age"));
         String time = request.getParameter("group_time");
+        boolean isValidTimeFormat = checkTimeFormat(time);
+        if (!isValidTimeFormat) {
+            throw new TimeFormatException(TimeMessage.INVALID_TIME_FORMAT.getMessage());
+        }
         List<EmbeddableDay> days = new ArrayList<>(3);
         if (Objects.nonNull(request.getParameter("monday"))) {
             EmbeddableDay monday = new EmbeddableDay();
@@ -106,5 +114,9 @@ public class GroupServiceImpl implements GroupService {
         startingGroup.setTime(time);
         startingGroup.setDays(days);
         return startingGroup;
+    }
+
+    private boolean checkTimeFormat(String time) {
+        return TIME_PATTERN.matcher(time).matches();
     }
 }

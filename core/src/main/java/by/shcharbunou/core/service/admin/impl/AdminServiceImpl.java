@@ -6,13 +6,10 @@ import by.shcharbunou.core.exception.message.AdminMessage;
 import by.shcharbunou.core.service.admin.AdminService;
 import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
-import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Service("adminService")
 @Transactional(transactionManager = "transactionManager")
@@ -38,7 +35,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Group testCreate(HttpServletRequest request) {
-        return groupService.createGroup(request);
+    public GroupService getGroupService() {
+        return groupService;
     }
 }

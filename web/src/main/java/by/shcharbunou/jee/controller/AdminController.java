@@ -1,7 +1,9 @@
 package by.shcharbunou.jee.controller;
 
 import by.shcharbunou.core.exception.AdminNotFoundException;
+import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.service.admin.AdminService;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +79,18 @@ public class AdminController {
 
     @PostMapping("/admin/group/control/add-group")
     public ModelAndView testGroupAdd(HttpServletRequest request) {
-        adminService.testCreate(request);
+        ModelAndView mav = new ModelAndView();
+        Group group;
+        try {
+            group = adminService.getGroupService().createGroup(request);
+        } catch (TimeFormatException e) {
+            mav.addObject("error", e.getMessage());
+            mav.setViewName("admin/group/add-group");
+            return mav;
+        }
+        adminService.getGroupService().saveGroup(group);
+        mav.setViewName("admin/group/group-adm");
+        mav.addObject("message", "Группа успешно добавлена!");
         return new ModelAndView("admin/group/group-adm");
     }
 }

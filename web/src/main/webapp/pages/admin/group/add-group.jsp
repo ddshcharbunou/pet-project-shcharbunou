@@ -42,25 +42,25 @@
     <form action="<c:url value="/admin/group/control/add-group"/>" method="post">
         <p>
             <label>
-                <select>
+                <select name="group_designation">
                     <option disabled>Выберите название</option>
-                    <option name="group_designation" value="Beginner">Beginner</option>
-                    <option name="group_designation" value="Mid-intermediate">Mid-intermediate</option>
+                    <option value="BEGINNER">Beginner</option>
+                    <option value="MID_INTERMEDIATE">Mid-intermediate</option>
                 </select>
-                <select>
+                <select name="group_age">
                     <option disabled>Выберите возраст</option>
-                    <option name="group_age" value="Kids">Kids</option>
-                    <option name="group_age" value="Teens">Teens</option>
+                    <option value="KIDS">Kids</option>
+                    <option value="TEENS">Teens</option>
                 </select>
-                <select>
+                <select name="group_level">
                     <option disabled>Выберите уровень</option>
-                    <option name="group_level" value="A1">A1</option>
-                    <option name="group_level" value="A2">A2</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
                 </select>
-                <select>
+                <select name="monday">
                     <option disabled>Выберите день</option>
-                    <option name="Monday" value="Monday">Monday</option>
-                    <option name="Friday" value="Friday">Friday</option>
+                    <option value="MONDAY">Monday</option>
+                    <option value="FRIDAY">Friday</option>
                 </select>
                 <input type="text" id="group_time" name="group_time" placeholder="time" required
                        oninvalid="this.setCustomValidity('Введите time')" oninput="setCustomValidity('')">
