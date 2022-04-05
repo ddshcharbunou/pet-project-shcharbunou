@@ -78,37 +78,37 @@
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Понедельник</p>
-            <input class="group_checkbox" type="checkbox" name="monday" value="MONDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="MONDAY">
         </label>
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Вторник</p>
-            <input class="group_checkbox" type="checkbox" name="tuesday" value="TUESDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="TUESDAY">
         </label>
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Среда</p>
-            <input class="group_checkbox" type="checkbox" name="wednesday" value="WEDNESDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="WEDNESDAY">
         </label>
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Четверг</p>
-            <input class="group_checkbox" type="checkbox" name="thursday" value="THURSDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="THURSDAY">
         </label>
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Пятница</p>
-            <input class="group_checkbox" type="checkbox" name="friday" value="FRIDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="FRIDAY">
         </label>
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Суббота</p>
-            <input class="group_checkbox" type="checkbox" name="saturday" value="SATURDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="SATURDAY">
         </label>
         <label>
             <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 16px;
             margin-left: auto; margin-right: auto">Воскресенье</p>
-            <input class="group_checkbox" type="checkbox" name="sunday" value="SUNDAY">
+            <input class="group_checkbox" type="checkbox" name="days" value="SUNDAY">
         </label>
         <label>
             <input class="admin__service__buttons__each" type="text" id="time" name="time" placeholder="Время (00:00)" required

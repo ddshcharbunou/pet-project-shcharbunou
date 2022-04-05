@@ -68,49 +68,11 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public Group createGroup(GroupRequest groupRequest) throws TimeFormatException {
         Group startingGroup = groupMapper.groupRequestToGroup(groupRequest);
-        String time = groupRequest.getTime();
+        String time = startingGroup.getTime();
         boolean isValidTimeFormat = checkTimeFormat(time);
         if (!isValidTimeFormat) {
             throw new TimeFormatException(TimeMessage.INVALID_TIME_FORMAT.getMessage());
         }
-        startingGroup.setTime(time);
-        List<EmbeddableDay> days = new ArrayList<>(3);
-        if (Objects.nonNull(groupRequest.getMonday())) {
-            EmbeddableDay monday = new EmbeddableDay();
-            monday.setDay(Day.MONDAY);
-            days.add(monday);
-        }
-        if (Objects.nonNull(groupRequest.getTuesday())) {
-            EmbeddableDay tuesday = new EmbeddableDay();
-            tuesday.setDay(Day.TUESDAY);
-            days.add(tuesday);
-        }
-        if (Objects.nonNull(groupRequest.getWednesday())) {
-            EmbeddableDay wednesday = new EmbeddableDay();
-            wednesday.setDay(Day.WEDNESDAY);
-            days.add(wednesday);
-        }
-        if (Objects.nonNull(groupRequest.getThursday())) {
-            EmbeddableDay thursday = new EmbeddableDay();
-            thursday.setDay(Day.THURSDAY);
-            days.add(thursday);
-        }
-        if (Objects.nonNull(groupRequest.getFriday())) {
-            EmbeddableDay friday = new EmbeddableDay();
-            friday.setDay(Day.FRIDAY);
-            days.add(friday);
-        }
-        if (Objects.nonNull(groupRequest.getSaturday())) {
-            EmbeddableDay saturday = new EmbeddableDay();
-            saturday.setDay(Day.SATURDAY);
-            days.add(saturday);
-        }
-        if (Objects.nonNull(groupRequest.getSunday())) {
-            EmbeddableDay sunday = new EmbeddableDay();
-            sunday.setDay(Day.SUNDAY);
-            days.add(sunday);
-        }
-        startingGroup.setDays(days);
         return startingGroup;
     }
 
