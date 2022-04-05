@@ -4,7 +4,6 @@ import by.shcharbunou.dal.entity.enums.group.Day;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
-import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

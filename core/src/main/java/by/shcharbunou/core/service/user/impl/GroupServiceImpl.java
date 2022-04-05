@@ -7,7 +7,6 @@ import by.shcharbunou.core.exception.message.GroupMessage;
 import by.shcharbunou.core.exception.message.TimeMessage;
 import by.shcharbunou.core.mapper.user.GroupMapper;
 import by.shcharbunou.core.service.user.GroupService;
-import by.shcharbunou.dal.entity.enums.group.Day;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
@@ -18,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
