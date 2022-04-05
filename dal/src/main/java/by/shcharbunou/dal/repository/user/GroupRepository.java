@@ -8,6 +8,7 @@ import by.shcharbunou.dal.entity.user.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +26,6 @@ public interface GroupRepository extends JpaRepository<Group, UUID> {
      * @param time time
      * @return group {@link Group}
      */
-    Group findByDesignationAndLevelAndAgeAndDaysInAndTime(GroupDesignation designation, GroupLevel level,
-                                                        GroupAge age, List<EmbeddableDay> days, String time);
+    Group findByDesignationAndLevelAndAgeAndDaysInAndTime(GroupDesignation designation, GroupLevel level, GroupAge age,
+                                                          Collection<List<EmbeddableDay>> days, String time);
 }

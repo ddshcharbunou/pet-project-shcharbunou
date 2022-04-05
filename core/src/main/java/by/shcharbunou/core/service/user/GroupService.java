@@ -10,6 +10,7 @@ import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import by.shcharbunou.dal.entity.user.Group;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,7 +42,7 @@ public interface GroupService {
      * @throws GroupNotFoundException group not found
      */
     Group findGroupByAllParameters(GroupDesignation designation, GroupLevel level, GroupAge age,
-                                   List<EmbeddableDay> days, String time) throws GroupNotFoundException;
+                                   Collection<List<EmbeddableDay>> days, String time) throws GroupNotFoundException;
 
     /**
      * Find group by ID.

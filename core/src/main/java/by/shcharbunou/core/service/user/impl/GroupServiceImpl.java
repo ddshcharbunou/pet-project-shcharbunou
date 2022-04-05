@@ -18,9 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Pattern;
 
 @Service("groupService")
@@ -48,7 +46,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group findGroupByAllParameters(GroupDesignation designation, GroupLevel level, GroupAge age,
-                                          List<EmbeddableDay> days, String time) throws GroupNotFoundException {
+                                          Collection<List<EmbeddableDay>> days, String time) throws GroupNotFoundException {
         Group group = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTime(designation, level, age,
                 days, time);
         if (Objects.nonNull(group)) {
@@ -83,7 +81,7 @@ public class GroupServiceImpl implements GroupService {
                 startingGroup.getDesignation(),
                 startingGroup.getLevel(),
                 startingGroup.getAge(),
-                startingGroup.getDays(),
+                Collections.singleton(startingGroup.getDays()),
                 startingGroup.getTime()
         );
         return Objects.nonNull(testDuplicateGroup);
