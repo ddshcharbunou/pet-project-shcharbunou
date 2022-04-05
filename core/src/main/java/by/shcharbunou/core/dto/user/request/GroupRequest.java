@@ -1,5 +1,6 @@
 package by.shcharbunou.core.dto.user.request;
 
+import by.shcharbunou.dal.entity.enums.group.Day;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
@@ -20,5 +21,5 @@ public class GroupRequest {
     private GroupLevel level;
     private GroupAge age;
     private String time;
-    private List<EmbeddableDay> days;
+    private List<Day> days;
 }
