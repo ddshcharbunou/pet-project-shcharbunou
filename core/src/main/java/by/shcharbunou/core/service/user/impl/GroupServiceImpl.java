@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user.impl;
 
 import by.shcharbunou.core.dto.user.request.GroupRequest;
+import by.shcharbunou.core.exception.GroupDuplicateException;
 import by.shcharbunou.core.exception.GroupNotFoundException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.exception.message.GroupMessage;
@@ -63,14 +64,29 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group createGroup(GroupRequest groupRequest) throws TimeFormatException {
+    public Group createGroup(GroupRequest groupRequest) throws TimeFormatException, GroupDuplicateException {
         Group startingGroup = groupMapper.groupRequestToGroup(groupRequest);
         String time = startingGroup.getTime();
         boolean isValidTimeFormat = checkTimeFormat(time);
         if (!isValidTimeFormat) {
             throw new TimeFormatException(TimeMessage.INVALID_TIME_FORMAT.getMessage());
         }
+        boolean isDuplicate = checkGroupDuplicate(startingGroup);
+        if (isDuplicate) {
+            throw new GroupDuplicateException(GroupMessage.GROUP_DUPLICATE.getMessage());
+        }
         return startingGroup;
+    }
+
+    private boolean checkGroupDuplicate(Group startingGroup) {
+        Group testDuplicateGroup = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTime(
+                startingGroup.getDesignation(),
+                startingGroup.getLevel(),
+                startingGroup.getAge(),
+                startingGroup.getDays(),
+                startingGroup.getTime()
+        );
+        return Objects.nonNull(testDuplicateGroup);
     }
 
     private boolean checkTimeFormat(String time) {

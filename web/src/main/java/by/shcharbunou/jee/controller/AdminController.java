@@ -2,6 +2,7 @@ package by.shcharbunou.jee.controller;
 
 import by.shcharbunou.core.dto.user.request.GroupRequest;
 import by.shcharbunou.core.exception.AdminNotFoundException;
+import by.shcharbunou.core.exception.GroupDuplicateException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.service.admin.AdminService;
 import by.shcharbunou.dal.entity.user.Group;
@@ -82,7 +83,7 @@ public class AdminController {
         Group group;
         try {
             group = adminService.getGroupService().createGroup(groupRequest);
-        } catch (TimeFormatException e) {
+        } catch (TimeFormatException | GroupDuplicateException e) {
             mav.addObject("error", e.getMessage());
             mav.setViewName("admin/group/add-group");
             return mav;

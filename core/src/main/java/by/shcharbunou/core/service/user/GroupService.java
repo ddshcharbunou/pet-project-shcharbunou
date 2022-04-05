@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user;
 
 import by.shcharbunou.core.dto.user.request.GroupRequest;
+import by.shcharbunou.core.exception.GroupDuplicateException;
 import by.shcharbunou.core.exception.GroupNotFoundException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
@@ -52,9 +53,10 @@ public interface GroupService {
 
     /**
      * Create new group.
-     * @param request request
+     * @param groupRequest group dto
      * @return group {@link Group}
-     * @throws TimeFormatException invalid time format (00:00)
+     * @throws TimeFormatException invalid time format
+     * @throws GroupDuplicateException group duplicated
      */
-    Group createGroup(GroupRequest groupRequest) throws TimeFormatException;
+    Group createGroup(GroupRequest groupRequest) throws TimeFormatException, GroupDuplicateException;
 }
