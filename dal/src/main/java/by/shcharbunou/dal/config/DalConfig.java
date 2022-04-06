@@ -66,7 +66,6 @@ public class DalConfig {
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
-        hibernateProperties.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
         hibernateProperties.setProperty("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
         hibernateProperties.setProperty("hibernate.jdbc.time_zone", environment.getProperty("hibernate.time_zone"));
         hibernateProperties.setProperty("jakarta.persistence.jdbc.isolation", environment.getProperty("hibernate.isolation"));
