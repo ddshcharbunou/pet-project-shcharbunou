@@ -18,12 +18,12 @@
     </div>
     <nav>
         <div class="menu" id="menu">
-            <a href="main">Пользователи</a>
+            <a href="<c:url value="/admin/user/control"/>">Пользователи</a>
             <a href="<c:url value="/admin/group/control"/>"><span class="current__link">Группы</span></a>
-            <a href="about">Домашка</a>
-            <a href="test">Блог</a>
-            <a href="blog">Фото</a>
-            <a href="contacts">Прочее</a>
+            <a href="<c:url value="/admin/homework/control"/>">Домашка</a>
+            <a href="<c:url value="/admin/blog/control"/>">Блог</a>
+            <a href="<c:url value="/admin/photo/control"/>">Фото</a>
+            <a href="<c:url value="/admin/other/control"/>">Прочее</a>
         </div>
     </nav>
     <a href="<c:url value="/sign-out"/>">

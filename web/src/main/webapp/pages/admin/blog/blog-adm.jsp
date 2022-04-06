@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lol Club - Удаление группы</title>
+    <title>Lol Club - Администрирование статей</title>
     <link rel="shortcut icon" href="<c:url value="/assets/img/sign-in.png"/>" type="image/png">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +19,9 @@
     <nav>
         <div class="menu" id="menu">
             <a href="<c:url value="/admin/user/control"/>">Пользователи</a>
-            <a href="<c:url value="/admin/group/control"/>"><span class="current__link">Группы</span></a>
+            <a href="<c:url value="/admin/group/control"/>">Группы</a>
             <a href="<c:url value="/admin/homework/control"/>">Домашка</a>
-            <a href="<c:url value="/admin/blog/control"/>">Блог</a>
+            <a href="<c:url value="/admin/blog/control"/>"><span class="current__link">Блог</span></a>
             <a href="<c:url value="/admin/photo/control"/>">Фото</a>
             <a href="<c:url value="/admin/other/control"/>">Прочее</a>
         </div>
@@ -35,9 +35,6 @@
         </div>
     </a>
 </header>
-<div class="adm__panel__text">
-    <p>AdmPanel</p>
-</div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

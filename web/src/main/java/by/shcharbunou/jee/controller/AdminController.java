@@ -77,6 +77,31 @@ public class AdminController {
         return new ModelAndView("admin/group/show-groups");
     }
 
+    @GetMapping("/admin/blog/control")
+    public ModelAndView getBlogAdminPanel() {
+        return new ModelAndView("admin/blog/blog-adm");
+    }
+
+    @GetMapping("/admin/homework/control")
+    public ModelAndView getHomeworkAdminPanel() {
+        return new ModelAndView("admin/homework/homework-adm");
+    }
+
+    @GetMapping("/admin/other/control")
+    public ModelAndView getOtherAdminPanel() {
+        return new ModelAndView("admin/other/other-adm");
+    }
+
+    @GetMapping("/admin/photo/control")
+    public ModelAndView getPhotoAdminPanel() {
+        return new ModelAndView("admin/photo/photo-adm");
+    }
+
+    @GetMapping("/admin/user/control")
+    public ModelAndView getUserAdminPanel() {
+        return new ModelAndView("admin/user/user-adm");
+    }
+
     @PostMapping("/admin/group/control/add-group")
     public ModelAndView testGroupAdd(GroupRequest groupRequest) {
         ModelAndView mav = new ModelAndView();
