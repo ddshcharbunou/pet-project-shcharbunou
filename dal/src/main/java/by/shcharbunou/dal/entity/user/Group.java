@@ -39,7 +39,7 @@ public class Group extends BaseEntity {
     @ElementCollection
     @CollectionTable(name = "group_days", joinColumns = @JoinColumn(name = "group_id"))
     @AttributeOverride(name = "day", column = @Column(name = "day"))
-    private List<EmbeddableDay> days = new ArrayList<>(7);
+    private List<EmbeddableDay> days;
 
     @Column(name = "group_time")
     private String time;
