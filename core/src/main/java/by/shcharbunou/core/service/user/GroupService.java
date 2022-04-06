@@ -42,7 +42,7 @@ public interface GroupService {
      * @throws GroupNotFoundException group not found
      */
     Group findGroupByAllParameters(GroupDesignation designation, GroupLevel level, GroupAge age,
-                                   Collection<List<EmbeddableDay>> days, String time) throws GroupNotFoundException;
+                                   List<EmbeddableDay> days, String time) throws GroupNotFoundException;
 
     /**
      * Find group by ID.
