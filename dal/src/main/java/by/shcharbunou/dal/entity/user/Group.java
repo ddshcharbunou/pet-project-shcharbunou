@@ -9,6 +9,7 @@ import by.shcharbunou.dal.entity.user.office.homework.Homework;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,7 +39,7 @@ public class Group extends BaseEntity {
     @ElementCollection
     @CollectionTable(name = "group_days", joinColumns = @JoinColumn(name = "group_id"))
     @AttributeOverride(name = "day", column = @Column(name = "day"))
-    private List<EmbeddableDay> days;
+    private List<EmbeddableDay> days = new ArrayList<>(7);
 
     @Column(name = "group_time")
     private String time;
