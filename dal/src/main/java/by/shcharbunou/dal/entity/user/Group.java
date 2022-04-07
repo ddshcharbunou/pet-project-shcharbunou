@@ -44,6 +44,9 @@ public class Group extends BaseEntity {
     @Column(name = "group_time")
     private String time;
 
+    @Column(name = "group_teacher")
+    private String teacher;
+
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private Set<User> users = new HashSet<>();
 

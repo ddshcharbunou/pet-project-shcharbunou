@@ -112,7 +112,11 @@
         </label>
         <label>
             <input class="admin__service__buttons__each" type="text" id="time" name="time" placeholder="Время (00:00)" required
-                   oninvalid="this.setCustomValidity('Введите time')" oninput="setCustomValidity('')">
+                   oninvalid="this.setCustomValidity('Введите время')" oninput="setCustomValidity('')">
+        </label>
+        <label>
+            <input class="admin__service__buttons__each" type="text" id="teacher" name="teacher" placeholder="Преподаватель" required
+                   oninvalid="this.setCustomValidity('Введите юзернейм преподавателя')" oninput="setCustomValidity('')">
         </label>
         <button class="admin__service__buttons__each" type="submit">Добавить</button>
     </form>

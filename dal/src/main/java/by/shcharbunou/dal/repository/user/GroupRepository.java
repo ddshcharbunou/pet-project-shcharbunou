@@ -25,6 +25,6 @@ public interface GroupRepository extends JpaRepository<Group, UUID> {
      * @param time time
      * @return group {@link Group}
      */
-    Group findByDesignationAndLevelAndAgeAndDaysInAndTime(GroupDesignation designation, GroupLevel level, GroupAge age,
-                                                          List<EmbeddableDay> days, String time);
+    Group findByDesignationAndLevelAndAgeAndDaysInAndTimeAndTeacher(GroupDesignation designation, GroupLevel level, GroupAge age,
+                                                          List<EmbeddableDay> days, String time, String teacher);
 }

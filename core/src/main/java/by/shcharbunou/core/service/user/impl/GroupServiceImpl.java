@@ -46,9 +46,9 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group findGroupByAllParameters(GroupDesignation designation, GroupLevel level, GroupAge age,
-                                          List<EmbeddableDay> days, String time) throws GroupNotFoundException {
-        Group group = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTime(designation, level, age,
-                days, time);
+                                          List<EmbeddableDay> days, String time, String teacher) throws GroupNotFoundException {
+        Group group = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTimeAndTeacher(designation, level, age,
+                days, time, teacher);
         if (Objects.nonNull(group)) {
             return group;
         }
@@ -77,12 +77,13 @@ public class GroupServiceImpl implements GroupService {
     }
 
     private boolean checkGroupDuplicate(Group startingGroup) {
-        Group testDuplicateGroup = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTime(
+        Group testDuplicateGroup = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTimeAndTeacher(
                 startingGroup.getDesignation(),
                 startingGroup.getLevel(),
                 startingGroup.getAge(),
                 startingGroup.getDays(),
-                startingGroup.getTime()
+                startingGroup.getTime(),
+                startingGroup.getTeacher()
         );
         return Objects.nonNull(testDuplicateGroup);
     }

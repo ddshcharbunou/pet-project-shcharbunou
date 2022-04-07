@@ -19,6 +19,7 @@ public class GroupRequest {
     private GroupDesignation designation;
     private GroupLevel level;
     private GroupAge age;
-    private String time;
     private List<Day> days;
+    private String time;
+    private String teacher;
 }
