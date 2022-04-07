@@ -24,15 +24,15 @@ import java.util.Set;
 @Table(name = "groups")
 @AttributeOverride(name = "id", column = @Column(name = "group_id"))
 public class Group extends BaseEntity {
-    @Column(name = "group_designation")
+    @Column(name = "group_designation", nullable = false)
     @Enumerated(EnumType.STRING)
     private GroupDesignation designation;
 
-    @Column(name = "group_level")
+    @Column(name = "group_level", nullable = false)
     @Enumerated(EnumType.STRING)
     private GroupLevel level;
 
-    @Column(name = "group_age")
+    @Column(name = "group_age", nullable = false)
     @Enumerated(EnumType.STRING)
     private GroupAge age;
 
@@ -41,10 +41,10 @@ public class Group extends BaseEntity {
     @AttributeOverride(name = "day", column = @Column(name = "day"))
     private List<EmbeddableDay> days = new ArrayList<>(7);
 
-    @Column(name = "group_time")
+    @Column(name = "group_time", nullable = false)
     private String time;
 
-    @Column(name = "group_teacher")
+    @Column(name = "group_teacher", nullable = false)
     private String teacher;
 
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
