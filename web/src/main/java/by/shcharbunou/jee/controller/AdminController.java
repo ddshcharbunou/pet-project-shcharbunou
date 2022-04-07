@@ -111,7 +111,8 @@ public class AdminController {
         Group group;
         try {
             group = adminService.getGroupService().createGroup(groupRequest);
-        } catch (TimeFormatException | GroupDuplicateException | UserNotFoundException e) {
+        } catch (TimeFormatException | GroupDuplicateException | UserNotFoundException
+                | AdminNotFoundException e) {
             mav.addObject("error", e.getMessage());
             mav.setViewName("admin/group/add-group");
             return mav;
