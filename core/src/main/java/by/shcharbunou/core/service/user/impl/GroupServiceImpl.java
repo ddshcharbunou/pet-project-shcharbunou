@@ -80,12 +80,10 @@ public class GroupServiceImpl implements GroupService {
         if (!isValidTimeFormat) {
             throw new TimeFormatException(TimeMessage.INVALID_TIME_FORMAT.getMessage());
         }
-        /*
         boolean isDuplicate = checkGroupDuplicate(startingGroup);
         if (isDuplicate) {
             throw new GroupDuplicateException(GroupMessage.GROUP_DUPLICATE.getMessage());
         }
-         */
         boolean isTeacherExists = checkTeacherUsername(startingGroup.getTeacher());
         if (!isTeacherExists) {
             throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
