@@ -4,6 +4,7 @@ import by.shcharbunou.core.dto.user.request.GroupRequest;
 import by.shcharbunou.core.exception.AdminNotFoundException;
 import by.shcharbunou.core.exception.GroupDuplicateException;
 import by.shcharbunou.core.exception.TimeFormatException;
+import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.service.admin.AdminService;
 import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Objects;
 
 @Log4j2
 @Controller
@@ -108,14 +111,19 @@ public class AdminController {
         Group group;
         try {
             group = adminService.getGroupService().createGroup(groupRequest);
-        } catch (TimeFormatException | GroupDuplicateException e) {
+        } catch (TimeFormatException | GroupDuplicateException | UserNotFoundException e) {
             mav.addObject("error", e.getMessage());
             mav.setViewName("admin/group/add-group");
             return mav;
         }
-        adminService.getGroupService().saveGroup(group);
-        mav.setViewName("admin/group/group-adm");
-        mav.addObject("message", "Группа успешно добавлена!");
+        Group savedGroup = adminService.getGroupService().saveGroup(group);
+        if (Objects.isNull(savedGroup)) {
+            mav.setViewName("admin/group/add-group");
+            mav.addObject("error", "Произошёл сбой: Группа не добавлена!");
+        } else {
+            mav.setViewName("admin/group/group-adm");
+            mav.addObject("message", "Группа успешно добавлена!");
+        }
         return mav;
     }
 }
