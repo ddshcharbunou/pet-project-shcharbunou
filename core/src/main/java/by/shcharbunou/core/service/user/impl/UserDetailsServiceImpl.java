@@ -31,6 +31,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (Objects.isNull(temporaryUser)) {
             throw new UsernameNotFoundException("Ошибка: Пользователя с таким юзернеймом не существует");
         }
+        if (Objects.nonNull(temporaryUser.getActivationCode())) {
+            throw new UsernameNotFoundException("Ошибка: Аккаунт не активирован");
+        }
         return new org.springframework.security.core.userdetails.User(temporaryUser.getUsername(),
                 temporaryUser.getPassword(), getUserAuthorities(temporaryUser));
     }

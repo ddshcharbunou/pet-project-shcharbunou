@@ -2,8 +2,10 @@ package by.shcharbunou.jee.controller;
 
 import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.dto.user.response.UserResponse;
+import by.shcharbunou.core.exception.UserNotActivatedException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
+import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
@@ -12,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Objects;
 
 @Log4j2
 @Controller
@@ -64,7 +68,10 @@ public class InteractionController {
         UserResponse userResponse = null;
         try {
             userResponse = userService.findUserResponseByUsername(authentication.getName());
-        } catch (UserNotFoundException e) {
+            if (Objects.nonNull(userResponse.getActivationCode())) {
+                throw new UserNotActivatedException(UserMessage.USER_NOT_ACTIVATED.getMessage());
+            }
+        } catch (UserNotFoundException | UserNotActivatedException e) {
             mav.addObject("error", e.getMessage());
         }
         mav.addObject("user", userResponse);
