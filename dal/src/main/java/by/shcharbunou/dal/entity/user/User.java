@@ -41,6 +41,9 @@ public class User extends BaseEntity {
     @JoinColumn(name = "group_id")
     private Group group;
 
+    @Column(name = "activation_code")
+    private String activationCode;
+
     @Deprecated
     public User() {}
 }

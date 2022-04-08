@@ -32,4 +32,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * @return user {@link User}
      */
     User findByEmail(String email);
+
+    User findByActivationCode(String code);
 }

@@ -7,6 +7,7 @@ import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.exception.message.ValidationMessage;
 import by.shcharbunou.core.mapper.user.UserMapper;
+import by.shcharbunou.core.service.mail.MailSender;
 import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
@@ -14,6 +15,7 @@ import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private final RoleService roleService;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
+    private final MailSender mailSender;
     private static final int MIN_NAME_AND_SURNAME_LENGTH = 2;
     private static final int MIN_USERNAME_LENGTH = 4;
     private static final int MIN_PASSWORD_LENGTH = 8;
@@ -38,12 +41,16 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleService roleService, UserMapper userMapper,
-                           PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder, MailSender mailSender) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
+        this.mailSender = mailSender;
     }
+
+    @Value("${activation.link}")
+    private String activationLink;
 
     @Override
     public User saveUser(User user) {
@@ -106,10 +113,38 @@ public class UserServiceImpl implements UserService {
             user = userMapper.userRequestToUser(userRequest);
             user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
             user.setRole(userRole);
+            user.setActivationCode(UUID.randomUUID().toString());
             user.setGroup(null);
         }
         userRole.connectUser(user);
         return user;
+    }
+
+    @Override
+    public boolean activateUser(String code) {
+        User user = userRepository.findByActivationCode(code);
+        if (Objects.isNull(user)) {
+            return false;
+        }
+        user.setActivationCode(null);
+
+        userRepository.save(user);
+
+        return true;
+    }
+
+    @Override
+    public void sendActivationCode(User user) {
+        String message = String.format(
+                "Hi, %s!\n" +
+                        "Thank you for registering in our school :)\n" +
+                        "To verify your account, go to the following link:\n" +
+                        activationLink + "%s",
+                user.getName(),
+                user.getActivationCode()
+        );
+
+        mailSender.send(user.getEmail(), "Активация аккаунта", message);
     }
 
     private boolean checkUsernameAvailability(UserRequest userRequest) {

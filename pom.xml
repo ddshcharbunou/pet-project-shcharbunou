@@ -40,6 +40,8 @@
         <javax.jsp.version>2.3.3</javax.jsp.version>
         <javax.jstl.version>1.2</javax.jstl.version>
         <javax.persistence.version>2.2</javax.persistence.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
     </properties>
 
     <dependencyManagement>
@@ -58,6 +60,12 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
@@ -158,6 +166,24 @@
                 <groupId>javax.persistence</groupId>
                 <artifactId>javax.persistence-api</artifactId>
                 <version>${javax.persistence.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>javax.mail-api</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>1.6.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>${javax.activation.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

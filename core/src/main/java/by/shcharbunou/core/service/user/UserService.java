@@ -73,4 +73,8 @@ public interface UserService {
      * @throws ValidationException validation exception
      */
     User createUser(UserRequest userRequest) throws ValidationException;
+
+    boolean activateUser(String code);
+
+    void sendActivationCode(User candidate);
 }

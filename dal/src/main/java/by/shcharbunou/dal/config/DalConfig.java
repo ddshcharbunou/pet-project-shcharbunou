@@ -27,7 +27,6 @@ import java.util.Properties;
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "by.shcharbunou.dal.repository")
-// @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class DalConfig {
     private Environment environment;
 

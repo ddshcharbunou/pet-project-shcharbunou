@@ -10,9 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Log4j2
@@ -34,14 +32,29 @@ public class InteractionController {
             User testUser = userService.saveUser(candidate);
             boolean isSaved = testUser.equals(candidate);
             if (isSaved) {
+                userService.sendActivationCode(candidate);
                 mav.setViewName("sign-in");
-                mav.addObject("message", "Вы зарегестрированы!");
+                mav.addObject("message", "Для активации аккаунта перейдите" +
+                        " по ссылке в вашем почтовом ящике");
             }
         } catch (ValidationException e) {
             mav.setViewName("sign-up");
             mav.addObject("error", e.getMessage());
             return mav;
         }
+        return mav;
+    }
+
+    @GetMapping("/activate/{code}")
+    public ModelAndView activateUser(@PathVariable String code) {
+        ModelAndView mav = new ModelAndView();
+        boolean isActivated = userService.activateUser(code);
+        if (isActivated) {
+            mav.addObject("message", "Аккаунт подтверждён!");
+        } else {
+            mav.addObject("message", "Ошибка: Аккаунт уже активирован!");
+        }
+        mav.setViewName("sign-in");
         return mav;
     }
 
