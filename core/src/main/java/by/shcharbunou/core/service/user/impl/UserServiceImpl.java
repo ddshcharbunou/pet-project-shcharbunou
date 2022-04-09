@@ -144,7 +144,7 @@ public class UserServiceImpl implements UserService {
                 user.getActivationCode()
         );
 
-        mailSender.send(user.getEmail(), "Активация аккаунта", message);
+        mailSender.send(user.getEmail(), "Activation", message);
     }
 
     private boolean checkUsernameAvailability(UserRequest userRequest) {
