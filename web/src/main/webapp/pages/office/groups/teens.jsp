@@ -35,12 +35,7 @@
         </div>
     </a>
 </header>
-<c:choose>
-    <c:when test="${sessionScope.user.group == null}">
-        <div class="adm__panel__text">Группы</div>
 
-    </c:when>
-</c:choose>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

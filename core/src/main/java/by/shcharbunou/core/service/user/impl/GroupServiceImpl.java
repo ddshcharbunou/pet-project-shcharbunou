@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user.impl;
 
 import by.shcharbunou.core.dto.user.request.GroupRequest;
+import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.exception.*;
 import by.shcharbunou.core.exception.message.AdminMessage;
 import by.shcharbunou.core.exception.message.GroupMessage;
@@ -19,13 +20,18 @@ import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.GroupRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
+@Log4j2
 @Service("groupService")
 @Transactional(transactionManager = "transactionManager")
 public class GroupServiceImpl implements GroupService {
@@ -34,6 +40,7 @@ public class GroupServiceImpl implements GroupService {
     private final RoleService roleService;
     private final GroupMapper groupMapper;
     private static final Pattern TIME_PATTERN = Pattern.compile("^(([0,1][0-9])|(2[0-3])):[0-5][0-9]$");
+    public static int totalPages;
 
     @Autowired
     public GroupServiceImpl(GroupRepository groupRepository, GroupMapper groupMapper, UserService userService,
@@ -93,6 +100,16 @@ public class GroupServiceImpl implements GroupService {
             throw new AdminNotFoundException(AdminMessage.TEACHER_NOT_ADMIN.getMessage());
         }
         return startingGroup;
+    }
+
+    @Override
+    public List<GroupResponse> findGroupsByAgePageable(GroupAge age, int page, int pageSize) {
+        Page<Group> groupsPage = groupRepository.findByAge(age, PageRequest.of(page, pageSize));
+        totalPages = groupsPage.getTotalPages();
+        log.info("Group pages: " + totalPages);
+        List<Group> groups = groupsPage.stream().collect(Collectors.toList());
+        log.info("Groups: " + groups);
+        return groupMapper.groupListToGroupResponseList(groups);
     }
 
     private boolean checkTeacherRole(String username) {

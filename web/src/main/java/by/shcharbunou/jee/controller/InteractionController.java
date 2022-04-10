@@ -1,12 +1,16 @@
 package by.shcharbunou.jee.controller;
 
 import by.shcharbunou.core.dto.user.request.UserRequest;
+import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.UserNotActivatedException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
+import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
+import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
+import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +19,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Objects;
 
 @Log4j2
 @Controller
-@SessionAttributes({"user", "ROLE"})
+@SessionAttributes({"user", "ROLE", "page"})
 public class InteractionController {
+    public static final int PAGE_SIZE = 4;
     private final UserService userService;
+    private final GroupService groupService;
 
     @Autowired
-    public InteractionController(UserService userService) {
+    public InteractionController(UserService userService, GroupService groupService) {
         this.userService = userService;
+        this.groupService = groupService;
     }
 
     @PostMapping("/sign-up")
@@ -78,5 +86,43 @@ public class InteractionController {
         mav.addObject("ROLE", authentication.getAuthorities().stream().findFirst().orElseThrow());
         mav.setViewName("office/office");
         return mav;
+    }
+
+    @GetMapping("/office/groups/kids/{page}")
+    public ModelAndView getKidGroups(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        GroupAge age = GroupAge.KIDS;
+        paginateGroups(age, mav, page);
+        mav.setViewName("/office/groups/kids");
+        return mav;
+    }
+
+    @GetMapping("/office/groups/teens/{page}")
+    public ModelAndView getTeenGroups(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        GroupAge age = GroupAge.TEENS;
+        paginateGroups(age, mav, page);
+        mav.setViewName("/office/groups/teens");
+        return mav;
+    }
+
+    @GetMapping("/office/groups/adults/{page}")
+    public ModelAndView getAdultGroups(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        GroupAge age = GroupAge.ADULTS;
+        paginateGroups(age, mav, page);
+        mav.setViewName("/office/groups/adults");
+        return mav;
+    }
+
+    private void paginateGroups(GroupAge age, ModelAndView mav, int page) {
+        log.info("Group age: " + age);
+        List<GroupResponse> groups = groupService.findGroupsByAgePageable(age, page - 1, PAGE_SIZE);
+        int pagesNumber = GroupServiceImpl.totalPages;
+        mav.addObject("pagesNumber", pagesNumber);
+        mav.addObject("groups", groups);
     }
 }

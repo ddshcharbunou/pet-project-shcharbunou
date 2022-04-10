@@ -1,6 +1,7 @@
 package by.shcharbunou.core.service.user;
 
 import by.shcharbunou.core.dto.user.request.GroupRequest;
+import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.exception.*;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
@@ -59,4 +60,13 @@ public interface GroupService {
      */
     Group createGroup(GroupRequest groupRequest) throws TimeFormatException, GroupDuplicateException,
             UserNotFoundException, AdminNotFoundException;
+
+    /**
+     * Find all groups with pagination.
+     * @param page page
+     * @param pageSize page size
+     * @param age age
+     * @return list of group responses {@link GroupResponse}
+     */
+    List<GroupResponse> findGroupsByAgePageable(GroupAge age, int page, int pageSize);
 }

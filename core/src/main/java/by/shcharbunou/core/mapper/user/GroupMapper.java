@@ -1,12 +1,15 @@
 package by.shcharbunou.core.mapper.user;
 
 import by.shcharbunou.core.dto.user.request.GroupRequest;
+import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.mapper.user.custom.DayToEmbeddableDayMapper;
 import by.shcharbunou.dal.entity.enums.group.Day;
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import by.shcharbunou.dal.entity.user.Group;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface GroupMapper {
@@ -27,4 +30,6 @@ public interface GroupMapper {
 
         return embeddableDay;
     }
+
+    List<GroupResponse> groupListToGroupResponseList(List<Group> groupList);
 }
