@@ -56,7 +56,7 @@ public class InteractionController {
         if (isActivated) {
             mav.addObject("message", "Аккаунт подтверждён!");
         } else {
-            mav.addObject("message", "Ошибка: Аккаунт уже активирован!");
+            mav.addObject("error", "Ошибка: Аккаунт уже активирован!");
         }
         mav.setViewName("sign-in");
         return mav;
