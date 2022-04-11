@@ -1,5 +1,6 @@
 package by.shcharbunou.jee.config;
 
+import by.shcharbunou.core.config.CoreConfig;
 import by.shcharbunou.dal.config.DalConfig;
 import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -7,7 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{DalConfig.class, SecurityConfig.class};
+        return new Class[]{DalConfig.class, SecurityConfig.class, CoreConfig.class};
     }
 
     @Override

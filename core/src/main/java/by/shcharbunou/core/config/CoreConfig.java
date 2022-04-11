@@ -2,10 +2,7 @@ package by.shcharbunou.core.config;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -15,6 +12,7 @@ import java.util.Properties;
 
 @Log4j2
 @Configuration
+@ComponentScan("by.shcharbunou")
 @PropertySource("classpath:core.properties")
 // @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class CoreConfig {
