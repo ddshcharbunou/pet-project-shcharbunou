@@ -38,17 +38,24 @@
 <c:choose>
     <c:when test="${sessionScope.user.group == null}">
         <div class="adm__panel__text">Группы</div>
-        <div class="group__ages">
-            <a href="<c:url value="/office/groups/kids/1"/>">
-                <img src="<c:url value="/assets/img/kid.png"/>" style="margin-right: 130px" width="320px" height="320px" alt="Kids">
-            </a>
-            <a href="<c:url value="/office/groups/teens/1"/>">
-                <img src="<c:url value="/assets/img/teen.png"/>" style="margin-right: 130px" width="320px" height="320px" alt="Teens">
-            </a>
-            <a href="<c:url value="/office/groups/adults/1"/>">
+        <a href="<c:url value="/office/groups/kids/1"/>">
+            <div class="group__age__kid">
+                <img src="<c:url value="/assets/img/kid.png"/>" width="320px" height="320px" alt="Kids">
+                <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 32px">Дети</p>
+            </div>
+        </a>
+        <a href="<c:url value="/office/groups/teens/1"/>">
+            <div class="group__age__teen">
+                <img src="<c:url value="/assets/img/teen.png"/>" width="320px" height="320px" alt="Teens">
+                <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 32px">Подростки</p>
+            </div>
+        </a>
+        <a href="<c:url value="/office/groups/adults/1"/>">
+            <div class="group__age__adult">
                 <img src="<c:url value="/assets/img/adult.png"/>" width="320px" height="320px" alt="Adults">
-            </a>
-        </div>
+                <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 32px">Взрослые</p>
+            </div>
+        </a>
     </c:when>
 </c:choose>
 <script src="<c:url value="/js/script.js"/>"></script>

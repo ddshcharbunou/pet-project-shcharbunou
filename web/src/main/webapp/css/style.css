@@ -837,10 +837,48 @@ nav {
     padding-bottom: 30px;
 }
 
-.group__ages {
+.group__age__kid {
     position: absolute;
-    width: 1300px;
-    height: 360px;
+    text-align: center;
     left: 150px;
+    width: 320px;
+    height: 360px;
     top: 250px;
+    transition: .4s ease-out;
 }
+
+.group__age__teen {
+    position: absolute;
+    text-align: center;
+    left: 600px;
+    width: 320px;
+    height: 360px;
+    top: 250px;
+    transition: .4s ease-out;
+}
+
+.group__age__adult {
+    position: absolute;
+    text-align: center;
+    left: 1050px;
+    width: 320px;
+    height: 360px;
+    top: 250px;
+    transition: .4s ease-out;
+}
+
+.group__age__kid:hover img {
+    transition: .4s ease-out;
+    transform: translate(0, -50px);
+}
+
+.group__age__teen:hover img {
+    transition: .4s ease-out;
+    transform: translate(0, -50px);
+}
+
+.group__age__adult:hover img {
+    transition: .4s ease-out;
+    transform: translate(0, -50px);
+}
+
