@@ -38,7 +38,17 @@
 <c:choose>
     <c:when test="${sessionScope.user.group == null}">
         <div class="adm__panel__text">Группы</div>
-
+        <div class="group__ages">
+            <a href="<c:url value="/office/groups/kids/1"/>">
+                <img src="<c:url value="/assets/img/kid.png"/>" style="margin-right: 130px" width="320px" height="320px" alt="Kids">
+            </a>
+            <a href="<c:url value="/office/groups/teens/1"/>">
+                <img src="<c:url value="/assets/img/teen.png"/>" style="margin-right: 130px" width="320px" height="320px" alt="Teens">
+            </a>
+            <a href="<c:url value="/office/groups/adults/1"/>">
+                <img src="<c:url value="/assets/img/adult.png"/>" width="320px" height="320px" alt="Adults">
+            </a>
+        </div>
     </c:when>
 </c:choose>
 <script src="<c:url value="/js/script.js"/>"></script>

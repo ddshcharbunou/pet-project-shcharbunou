@@ -836,3 +836,11 @@ nav {
     color: green;
     padding-bottom: 30px;
 }
+
+.group__ages {
+    position: absolute;
+    width: 1300px;
+    height: 360px;
+    left: 150px;
+    top: 250px;
+}
