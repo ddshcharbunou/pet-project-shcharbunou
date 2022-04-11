@@ -844,7 +844,8 @@ nav {
     width: 320px;
     height: 360px;
     top: 250px;
-    transition: .4s ease-out;
+    transition: .4s;
+    transform: translate(0, 0);
 }
 
 .group__age__teen {
@@ -854,7 +855,8 @@ nav {
     width: 320px;
     height: 360px;
     top: 250px;
-    transition: .4s ease-out;
+    transition: .4s;
+    transform: translate(0, 0);
 }
 
 .group__age__adult {
@@ -864,21 +866,37 @@ nav {
     width: 320px;
     height: 360px;
     top: 250px;
-    transition: .4s ease-out;
+    transition: .4s;
+    transform: translate(0, 0);
 }
 
 .group__age__kid:hover img {
-    transition: .4s ease-out;
+    transition: .4s;
     transform: translate(0, -50px);
 }
 
 .group__age__teen:hover img {
-    transition: .4s ease-out;
+    transition: .4s;
     transform: translate(0, -50px);
 }
 
 .group__age__adult:hover img {
-    transition: .4s ease-out;
+    transition: .4s;
     transform: translate(0, -50px);
+}
+
+.group__age__kid img {
+    transition: .4s;
+    transform: translate(0, 0);
+}
+
+.group__age__teen img {
+    transition: .4s;
+    transform: translate(0, 0);
+}
+
+.group__age__adult img {
+    transition: .4s;
+    transform: translate(0, 0);
 }
 
