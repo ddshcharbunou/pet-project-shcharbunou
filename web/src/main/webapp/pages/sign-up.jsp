@@ -78,7 +78,7 @@
         <button type="submit" class="sign__up__page__button">Регистрация</button>
     </div>
 </form>
-<div class="sign__up__error__message">
+<div class="sign__in__error__message">
     <c:if test="${requestScope.error != null}">
         <c:out value="${requestScope.error}"/>
     </c:if>

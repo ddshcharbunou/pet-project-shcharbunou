@@ -36,6 +36,14 @@ public class InteractionController {
         this.groupService = groupService;
     }
 
+    @PostMapping("sign-in")
+    public ModelAndView getSignInFail() {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("error", "Ошибка входа: Проверьте данные");
+        mav.setViewName("sign-in");
+        return mav;
+    }
+
     @PostMapping("/sign-up")
     public ModelAndView contributeUser(UserRequest userRequest) {
         ModelAndView mav = new ModelAndView();
