@@ -1,5 +1,6 @@
 package by.shcharbunou.dal.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
 import java.util.Objects;
 import java.util.Properties;
 
+@Slf4j
 @Configuration
 @ComponentScan("by.shcharbunou")
 @PropertySource("classpath:application.properties")
@@ -33,6 +35,7 @@ public class DalConfig {
     @Autowired
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+        log.debug("Environment initialized");
     }
 
     @Bean
@@ -41,6 +44,7 @@ public class DalConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("by.shcharbunou.dal.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
+        log.debug("SessionFactory initialized");
         return sessionFactory;
     }
 
@@ -51,6 +55,7 @@ public class DalConfig {
         dataSource.setUrl(environment.getProperty("jdbc.url"));
         dataSource.setUsername(environment.getProperty("jdbc.username"));
         dataSource.setPassword(environment.getProperty("jdbc.password"));
+        log.debug("DataSource initialized");
         return dataSource;
     }
 
@@ -58,6 +63,7 @@ public class DalConfig {
     public PlatformTransactionManager hibernateTransactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
+        log.debug("HibernateTransactionManager initialized");
         return transactionManager;
     }
 
@@ -68,20 +74,22 @@ public class DalConfig {
         hibernateProperties.setProperty("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
         hibernateProperties.setProperty("hibernate.jdbc.time_zone", environment.getProperty("hibernate.time_zone"));
         hibernateProperties.setProperty("jakarta.persistence.jdbc.isolation", environment.getProperty("hibernate.isolation"));
+        log.debug("HibernateProperties initialized");
         return hibernateProperties;
     }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan("by.shcharbunou.dal.entity");
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(dataSource());
+        entityManagerFactoryBean.setPackagesToScan("by.shcharbunou.dal.entity");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(hibernateProperties());
+        entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+        entityManagerFactoryBean.setJpaProperties(hibernateProperties());
 
-        return em;
+        log.debug("EntityManager initialized");
+        return entityManagerFactoryBean;
     }
 
     @Bean
@@ -89,6 +97,7 @@ public class DalConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 
+        log.debug("JpaTransactionManager initialized");
         return transactionManager;
     }
 

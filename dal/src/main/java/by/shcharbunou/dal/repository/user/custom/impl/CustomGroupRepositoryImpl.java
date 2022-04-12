@@ -6,6 +6,7 @@ import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.repository.user.custom.CustomGroupRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 @Repository("groupRepository")
 public class CustomGroupRepositoryImpl implements CustomGroupRepository {
     private final EntityManagerFactory entityManagerFactory;
@@ -27,6 +29,7 @@ public class CustomGroupRepositoryImpl implements CustomGroupRepository {
     @Autowired
     public CustomGroupRepositoryImpl(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
+        log.debug("CustomGroupRepository initialized");
     }
 
     @Override
