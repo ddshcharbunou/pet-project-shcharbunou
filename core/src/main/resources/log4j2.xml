@@ -4,16 +4,14 @@
         <Console name="STDOUT">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1.} - %msg%n"/>
         </Console>
-        <!--
         <RollingFile name="File" filePattern="/opt/apache-tomcat/9.0.60/logs/${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
                      immediateFlush="true">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1.} - %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="3 MB"/>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
             </Policies>
         </RollingFile>
-        -->
     </Appenders>
     <Loggers>
         <Logger name="by.shcharbunou.core" level="DEBUG" additivity="false">

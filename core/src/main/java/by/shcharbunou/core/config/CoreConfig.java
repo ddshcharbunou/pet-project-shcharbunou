@@ -1,8 +1,11 @@
 package by.shcharbunou.core.config;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -10,17 +13,17 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Objects;
 import java.util.Properties;
 
-@Log4j2
+@Slf4j
 @Configuration
 @ComponentScan("by.shcharbunou")
 @PropertySource("classpath:core.properties")
-// @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class CoreConfig {
     private Environment environment;
 
     @Autowired
-    public CoreConfig(Environment environment) {
+    public void setEnvironment(Environment environment) {
         this.environment = environment;
+        log.debug("Environment initialized");
     }
 
     @Bean
@@ -35,6 +38,7 @@ public class CoreConfig {
         properties.put("mail.smtp.starttls.enable", environment.getProperty("mail.smtp.starttls.enable"));
         properties.put("mail.transport.protocol", environment.getProperty("mail.transport.protocol"));
         properties.put("mail.debug", environment.getProperty("mail.debug"));
+        log.debug("JavaMailSender initialized");
         return mailSender;
     }
 }

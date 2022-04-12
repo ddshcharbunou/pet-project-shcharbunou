@@ -74,7 +74,16 @@ public interface UserService {
      */
     User createUser(UserRequest userRequest) throws ValidationException;
 
+    /**
+     * Activate user.
+     * @param code activation code
+     * @return activated or not
+     */
     boolean activateUser(String code);
 
-    void sendActivationCode(User candidate);
+    /**
+     * Send activation code.
+     * @param user user
+     */
+    void sendActivationCode(User user);
 }

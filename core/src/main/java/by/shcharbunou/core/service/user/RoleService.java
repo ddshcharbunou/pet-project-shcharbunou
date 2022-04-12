@@ -4,7 +4,7 @@ import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.user.Role;
 
 /**
- * Service for role entity.
+ * Service for Role entity.
  */
 public interface RoleService {
     /**

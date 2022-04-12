@@ -7,6 +7,7 @@ import by.shcharbunou.core.mapper.blog.ArticleMapper;
 import by.shcharbunou.core.service.blog.ArticleService;
 import by.shcharbunou.dal.entity.blog.Article;
 import by.shcharbunou.dal.repository.blog.ArticleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Objects;
 import java.util.UUID;
 
+@Slf4j
 @Service("articleService")
 @Transactional(transactionManager = "transactionManager")
 public class ArticleServiceImpl implements ArticleService {
@@ -24,6 +26,7 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper) {
         this.articleRepository = articleRepository;
         this.articleMapper = articleMapper;
+        log.debug("ArticleService initialized");
     }
 
 

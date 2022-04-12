@@ -14,6 +14,7 @@ import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +25,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+@Slf4j
 @Service("userService")
 @Transactional(transactionManager = "transactionManager")
 public class UserServiceImpl implements UserService {
@@ -47,6 +49,7 @@ public class UserServiceImpl implements UserService {
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
         this.mailSender = mailSender;
+        log.debug("UserService initialized");
     }
 
     @Value("${activation.link}")
@@ -117,6 +120,7 @@ public class UserServiceImpl implements UserService {
             user.setGroup(null);
         }
         userRole.connectUser(user);
+        log.info("User created: " + user);
         return user;
     }
 
@@ -130,6 +134,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
 
+        log.info("User activated: " + user);
         return true;
     }
 
@@ -200,6 +205,7 @@ public class UserServiceImpl implements UserService {
                 || !userRequest.getRepeated_password().equals(userRequest.getPassword())) {
             throw new ValidationException(ValidationMessage.REPEATED_PASSWORD_VALIDATION_MESSAGE.getMessage());
         }
+        log.info("User validated: " + userRequest);
         return true;
     }
 }

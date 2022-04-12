@@ -20,18 +20,20 @@ import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.GroupRepository;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Log4j2
+@Slf4j
 @Service("groupService")
 @Transactional(transactionManager = "transactionManager")
 public class GroupServiceImpl implements GroupService {
@@ -49,6 +51,7 @@ public class GroupServiceImpl implements GroupService {
         this.groupMapper = groupMapper;
         this.userService = userService;
         this.roleService = roleService;
+        log.debug("GroupService initialized");
     }
 
     @Override
@@ -67,8 +70,10 @@ public class GroupServiceImpl implements GroupService {
         Group group = groupRepository.findByDesignationAndLevelAndAgeAndDaysInAndTimeAndTeacher(designation, level, age,
                 days, time, teacher);
         if (Objects.nonNull(group)) {
+            log.info("Group founded: " + group);
             return group;
         }
+        log.error("Group not found");
         throw new GroupNotFoundException(GroupMessage.GROUP_NOT_FOUND.getMessage());
     }
 
@@ -85,20 +90,29 @@ public class GroupServiceImpl implements GroupService {
         String time = startingGroup.getTime();
         boolean isValidTimeFormat = checkTimeFormat(time);
         if (!isValidTimeFormat) {
+            log.error("Time format not admissible: " + time);
             throw new TimeFormatException(TimeMessage.INVALID_TIME_FORMAT.getMessage());
         }
+        log.info("Time format admissible: " + time);
         boolean isDuplicate = checkGroupDuplicate(startingGroup);
         if (isDuplicate) {
+            log.error("Group already exists");
             throw new GroupDuplicateException(GroupMessage.GROUP_DUPLICATE.getMessage());
         }
+        log.info("Group is not duplicated");
         boolean isTeacherExists = checkTeacherUsername(startingGroup.getTeacher());
         if (!isTeacherExists) {
+            log.error("Teacher is not exists" + startingGroup.getTeacher());
             throw new UserNotFoundException(UserMessage.USER_NOT_FOUND.getMessage());
         }
+        log.info("Teacher exists");
         boolean isTeacherAdmin = checkTeacherRole(startingGroup.getTeacher());
         if (!isTeacherAdmin) {
+            log.error("Teacher is not admin" + startingGroup.getTeacher());
             throw new AdminNotFoundException(AdminMessage.TEACHER_NOT_ADMIN.getMessage());
         }
+        log.info("Teacher admissible" + startingGroup.getTeacher());
+        log.info("Group created: " + startingGroup);
         return startingGroup;
     }
 
