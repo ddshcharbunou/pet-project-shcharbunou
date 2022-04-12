@@ -40,9 +40,23 @@
         <c:forEach var="group" items="${requestScope.groups}">
             <li>
                 <div class="group__card">
-                    <p>${group.designation} (${group.level})</p>
-                    <p><img src="<c:url value="/assets/img/clock.png"/>" width="24px" height="24px" alt="Time:">${group.time}</p>
+                    <p>${group.designation.designation} (${group.level})</p><br>
+                    <p><img src="<c:url value="/assets/img/clock.png"/>" style="transform: translate(0, 6px)"
+                            width="24px" height="24px" alt="Time:"> ${group.time}</p>
+                    <p><img src="<c:url value="/assets/img/calendar.png"/>" style="transform: translate(0, 6px)"
+                            width="24px" height="24px" alt="Days:"> ${group.days}</p>
                 </div>
+            </li>
+        </c:forEach>
+    </div>
+</ul>
+<ul>
+    <div class="page__style__under">
+        <c:forEach begin="1" end="${requestScope.pagesNumber}" var="i">
+            <li>
+                <a href="<c:url value="/office/groups/kids/${i}"/>">
+                    <button class="page__each" type="button">${i}</button>
+                </a>
             </li>
         </c:forEach>
     </div>

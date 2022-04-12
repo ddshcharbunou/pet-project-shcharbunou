@@ -1,10 +1,7 @@
 package by.shcharbunou.dal.entity.enums.group.connector;
 
 import by.shcharbunou.dal.entity.enums.group.Day;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
@@ -18,4 +15,9 @@ import javax.persistence.Enumerated;
 public class EmbeddableDay {
     @Enumerated(EnumType.STRING)
     private Day day;
+
+    @Override
+    public String toString() {
+        return day.getDay();
+    }
 }
