@@ -8,7 +8,7 @@ import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.service.admin.AdminService;
 import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Objects;
 
-@Log4j2
+@Slf4j
 @Controller
 @SessionAttributes({"user", "ROLE"})
 public class AdminController {
@@ -28,6 +28,7 @@ public class AdminController {
     @Autowired
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
+        log.debug("AdminController initialized");
     }
 
     @GetMapping("/admin")
@@ -106,7 +107,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/group/control/add-group")
-    public ModelAndView testGroupAdd(GroupRequest groupRequest) {
+    public ModelAndView addGroup(GroupRequest groupRequest) {
         ModelAndView mav = new ModelAndView();
         Group group;
         try {

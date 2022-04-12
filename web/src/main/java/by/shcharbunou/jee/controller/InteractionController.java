@@ -12,17 +12,20 @@ import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.user.User;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Objects;
 
-@Log4j2
+@Slf4j
 @Controller
 @SessionAttributes({"user", "ROLE", "page"})
 public class InteractionController {
@@ -34,6 +37,7 @@ public class InteractionController {
     public InteractionController(UserService userService, GroupService groupService) {
         this.userService = userService;
         this.groupService = groupService;
+        log.debug("InteractionController initialized");
     }
 
     @PostMapping("sign-in")
