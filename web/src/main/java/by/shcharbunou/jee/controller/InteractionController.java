@@ -29,7 +29,7 @@ import java.util.Objects;
 @Controller
 @SessionAttributes({"user", "ROLE", "page"})
 public class InteractionController {
-    public static final int PAGE_SIZE = 4;
+    public static final int PAGE_SIZE = 6;
     private final UserService userService;
     private final GroupService groupService;
 

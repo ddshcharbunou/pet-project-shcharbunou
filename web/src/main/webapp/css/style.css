@@ -900,3 +900,51 @@ nav {
     transform: translate(0, 0);
 }
 
+.group__under__card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+
+    position: absolute;
+    width: 1300px;
+    height: 432px;
+    left: 140px;
+    top: 100px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.group__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #1B212D;
+
+    position: static;
+    width: 360px;
+    height: 196px;
+    left: 0;
+    top: 0;
+
+    /* Primary / White */
+    background: #FBFF41;
+    box-shadow: 0 10px 35px rgba(61, 58, 58, 0.06);
+    border-radius: 20px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+

@@ -35,7 +35,18 @@
         </div>
     </a>
 </header>
-
+<ul>
+    <div class="group__under__card">
+        <c:forEach var="group" items="${requestScope.groups}">
+            <li>
+                <div class="group__card">
+                    <p>${group.designation} (${group.level})</p>
+                    <p><img src="<c:url value="/assets/img/clock.png"/>" width="24px" height="24px" alt="Time:">${group.time}</p>
+                </div>
+            </li>
+        </c:forEach>
+    </div>
+</ul>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
