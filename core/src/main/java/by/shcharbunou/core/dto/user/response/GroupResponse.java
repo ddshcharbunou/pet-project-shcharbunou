@@ -24,6 +24,7 @@ public class GroupResponse {
     private GroupAge age;
     private List<EmbeddableDay> days;
     private String time;
+    private String teacher;
     private Set<User> users;
     private Set<Homework> homeworks;
 }

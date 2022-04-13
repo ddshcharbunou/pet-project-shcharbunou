@@ -947,6 +947,7 @@ nav {
     flex-grow: 0;
     margin-right: 30px;
     margin-bottom: 20px;
+    transition: .4s;
 }
 
 .pagination__left__button__active {
@@ -1021,4 +1022,29 @@ nav {
     font-size: xx-large;
     border: 3px solid #555503;
     border-radius: 5px;
+}
+
+.group__card__button {
+    color: #1B212D;
+    background: #FBFF41;
+    border-radius: 15px;
+    border: 3px solid #FBFF41;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    width: 200px;
+    height: 50px;
+    transition: .4s;
+}
+
+.group__card__button:hover {
+    color: #FBFF41;
+    background: #1B212D;
+    transition: .4s;
+}
+
+.group__card a {
+    position: absolute;
+    margin-top: 140px;
+    margin-left: 70px;
+    border-radius: 15px;
 }

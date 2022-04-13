@@ -43,8 +43,18 @@
                     <p>${group.designation.designation} (${group.level})</p><br>
                     <p><img src="<c:url value="/assets/img/clock.png"/>" style="transform: translate(0, 6px)"
                             width="24px" height="24px" alt="Time:"> ${group.time}</p>
-                    <p><img src="<c:url value="/assets/img/calendar.png"/>" style="transform: translate(0, 6px)"
-                            width="24px" height="24px" alt="Days:"> ${group.days}</p>
+                    <p>
+                        <img src="<c:url value="/assets/img/calendar.png"/>" style="transform: translate(0, 6px)"
+                            width="24px" height="24px" alt="Days:">
+                        <c:forEach var="day" items="${group.days}">
+                            ${day}
+                        </c:forEach>
+                    </p>
+                    <p><img src="<c:url value="/assets/img/adult.png"/>" style="transform: translate(0, 6px)"
+                            width="24px" height="24px" alt="Teacher:"> ${group.teacher}</p>
+                    <a href="">
+                        <button class="group__card__button" type="button">Подать заявку</button>
+                    </a>
                 </div>
             </li>
         </c:forEach>
