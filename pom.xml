@@ -36,7 +36,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <lombok.version>1.18.22</lombok.version>
         <log4j.version>2.17.1</log4j.version>
-        <slf4j.version>2.0.0-alpha7</slf4j.version>
+        <slf4j.version>1.7.36</slf4j.version>
         <log4j-slf4j-impl.version>2.17.2</log4j-slf4j-impl.version>
         <aspectj.version>1.9.8</aspectj.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
@@ -141,21 +141,18 @@
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
+                <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
                 <version>${log4j-slf4j-impl.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
-                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -197,7 +194,7 @@
             <dependency>
                 <groupId>com.sun.mail</groupId>
                 <artifactId>javax.mail</artifactId>
-                <version>1.6.2</version>
+                <version>${javax.mail.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.activation</groupId>

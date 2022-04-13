@@ -1,11 +1,9 @@
 package by.shcharbunou.core.config;
 
+import by.shcharbunou.core.aspect.CoreAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -17,6 +15,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan("by.shcharbunou")
 @PropertySource("classpath:core.properties")
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class CoreConfig {
     private Environment environment;
 
@@ -24,6 +23,12 @@ public class CoreConfig {
     public void setEnvironment(Environment environment) {
         this.environment = environment;
         log.debug("Environment initialized");
+    }
+
+    @Bean
+    public CoreAspect coreAspect() {
+        log.debug("CoreAspect initialized");
+        return new CoreAspect();
     }
 
     @Bean
