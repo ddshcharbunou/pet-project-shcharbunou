@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,5 +19,6 @@ public class UserResponse {
     private String email;
     private String phone;
     private String activationCode;
+    private UUID groupClaim;
     private Group group;
 }

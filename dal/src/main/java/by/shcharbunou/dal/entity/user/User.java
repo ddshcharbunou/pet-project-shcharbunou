@@ -4,6 +4,7 @@ import by.shcharbunou.dal.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -43,6 +44,9 @@ public class User extends BaseEntity {
 
     @Column(name = "activation_code")
     private String activationCode;
+
+    @Column(name = "group_claim")
+    private UUID groupClaim;
 
     @Deprecated
     public User() {}

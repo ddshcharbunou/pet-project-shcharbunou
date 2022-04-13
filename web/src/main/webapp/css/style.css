@@ -1036,6 +1036,24 @@ nav {
     transition: .4s;
 }
 
+.group__card__button__non__active {
+    color: #1B212D;
+    background: #555503;
+    border-radius: 15px;
+    border: 3px solid #555503;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    width: 200px;
+    height: 50px;
+}
+
+.group__card__button__non__active a {
+    position: absolute;
+    margin-top: 140px;
+    margin-left: 70px;
+    border-radius: 15px;
+}
+
 .group__card__button:hover {
     color: #FBFF41;
     background: #1B212D;
@@ -1047,4 +1065,26 @@ nav {
     margin-top: 140px;
     margin-left: 70px;
     border-radius: 15px;
+}
+
+.claim__success__message {
+    position: absolute;
+    width: 400px;
+    left: 570px;
+    top: 670px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    padding-bottom: 30px;
+}
+
+.claim__failure__message {
+    position: absolute;
+    width: 400px;
+    left: 570px;
+    top: 670px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+    padding-bottom: 30px;
 }

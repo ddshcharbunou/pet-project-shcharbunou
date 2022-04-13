@@ -3,27 +3,28 @@ package by.shcharbunou.jee.controller;
 import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.dto.user.response.UserResponse;
+import by.shcharbunou.core.exception.ClaimDuplicateException;
 import by.shcharbunou.core.exception.UserNotActivatedException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.core.exception.message.UserMessage;
+import by.shcharbunou.core.service.user.ClaimService;
 import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
+import by.shcharbunou.dal.entity.user.Claim;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Slf4j
 @Controller
@@ -32,11 +33,13 @@ public class InteractionController {
     public static final int PAGE_SIZE = 6;
     private final UserService userService;
     private final GroupService groupService;
+    private final ClaimService claimService;
 
     @Autowired
-    public InteractionController(UserService userService, GroupService groupService) {
+    public InteractionController(UserService userService, GroupService groupService, ClaimService claimService) {
         this.userService = userService;
         this.groupService = groupService;
+        this.claimService = claimService;
         log.debug("InteractionController initialized");
     }
 
@@ -127,6 +130,54 @@ public class InteractionController {
         GroupAge age = GroupAge.ADULTS;
         paginateGroups(age, mav, page);
         mav.setViewName("/office/groups/adults");
+        return mav;
+    }
+
+    @GetMapping("/office/claims/create/{group}")
+    public ModelAndView createUserGroupClaim(@PathVariable("group") UUID groupID,
+                                             @SessionAttribute("user") UserResponse userResponse) {
+        ModelAndView mav = new ModelAndView();
+        User user;
+        Claim claim;
+        try {
+            user = userService.findUserByUsername(userResponse.getUsername());
+            user.setGroupClaim(groupID);
+            userService.saveUser(user);
+            userResponse = userService.findUserResponseByUsername(user.getUsername());
+            claim = claimService.createClaim(user.getId(), groupID);
+        } catch (UserNotFoundException | ClaimDuplicateException e) {
+            mav.addObject("user", userResponse);
+            mav.addObject("error", e.getMessage());
+            mav.setViewName("/office/office");
+            log.error("SOMETHING WRONG");
+            return mav;
+        }
+        claimService.saveClaim(claim);
+        mav.addObject("user", userResponse);
+        mav.addObject("message", "Заявка успешно подана!");
+        mav.setViewName("/office/office");
+        return mav;
+    }
+
+    @GetMapping("/office/claims/delete/{group}")
+    public ModelAndView deleteUserGroupClaim(@PathVariable("group") UUID groupID,
+                                             @SessionAttribute("user") UserResponse userResponse) {
+        ModelAndView mav = new ModelAndView();
+        Claim claim = null;
+        User user;
+        try {
+            user = userService.findUserByUsername(userResponse.getUsername());
+            user.setGroupClaim(null);
+            claim = claimService.findClaimByUserID(user.getId());
+            userService.saveUser(user);
+            userResponse = userService.findUserResponseByUsername(user.getUsername());
+        } catch (UserNotFoundException e) {
+            log.error("SOMETHING WRONG");
+        }
+        claimService.deleteClaim(claim);
+        mav.addObject("user", userResponse);
+        mav.addObject("message", "Заявка успешно отменена!");
+        mav.setViewName("/office/office");
         return mav;
     }
 

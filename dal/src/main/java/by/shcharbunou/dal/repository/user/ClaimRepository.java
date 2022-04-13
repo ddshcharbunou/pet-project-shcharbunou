@@ -12,4 +12,7 @@ import java.util.UUID;
  */
 @Repository("claimRepository")
 public interface ClaimRepository extends JpaRepository<Claim, UUID> {
+    Claim findByGroupID(UUID id);
+
+    Claim findByUserID(UUID id);
 }

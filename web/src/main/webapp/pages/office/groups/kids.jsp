@@ -26,12 +26,14 @@
             <a href="<c:url value="/contacts"/>">Контакты</a>
         </div>
     </nav>
-    <a href="<c:url value="/sign-in"/>">
+    <a href="<c:url value="/office"/>">
         <div class="sign__in">
             <div class="sign__in__logo">
                 <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
             </div>
-            <div class="sign__in__text">Выйти</div>
+            <div class="sign__in__text">
+                <c:out value="${sessionScope.user.username}"/>
+            </div>
         </div>
     </a>
 </header>
@@ -45,16 +47,33 @@
                             width="24px" height="24px" alt="Time:"> ${group.time}</p>
                     <p>
                         <img src="<c:url value="/assets/img/calendar.png"/>" style="transform: translate(0, 6px)"
-                            width="24px" height="24px" alt="Days:">
+                             width="24px" height="24px" alt="Days:">
                         <c:forEach var="day" items="${group.days}">
                             ${day}
                         </c:forEach>
                     </p>
                     <p><img src="<c:url value="/assets/img/adult.png"/>" style="transform: translate(0, 6px)"
                             width="24px" height="24px" alt="Teacher:"> ${group.teacher}</p>
-                    <a href="">
-                        <button class="group__card__button" type="button">Подать заявку</button>
-                    </a>
+                    <c:choose>
+                        <c:when test="${sessionScope.user.groupClaim == null}">
+                            <a href="<c:url value="/office/claims/create/${group.id}"/>">
+                                <button class="group__card__button" type="button">Подать заявку</button>
+                            </a>
+                        </c:when>
+                        <c:when test="${sessionScope.user.groupClaim == group.id}">
+                            <a href="<c:url value="/office/claims/delete/${group.id}"/>">
+                                <button class="group__card__button" type="button">Отменить заявку</button>
+                            </a>
+                        </c:when>
+                        <c:when test="${sessionScope.user.groupClaim != group.id}">
+                            <c:if test="${sessionScope.user.groupClaim != null}">
+                                <a>
+                                    <button class="group__card__button__non__active" type="button">Подать заявку
+                                    </button>
+                                </a>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
                 </div>
             </li>
         </c:forEach>

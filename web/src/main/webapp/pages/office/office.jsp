@@ -56,6 +56,16 @@
                 <p style="color: #FBFF41; font-family: 'Montserrat', sans-serif; font-size: 32px">Взрослые</p>
             </div>
         </a>
+        <div class="claim__success__message">
+            <c:if test="${requestScope.message != null}">
+                <c:out value="${requestScope.message}"/>
+            </c:if>
+        </div>
+        <div class="claim__failure__message">
+            <c:if test="${requestScope.error != null}">
+                <c:out value="${requestScope.error}"/>
+            </c:if>
+        </div>
     </c:when>
 </c:choose>
 <script src="<c:url value="/js/script.js"/>"></script>

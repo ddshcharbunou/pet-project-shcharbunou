@@ -13,12 +13,14 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupResponse {
+    private UUID id;
     private GroupDesignation designation;
     private GroupLevel level;
     private GroupAge age;
