@@ -1,11 +1,17 @@
 package by.shcharbunou.jee.controller;
 
+import by.shcharbunou.core.dto.user.ClaimDto;
 import by.shcharbunou.core.dto.user.request.GroupRequest;
+import by.shcharbunou.core.dto.user.response.GroupResponse;
+import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.AdminNotFoundException;
 import by.shcharbunou.core.exception.GroupDuplicateException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.service.admin.AdminService;
+import by.shcharbunou.core.service.user.impl.ClaimServiceImpl;
+import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
+import by.shcharbunou.core.service.user.impl.UserServiceImpl;
 import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +24,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Slf4j
 @Controller
@@ -127,13 +135,38 @@ public class AdminController {
     }
 
     @GetMapping("/admin/group/control/claims/{page}")
-    public ModelAndView getClaimsPanel(@PathVariable("page") int page) {
+    public ModelAndView getClaimsManagement(@PathVariable("page") int page) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("page", page);
-        return null;
+        paginateGroups(mav, page);
+        mav.setViewName("/admin/group/claims");
+        return mav;
     }
 
-    private void paginateClaims() {
+    @GetMapping("/admin/group/control/claims/users/{group}/{page}")
+    public ModelAndView getUsersClaimsManagement(@PathVariable("group") UUID groupID,
+                                                 @PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        mav.addObject("group", groupID);
+        paginateUsersClaims(groupID, mav, page);
+        mav.setViewName("/admin/group/claims-users");
+        return mav;
+    }
 
+    private void paginateGroups(ModelAndView mav, int page) {
+        List<GroupResponse> groups = adminService.getGroupService().findAllGroupsPageable(page - 1, PAGE_SIZE);
+        int pagesNumber = GroupServiceImpl.totalPages;
+        mav.addObject("pagesNumber", pagesNumber);
+        mav.addObject("groups", groups);
+    }
+
+    private void paginateUsersClaims(UUID claim, ModelAndView mav, int page) {
+        List<UserResponse> users = adminService
+                .getUserService()
+                .findAllUsersByClaimPageable(claim, page - 1, PAGE_SIZE);
+        int pagesNumber = UserServiceImpl.totalUserClaimPages;
+        mav.addObject("pagesNumber", pagesNumber);
+        mav.addObject("users", users);
     }
 }

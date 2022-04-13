@@ -6,6 +6,7 @@ import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
 import by.shcharbunou.dal.entity.user.User;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -86,4 +87,13 @@ public interface UserService {
      * @param user user
      */
     void sendActivationCode(User user);
+
+    /**
+     * Find all users by claim pageable.
+     * @param claim claim
+     * @param page page
+     * @param pageSize page size
+     * @return list of users {@link User}
+     */
+    List<UserResponse> findAllUsersByClaimPageable(UUID claim, int page, int pageSize);
 }

@@ -108,7 +108,7 @@ public class InteractionController {
         ModelAndView mav = new ModelAndView();
         mav.addObject("page", page);
         GroupAge age = GroupAge.KIDS;
-        paginateGroups(age, mav, page);
+        paginateAgeGroups(age, mav, page);
         mav.setViewName("/office/groups/kids");
         return mav;
     }
@@ -118,7 +118,7 @@ public class InteractionController {
         ModelAndView mav = new ModelAndView();
         mav.addObject("page", page);
         GroupAge age = GroupAge.TEENS;
-        paginateGroups(age, mav, page);
+        paginateAgeGroups(age, mav, page);
         mav.setViewName("/office/groups/teens");
         return mav;
     }
@@ -128,7 +128,7 @@ public class InteractionController {
         ModelAndView mav = new ModelAndView();
         mav.addObject("page", page);
         GroupAge age = GroupAge.ADULTS;
-        paginateGroups(age, mav, page);
+        paginateAgeGroups(age, mav, page);
         mav.setViewName("/office/groups/adults");
         return mav;
     }
@@ -181,10 +181,10 @@ public class InteractionController {
         return mav;
     }
 
-    private void paginateGroups(GroupAge age, ModelAndView mav, int page) {
+    private void paginateAgeGroups(GroupAge age, ModelAndView mav, int page) {
         log.info("Group age: " + age);
         List<GroupResponse> groups = groupService.findGroupsByAgePageable(age, page - 1, PAGE_SIZE);
-        int pagesNumber = GroupServiceImpl.totalPages;
+        int pagesNumber = GroupServiceImpl.totalAgePages;
         mav.addObject("pagesNumber", pagesNumber);
         mav.addObject("groups", groups);
     }

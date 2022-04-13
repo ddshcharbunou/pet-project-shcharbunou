@@ -11,19 +11,24 @@ import by.shcharbunou.core.service.mail.MailSender;
 import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
+import by.shcharbunou.dal.entity.user.Claim;
 import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service("userService")
@@ -40,6 +45,7 @@ public class UserServiceImpl implements UserService {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
     private static final Pattern PHONE_PATTERN =
             Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
+    public static int totalUserClaimPages;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleService roleService, UserMapper userMapper,
@@ -150,6 +156,16 @@ public class UserServiceImpl implements UserService {
         );
 
         mailSender.send(user.getEmail(), "Activation", message);
+    }
+
+    @Override
+    public List<UserResponse> findAllUsersByClaimPageable(UUID claim, int page, int pageSize) {
+        Page<User> usersPage = userRepository.findByGroupClaim(claim, PageRequest.of(page, pageSize));
+        totalUserClaimPages = usersPage.getTotalPages();
+        log.info("Users pages: " + totalUserClaimPages);
+        List<User> users = usersPage.stream().collect(Collectors.toList());
+        log.info("Users: " + users);
+        return userMapper.userListToUserResponseList(users);
     }
 
     private boolean checkUsernameAvailability(UserRequest userRequest) {

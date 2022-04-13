@@ -42,6 +42,7 @@ public class GroupServiceImpl implements GroupService {
     private final RoleService roleService;
     private final GroupMapper groupMapper;
     private static final Pattern TIME_PATTERN = Pattern.compile("^(([0,1][0-9])|(2[0-3])):[0-5][0-9]$");
+    public static int totalAgePages;
     public static int totalPages;
 
     @Autowired
@@ -119,6 +120,16 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public List<GroupResponse> findGroupsByAgePageable(GroupAge age, int page, int pageSize) {
         Page<Group> groupsPage = groupRepository.findByAge(age, PageRequest.of(page, pageSize));
+        totalAgePages = groupsPage.getTotalPages();
+        log.info("Group pages: " + totalAgePages);
+        List<Group> groups = groupsPage.stream().collect(Collectors.toList());
+        log.info("Groups: " + groups);
+        return groupMapper.groupListToGroupResponseList(groups);
+    }
+
+    @Override
+    public List<GroupResponse> findAllGroupsPageable(int page, int pageSize) {
+        Page<Group> groupsPage = groupRepository.findAll(PageRequest.of(page, pageSize));
         totalPages = groupsPage.getTotalPages();
         log.info("Group pages: " + totalPages);
         List<Group> groups = groupsPage.stream().collect(Collectors.toList());

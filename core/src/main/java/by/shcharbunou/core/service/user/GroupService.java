@@ -8,6 +8,7 @@ import by.shcharbunou.dal.entity.enums.group.GroupDesignation;
 import by.shcharbunou.dal.entity.enums.group.GroupLevel;
 import by.shcharbunou.dal.entity.enums.group.connector.EmbeddableDay;
 import by.shcharbunou.dal.entity.user.Group;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.UUID;
@@ -61,11 +62,19 @@ public interface GroupService {
             UserNotFoundException, AdminNotFoundException;
 
     /**
-     * Find all groups with pagination.
+     * Find all groups by age with pagination.
      * @param page page
      * @param pageSize page size
      * @param age age
      * @return list of group responses {@link GroupResponse}
      */
     List<GroupResponse> findGroupsByAgePageable(GroupAge age, int page, int pageSize);
+
+    /**
+     * Find all groups pageable.
+     * @param page page
+     * @param pageSize page size
+     * @return list of group responses {@link GroupResponse}
+     */
+    List<GroupResponse> findAllGroupsPageable(int page, int pageSize);
 }

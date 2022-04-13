@@ -1,6 +1,8 @@
 package by.shcharbunou.dal.repository.user;
 
 import by.shcharbunou.dal.entity.user.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +35,17 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     User findByEmail(String email);
 
+    /**
+     * Find user by activation code.
+     * @param code activation code
+     * @return user {@link User}
+     */
     User findByActivationCode(String code);
+
+    /**
+     * Find all users by claims.
+     * @param claim claim
+     * @return page of users {@link User}
+     */
+    Page<User> findByGroupClaim(UUID claim, Pageable pageable);
 }

@@ -1088,3 +1088,21 @@ nav {
     color: red;
     padding-bottom: 30px;
 }
+
+.user__card__button {
+    color: #1B212D;
+    background: #FBFF41;
+    border-radius: 15px;
+    border: 3px solid #FBFF41;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    width: 130px;
+    height: 50px;
+    transition: .4s;
+}
+
+.user__card__button:hover {
+    color: #FBFF41;
+    background: #1B212D;
+    transition: .4s;
+}

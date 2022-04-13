@@ -1,5 +1,6 @@
 package by.shcharbunou.core.service.user;
 
+import by.shcharbunou.core.dto.user.ClaimDto;
 import by.shcharbunou.core.exception.ClaimDuplicateException;
 import by.shcharbunou.dal.entity.user.Claim;
 
@@ -56,4 +57,13 @@ public interface ClaimService {
      * @throws ClaimDuplicateException claim duplicated
      */
     Claim createClaim(UUID userID, UUID groupID) throws ClaimDuplicateException;
+
+    /**
+     * Find all claim dto pageable by group id.
+     * @param id group id
+     * @param page page
+     * @param pageSize page size
+     * @return list of claim dto {@link ClaimDto}
+     */
+    List<ClaimDto> findAllClaimDtoByGroupIDPageable(UUID id, int page, int pageSize);
 }

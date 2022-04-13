@@ -4,6 +4,7 @@ import by.shcharbunou.core.exception.AdminNotFoundException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.message.AdminMessage;
 import by.shcharbunou.core.service.admin.AdminService;
+import by.shcharbunou.core.service.user.ClaimService;
 import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.user.User;
@@ -18,11 +19,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdminServiceImpl implements AdminService {
     private final UserService userService;
     private final GroupService groupService;
+    private final ClaimService claimService;
 
     @Autowired
-    public AdminServiceImpl(UserService userService, GroupService groupService) {
+    public AdminServiceImpl(UserService userService, GroupService groupService, ClaimService claimService) {
         this.userService = userService;
         this.groupService = groupService;
+        this.claimService = claimService;
         log.debug("AdminService initialized");
     }
 
@@ -41,5 +44,15 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public GroupService getGroupService() {
         return groupService;
+    }
+
+    @Override
+    public UserService getUserService() {
+        return userService;
+    }
+
+    @Override
+    public ClaimService getClaimService() {
+        return claimService;
     }
 }

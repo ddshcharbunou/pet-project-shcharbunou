@@ -85,6 +85,10 @@
             <button class="pagination__left__button__non__active" type="button">&#5130</button>
             <button class="pagination__right__button__non__active" type="button">&#5125</button>
         </c:when>
+        <c:when test="${requestScope.pagesNumber == 0}">
+            <button class="pagination__left__button__non__active" type="button">&#5130</button>
+            <button class="pagination__right__button__non__active" type="button">&#5125</button>
+        </c:when>
         <c:when test="${requestScope.pagesNumber != 1}">
             <button class="pagination__left__button__non__active" type="button">&#5130</button>
             <a href="<c:url value="/office/groups/kids/${sessionScope.page + 1}"/>">
