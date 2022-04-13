@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +22,9 @@ import java.util.Objects;
 
 @Slf4j
 @Controller
-@SessionAttributes({"user", "ROLE"})
+@SessionAttributes({"user", "ROLE", "page"})
 public class AdminController {
+    private static final int PAGE_SIZE = 6;
     private final AdminService adminService;
 
     @Autowired
@@ -59,11 +61,6 @@ public class AdminController {
     @GetMapping("/admin/group/control/add-user-group")
     public ModelAndView getAddUserGroupPanel() {
         return new ModelAndView("admin/group/add-user-group");
-    }
-
-    @GetMapping("/admin/group/control/claims")
-    public ModelAndView getClaimsPanel() {
-        return new ModelAndView("admin/group/claims");
     }
 
     @GetMapping("/admin/group/control/del-group")
@@ -127,5 +124,16 @@ public class AdminController {
             mav.addObject("message", "Группа успешно добавлена!");
         }
         return mav;
+    }
+
+    @GetMapping("/admin/group/control/claims/{page}")
+    public ModelAndView getClaimsPanel(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        return null;
+    }
+
+    private void paginateClaims() {
+
     }
 }

@@ -45,7 +45,7 @@
     <a href="<c:url value="/admin/group/control/del-group"/>">
         <button type="button" class="admin__service__buttons__each">Удалить группу</button>
     </a>
-    <a href="<c:url value="/admin/group/control/claims"/>">
+    <a href="<c:url value="/admin/group/control/claims/1"/>">
         <button type="button" class="admin__service__buttons__each">Заявки</button>
     </a>
     <a href="<c:url value="/admin/group/control/add-user-group"/>">
