@@ -50,17 +50,38 @@
         </c:forEach>
     </div>
 </ul>
-<ul>
-    <div class="page__style__under">
-        <c:forEach begin="1" end="${requestScope.pagesNumber}" var="i">
-            <li>
-                <a href="<c:url value="/office/groups/kids/${i}"/>">
-                    <button class="page__each" type="button">${i}</button>
-                </a>
-            </li>
-        </c:forEach>
-    </div>
-</ul>
+<c:if test="${sessionScope.page == 1}">
+    <c:choose>
+        <c:when test="${requestScope.pagesNumber == 1}">
+            <button class="pagination__left__button__non__active" type="button">&#5130</button>
+            <button class="pagination__right__button__non__active" type="button">&#5125</button>
+        </c:when>
+        <c:when test="${requestScope.pagesNumber != 1}">
+            <button class="pagination__left__button__non__active" type="button">&#5130</button>
+            <a href="<c:url value="/office/groups/kids/${sessionScope.page + 1}"/>">
+                <button class="pagination__right__button__active" type="button">&#5125</button>
+            </a>
+        </c:when>
+    </c:choose>
+</c:if>
+<c:if test="${sessionScope.page != 1}">
+    <c:choose>
+        <c:when test="${requestScope.pagesNumber == sessionScope.page}">
+            <a href="<c:url value="/office/groups/kids/${sessionScope.page - 1}"/>">
+                <button class="pagination__left__button__active" type="button">&#5130</button>
+            </a>
+            <button class="pagination__right__button__non__active" type="button">&#5125</button>
+        </c:when>
+        <c:when test="${requestScope.pagesNumber != sessionScope.page}">
+            <a href="<c:url value="/office/groups/kids/${sessionScope.page - 1}"/>">
+                <button class="pagination__left__button__active" type="button">&#5130</button>
+            </a>
+            <a href="<c:url value="/office/groups/kids/${sessionScope.page + 1}"/>">
+                <button class="pagination__right__button__active" type="button">&#5125</button>
+            </a>
+        </c:when>
+    </c:choose>
+</c:if>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
