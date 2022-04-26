@@ -9,19 +9,19 @@ import by.shcharbunou.core.exception.GroupDuplicateException;
 import by.shcharbunou.core.exception.TimeFormatException;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.service.admin.AdminService;
+import by.shcharbunou.core.service.user.ClaimService;
+import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.core.service.user.impl.ClaimServiceImpl;
 import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
 import by.shcharbunou.core.service.user.impl.UserServiceImpl;
+import by.shcharbunou.dal.entity.user.Claim;
 import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -152,6 +152,25 @@ public class AdminController {
         paginateUsersClaims(groupID, mav, page);
         mav.setViewName("/admin/group/claims-users");
         return mav;
+    }
+
+    @GetMapping("/admin/group/control/claims/users/delete/{user}/{group}/{page}")
+    public ModelAndView deleteUserClaim(@PathVariable("user") String username,
+                                        @PathVariable("group") UUID groupID,
+                                        @PathVariable("page") int page) {
+        UserService userService = adminService.getUserService();
+        ClaimService claimService = adminService.getClaimService();
+        User user = null;
+        try {
+            user = userService.findUserByUsername(username);
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+        Claim claim = claimService.findClaimByUserID(user.getId());
+        user.setGroupClaim(null);
+        userService.saveUser(user);
+        claimService.deleteClaim(claim);
+        return getUsersClaimsManagement(groupID, page);
     }
 
     private void paginateGroups(ModelAndView mav, int page) {
