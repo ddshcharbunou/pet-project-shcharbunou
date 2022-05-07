@@ -4,12 +4,10 @@ import by.shcharbunou.core.dto.user.ClaimDto;
 import by.shcharbunou.core.dto.user.request.GroupRequest;
 import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.dto.user.response.UserResponse;
-import by.shcharbunou.core.exception.AdminNotFoundException;
-import by.shcharbunou.core.exception.GroupDuplicateException;
-import by.shcharbunou.core.exception.TimeFormatException;
-import by.shcharbunou.core.exception.UserNotFoundException;
+import by.shcharbunou.core.exception.*;
 import by.shcharbunou.core.service.admin.AdminService;
 import by.shcharbunou.core.service.user.ClaimService;
+import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.core.service.user.impl.ClaimServiceImpl;
 import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
@@ -166,8 +164,39 @@ public class AdminController {
         } catch (UserNotFoundException e) {
             e.printStackTrace();
         }
+        assert user != null;
         Claim claim = claimService.findClaimByUserID(user.getId());
         user.setGroupClaim(null);
+        userService.saveUser(user);
+        claimService.deleteClaim(claim);
+        return getUsersClaimsManagement(groupID, page);
+    }
+
+    @GetMapping("/admin/group/control/claims/users/accept/{user}/{group}/{page}")
+    public ModelAndView acceptUserClaim(@PathVariable("user") String username,
+                                        @PathVariable("group") UUID groupID,
+                                        @PathVariable("page") int page) {
+        UserService userService = adminService.getUserService();
+        ClaimService claimService = adminService.getClaimService();
+        GroupService groupService = adminService.getGroupService();
+        User user = null;
+        try {
+            user = userService.findUserByUsername(username);
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert user != null;
+        Claim claim = claimService.findClaimByUserID(user.getId());
+        Group group = null;
+        try {
+            group = groupService.findGroupById(claim.getGroupID());
+        } catch (GroupNotFoundException e) {
+            e.printStackTrace();
+        }
+        user.setGroupClaim(null);
+        user.setGroup(group);
+        assert group != null;
+        group.connectUser(user);
         userService.saveUser(user);
         claimService.deleteClaim(claim);
         return getUsersClaimsManagement(groupID, page);

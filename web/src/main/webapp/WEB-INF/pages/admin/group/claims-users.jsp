@@ -48,7 +48,7 @@
                        href="<c:url value="/admin/group/control/claims/users/delete/${user.username}/${group}/${page}"/>">
                         <button class="user__card__button" type="button">Отклонить</button>
                     </a>
-                    <a style="margin-left: 190px; margin-top: 140px; position: absolute; border-radius: 15px" href="<c:url value=""/>">
+                    <a style="margin-left: 190px; margin-top: 140px; position: absolute; border-radius: 15px" href="<c:url value="/admin/group/control/claims/users/accept/${user.username}/${group}/${page}"/>">
                         <button class="user__card__button" type="button">Принять</button>
                     </a>
                 </div>

@@ -36,7 +36,7 @@ public class Group extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private GroupAge age;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "group_days", joinColumns = @JoinColumn(name = "group_id"))
     @AttributeOverride(name = "day", column = @Column(name = "day"))
     private List<EmbeddableDay> days = new ArrayList<>(7);
@@ -47,10 +47,10 @@ public class Group extends BaseEntity {
     @Column(name = "group_teacher", nullable = false)
     private String teacher;
 
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Homework> homeworks = new HashSet<>();
 
     public void addHomework(Homework homework) {
