@@ -56,7 +56,7 @@
                         <c:choose>
                             <c:when test="${group.age == 'KIDS'}">
                                 <img src="<c:url value="/assets/img/kid.png"/>" style="transform: translate(0, 6px)"
-                                width="24px" height="24px" alt="Age:">
+                                     width="24px" height="24px" alt="Age:">
                                 ${group.age.age}
                             </c:when>
                             <c:when test="${group.age == 'TEENS'}">
