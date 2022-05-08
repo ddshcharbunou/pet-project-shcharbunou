@@ -97,6 +97,10 @@ public class InteractionController {
         } catch (UserNotFoundException | UserNotActivatedException e) {
             mav.addObject("error", e.getMessage());
         }
+        assert userResponse != null;
+        if (userResponse.getGroup() != null) {
+            mav.addObject("group", userResponse.getGroup());
+        }
         mav.addObject("user", userResponse);
         mav.addObject("ROLE", authentication.getAuthorities().stream().findFirst().orElseThrow());
         mav.setViewName("office/office");
