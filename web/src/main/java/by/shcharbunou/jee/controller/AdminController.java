@@ -110,7 +110,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/group/control/add-group")
-    public ModelAndView addGroup(GroupRequest groupRequest) {
+    public ModelAndView addGroup(GroupRequest groupRequest) throws UserNotFoundException {
         ModelAndView mav = new ModelAndView();
         Group group;
         try {
@@ -121,7 +121,10 @@ public class AdminController {
             mav.setViewName("admin/group/add-group");
             return mav;
         }
+        User user = adminService.getUserService().findUserByUsername("DaunTupoi");
+        group.connectUser(user);
         Group savedGroup = adminService.getGroupService().saveGroup(group);
+        adminService.getUserService().saveUser(user);
         if (Objects.isNull(savedGroup)) {
             mav.setViewName("admin/group/add-group");
             mav.addObject("error", "Произошёл сбой: Группа не добавлена!");
@@ -194,7 +197,6 @@ public class AdminController {
             e.printStackTrace();
         }
         user.setGroupClaim(null);
-        user.setGroup(group);
         assert group != null;
         group.connectUser(user);
         userService.saveUser(user);

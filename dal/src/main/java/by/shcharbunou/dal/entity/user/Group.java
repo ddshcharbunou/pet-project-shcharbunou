@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @ToString
 @AllArgsConstructor
 
@@ -71,7 +71,8 @@ public class Group extends BaseEntity {
     }
 
     public void disconnectUser(User user) {
-        this.users.remove(user);
+        //this.users.remove(user);
+        this.users.clear();
         user.setGroup(null);
     }
 

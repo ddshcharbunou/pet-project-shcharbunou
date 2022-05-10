@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = "group")
 @EqualsAndHashCode(exclude = "role", callSuper = false)
 @AllArgsConstructor
 
