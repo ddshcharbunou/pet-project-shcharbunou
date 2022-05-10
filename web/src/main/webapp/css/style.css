@@ -955,10 +955,16 @@ nav {
     top: 100px;
     left: 270px;
     width: 1000px;
-    height: 500px;
+    height: 530px;
     background: #1B212D;
     border-radius: 20px;
     border: 3px solid #FBFF41;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: xx-large;
+    color: #FBFF41;
+    text-align: left;
+    padding: 20px;
 }
 
 .pagination__left__button__active {

@@ -22,4 +22,5 @@ public class GroupRequest {
     private List<Day> days;
     private String time;
     private String teacher;
+    private String additionalInformation;
 }

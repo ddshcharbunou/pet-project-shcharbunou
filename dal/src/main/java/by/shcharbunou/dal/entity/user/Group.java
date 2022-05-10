@@ -47,6 +47,9 @@ public class Group extends BaseEntity {
     @Column(name = "group_teacher", nullable = false)
     private String teacher;
 
+    @Column(name = "group_additional_information")
+    private String additionalInformation;
+
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
 
