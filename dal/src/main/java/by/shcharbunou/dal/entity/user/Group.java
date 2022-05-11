@@ -71,8 +71,7 @@ public class Group extends BaseEntity {
     }
 
     public void disconnectUser(User user) {
-        //this.users.remove(user);
-        this.users.clear();
+        this.users.remove(user);
         user.setGroup(null);
     }
 
