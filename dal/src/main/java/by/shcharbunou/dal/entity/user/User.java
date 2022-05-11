@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString(callSuper = true, exclude = "group")
-@EqualsAndHashCode(exclude = "role", callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @AllArgsConstructor
 
 @Entity

@@ -12,10 +12,11 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID")
+    @EqualsAndHashCode.Include
     private UUID id;
 
     @Deprecated

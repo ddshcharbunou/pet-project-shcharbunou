@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString
 @AllArgsConstructor
 
