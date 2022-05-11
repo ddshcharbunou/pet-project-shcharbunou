@@ -121,10 +121,7 @@ public class AdminController {
             mav.setViewName("admin/group/add-group");
             return mav;
         }
-        User user = adminService.getUserService().findUserByUsername("DaunTupoi");
-        group.connectUser(user);
         Group savedGroup = adminService.getGroupService().saveGroup(group);
-        adminService.getUserService().saveUser(user);
         if (Objects.isNull(savedGroup)) {
             mav.setViewName("admin/group/add-group");
             mav.addObject("error", "Произошёл сбой: Группа не добавлена!");
