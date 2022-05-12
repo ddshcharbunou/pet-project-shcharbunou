@@ -41,8 +41,15 @@
             <li>
                 <div class="group__card">
                     <p>${group.designation.designation} (${group.level})</p><br>
-                    <p><img src="<c:url value="/assets/img/clock.png"/>" style="transform: translate(0, 6px)"
-                            width="24px" height="24px" alt="Time:"> ${group.time}</p>
+                    <p>
+                        <img src="<c:url value="/assets/img/clock.png"/>" style="transform: translate(0, 6px)"
+                             width="24px" height="24px" alt="Time:"> ${group.time}
+                        <c:if test="${group.additionalInformation != null}">
+                            <c:if test="${group.additionalInformation != ''}">
+                                !${group.additionalInformation}!
+                            </c:if>
+                        </c:if>
+                    </p>
                     <p>
                         <img src="<c:url value="/assets/img/calendar.png"/>" style="transform: translate(0, 6px)"
                              width="24px" height="24px" alt="Days:">

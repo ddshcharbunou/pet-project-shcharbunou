@@ -51,7 +51,7 @@ public class ClaimServiceImpl implements ClaimService {
     }
 
     @Override
-    public Claim findClaimByGroupID(UUID id) {
+    public List<Claim> findClaimByGroupID(UUID id) {
         return claimRepository.findByGroupID(id);
     }
 

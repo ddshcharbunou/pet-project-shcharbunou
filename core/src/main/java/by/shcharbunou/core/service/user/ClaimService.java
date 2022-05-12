@@ -35,7 +35,7 @@ public interface ClaimService {
      * @param id group id
      * @return claim {@link Claim}
      */
-    Claim findClaimByGroupID(UUID id);
+    List<Claim> findClaimByGroupID(UUID id);
 
     /**
      * Find claim by user id.

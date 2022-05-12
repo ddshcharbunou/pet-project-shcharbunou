@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lol Club - Администрирование групп</title>
+    <title>Lol Club - Добавление информацию в группу</title>
     <link rel="shortcut icon" href="<c:url value="/assets/img/sign-in.png"/>" type="image/png">
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,34 +37,6 @@
 </header>
 <div class="adm__panel__text">
     <p>AdmPanel</p>
-</div>
-<div class="admin__service__buttons">
-    <a href="<c:url value="/admin/group/control/add-group"/>">
-        <button type="button" class="admin__service__buttons__each">Добавить группу</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/del-group/1"/>">
-        <button type="button" class="admin__service__buttons__each">Удалить группу</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/claims/1"/>">
-        <button type="button" class="admin__service__buttons__each">Заявки</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/add-user-group"/>">
-        <button type="button" class="admin__service__buttons__each">Добавить ученика</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/del-user-group"/>">
-        <button type="button" class="admin__service__buttons__each">Удалить ученика</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/show-groups"/>">
-        <button type="button" class="admin__service__buttons__each">Просмотреть группы</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/add-information-group"/>">
-        <button type="button" class="admin__service__buttons__each">Добавить информацию</button>
-    </a>
-</div>
-<div class="adm__message">
-    <c:if test="${requestScope.message != null}">
-        <c:out value="${requestScope.message}"/>
-    </c:if>
 </div>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>

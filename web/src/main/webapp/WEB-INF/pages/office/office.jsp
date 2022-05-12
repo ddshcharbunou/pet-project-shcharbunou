@@ -81,6 +81,11 @@
             </p>
             <p><img src="<c:url value="/assets/img/adult.png"/>" style="transform: translate(0, 6px)"
                     width="24px" height="24px" alt="Teacher:"> ${group.teacher}</p>
+            <c:if test="${group.additionalInformation != null}">
+                <c:if test="${group.additionalInformation != ''}">
+                    <p>!${group.additionalInformation}!</p>
+                </c:if>
+            </c:if>
         </div>
     </c:when>
 </c:choose>

@@ -69,11 +69,6 @@ public class AdminController {
         return new ModelAndView("admin/group/add-user-group");
     }
 
-    @GetMapping("/admin/group/control/del-group")
-    public ModelAndView getDeleteGroupPanel() {
-        return new ModelAndView("admin/group/del-group");
-    }
-
     @GetMapping("/admin/group/control/del-user-group")
     public ModelAndView getDeleteUserGroupPanel() {
         return new ModelAndView("admin/group/del-user-group");
@@ -109,6 +104,11 @@ public class AdminController {
         return new ModelAndView("admin/user/user-adm");
     }
 
+    @GetMapping("/admin/group/control/add-information-group")
+    public ModelAndView getAddInformationGroupPanel() {
+        return new ModelAndView("admin/group/add-information-group");
+    }
+
     @PostMapping("/admin/group/control/add-group")
     public ModelAndView addGroup(GroupRequest groupRequest) throws UserNotFoundException {
         ModelAndView mav = new ModelAndView();
@@ -139,6 +139,51 @@ public class AdminController {
         paginateGroups(mav, page);
         mav.setViewName("/admin/group/claims");
         return mav;
+    }
+
+    @GetMapping("/admin/group/control/del-group/{page}")
+    public ModelAndView getDeleteGroupPanel(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        paginateGroups(mav, page);
+        mav.setViewName("/admin/group/del-group");
+        return mav;
+    }
+
+    @GetMapping("/admin/group/control/delete/{group}/{page}")
+    public ModelAndView deleteGroup(@PathVariable("group") UUID groupID,
+                                    @PathVariable("page") int page) {
+        GroupService groupService = adminService.getGroupService();
+        UserService userService = adminService.getUserService();
+        ClaimService claimService = adminService.getClaimService();
+        List<Claim> testClaims = claimService.findClaimByGroupID(groupID);
+        if (!testClaims.isEmpty()) {
+            for (Claim claim : testClaims) {
+                try {
+                    User user = userService.findUserById(claim.getUserID());
+                    user.setGroupClaim(null);
+                    userService.saveUser(user);
+                } catch (UserNotFoundException e) {
+                    e.printStackTrace();
+                }
+                claimService.deleteClaim(claim);
+            }
+        }
+        Group toDeleteGroup = null;
+        try {
+            toDeleteGroup = groupService.findGroupById(groupID);
+        } catch (GroupNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert toDeleteGroup != null;
+        if (!toDeleteGroup.getUsers().isEmpty()) {
+            for (User user : toDeleteGroup.getUsers()) {
+                user.setGroup(null);
+                userService.saveUser(user);
+            }
+        }
+        groupService.deleteGroup(toDeleteGroup);
+        return getDeleteGroupPanel(page);
     }
 
     @GetMapping("/admin/group/control/claims/users/{group}/{page}")
@@ -203,9 +248,15 @@ public class AdminController {
 
     private void paginateGroups(ModelAndView mav, int page) {
         List<GroupResponse> groups = adminService.getGroupService().findAllGroupsPageable(page - 1, PAGE_SIZE);
-        int pagesNumber = GroupServiceImpl.totalPages;
-        mav.addObject("pagesNumber", pagesNumber);
-        mav.addObject("groups", groups);
+        if (groups.isEmpty() && page > 1) {
+            page = page - 1;
+            mav.addObject("page", page);
+            paginateGroups(mav, page);
+        } else {
+            int pagesNumber = GroupServiceImpl.totalPages;
+            mav.addObject("pagesNumber", pagesNumber);
+            mav.addObject("groups", groups);
+        }
     }
 
     private void paginateUsersClaims(UUID claim, ModelAndView mav, int page) {
