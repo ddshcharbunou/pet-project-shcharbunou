@@ -1,5 +1,6 @@
 package by.shcharbunou.dal.repository.user;
 
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,4 +49,12 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * @return page of users {@link User}
      */
     Page<User> findByGroupClaim(UUID claim, Pageable pageable);
+
+    /**
+     * Find all users by groups.
+     * @param group group
+     * @param pageable pageable
+     * @return page of users {@link User}
+     */
+    Page<User> findByGroup(Group group, Pageable pageable);
 }

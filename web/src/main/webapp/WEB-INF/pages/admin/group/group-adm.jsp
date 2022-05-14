@@ -48,17 +48,11 @@
     <a href="<c:url value="/admin/group/control/claims/1"/>">
         <button type="button" class="admin__service__buttons__each">Заявки</button>
     </a>
-    <a href="<c:url value="/admin/group/control/add-user-group"/>">
-        <button type="button" class="admin__service__buttons__each">Добавить ученика</button>
+    <a href="<c:url value="/admin/group/control/del-user-group/1"/>">
+        <button type="button" class="admin__service__buttons__each">Отсоединить студента</button>
     </a>
-    <a href="<c:url value="/admin/group/control/del-user-group"/>">
-        <button type="button" class="admin__service__buttons__each">Удалить ученика</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/show-groups"/>">
+    <a href="<c:url value="/admin/group/control/show-groups/1"/>">
         <button type="button" class="admin__service__buttons__each">Просмотреть группы</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/add-information-group"/>">
-        <button type="button" class="admin__service__buttons__each">Добавить информацию</button>
     </a>
 </div>
 <div class="adm__message">

@@ -12,6 +12,7 @@ import by.shcharbunou.core.service.user.RoleService;
 import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.dal.entity.enums.role.RoleDesignation;
 import by.shcharbunou.dal.entity.user.Claim;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.Role;
 import by.shcharbunou.dal.entity.user.User;
 import by.shcharbunou.dal.repository.user.UserRepository;
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService {
     private static final Pattern PHONE_PATTERN =
             Pattern.compile("^[+]{1}[0-9]{3}([\\s-]?\\d{2}|[(]?[0-9]{2}[)])?([\\s-]?[0-9]){6,7}$");
     public static int totalUserClaimPages;
+    public static int totalGroupUsersPages;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleService roleService, UserMapper userMapper,
@@ -163,6 +165,16 @@ public class UserServiceImpl implements UserService {
         Page<User> usersPage = userRepository.findByGroupClaim(claim, PageRequest.of(page, pageSize));
         totalUserClaimPages = usersPage.getTotalPages();
         log.info("Users pages: " + totalUserClaimPages);
+        List<User> users = usersPage.stream().collect(Collectors.toList());
+        log.info("Users: " + users);
+        return userMapper.userListToUserResponseList(users);
+    }
+
+    @Override
+    public List<UserResponse> findAllUsersByGroupPageable(Group group, int page, int pageSize) {
+        Page<User> usersPage = userRepository.findByGroup(group, PageRequest.of(page, pageSize));
+        totalGroupUsersPages = usersPage.getTotalPages();
+        log.info("Users pages: " + totalGroupUsersPages);
         List<User> users = usersPage.stream().collect(Collectors.toList());
         log.info("Users: " + users);
         return userMapper.userListToUserResponseList(users);

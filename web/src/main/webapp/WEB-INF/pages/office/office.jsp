@@ -26,7 +26,7 @@
             <a href="<c:url value="/contacts"/>">Контакты</a>
         </div>
     </nav>
-    <a href="<c:url value="/sign-in"/>">
+    <a href="<c:url value="/sign-out"/>">
         <div class="sign__in">
             <div class="sign__in__logo">
                 <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>

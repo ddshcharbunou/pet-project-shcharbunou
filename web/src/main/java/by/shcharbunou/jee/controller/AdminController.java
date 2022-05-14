@@ -1,6 +1,5 @@
 package by.shcharbunou.jee.controller;
 
-import by.shcharbunou.core.dto.user.ClaimDto;
 import by.shcharbunou.core.dto.user.request.GroupRequest;
 import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.dto.user.response.UserResponse;
@@ -9,7 +8,6 @@ import by.shcharbunou.core.service.admin.AdminService;
 import by.shcharbunou.core.service.user.ClaimService;
 import by.shcharbunou.core.service.user.GroupService;
 import by.shcharbunou.core.service.user.UserService;
-import by.shcharbunou.core.service.user.impl.ClaimServiceImpl;
 import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
 import by.shcharbunou.core.service.user.impl.UserServiceImpl;
 import by.shcharbunou.dal.entity.user.Claim;
@@ -62,21 +60,6 @@ public class AdminController {
     @GetMapping("/admin/group/control/add-group")
     public ModelAndView getAddGroupPanel() {
         return new ModelAndView("admin/group/add-group");
-    }
-
-    @GetMapping("/admin/group/control/add-user-group")
-    public ModelAndView getAddUserGroupPanel() {
-        return new ModelAndView("admin/group/add-user-group");
-    }
-
-    @GetMapping("/admin/group/control/del-user-group")
-    public ModelAndView getDeleteUserGroupPanel() {
-        return new ModelAndView("admin/group/del-user-group");
-    }
-
-    @GetMapping("/admin/group/control/show-groups")
-    public ModelAndView showGroups() {
-        return new ModelAndView("admin/group/show-groups");
     }
 
     @GetMapping("/admin/blog/control")
@@ -150,6 +133,32 @@ public class AdminController {
         return mav;
     }
 
+    @GetMapping("/admin/group/control/del-user-group/{page}")
+    public ModelAndView getDeleteUserGroupPanel(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        paginateGroups(mav, page);
+        mav.setViewName("/admin/group/del-user-group");
+        return mav;
+    }
+
+    @GetMapping("/admin/group/control/delete-user/users/{group}/{page}")
+    public ModelAndView getGroupUsers(@PathVariable("group") UUID groupID,
+                                      @PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        Group group = null;
+        try {
+            group = adminService.getGroupService().findGroupById(groupID);
+        } catch (GroupNotFoundException e) {
+            e.printStackTrace();
+        }
+        mav.addObject("page", page);
+        mav.addObject("group", groupID);
+        paginateGroupUsers(group, mav, page);
+        mav.setViewName("/admin/group/group-users");
+        return mav;
+    }
+
     @GetMapping("/admin/group/control/delete/{group}/{page}")
     public ModelAndView deleteGroup(@PathVariable("group") UUID groupID,
                                     @PathVariable("page") int page) {
@@ -197,6 +206,15 @@ public class AdminController {
         return mav;
     }
 
+    @GetMapping("/admin/group/control/show-groups/{page}")
+    public ModelAndView showGroups(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        paginateGroups(mav, page);
+        mav.setViewName("/admin/group/show-groups");
+        return mav;
+    }
+
     @GetMapping("/admin/group/control/claims/users/delete/{user}/{group}/{page}")
     public ModelAndView deleteUserClaim(@PathVariable("user") String username,
                                         @PathVariable("group") UUID groupID,
@@ -215,6 +233,27 @@ public class AdminController {
         userService.saveUser(user);
         claimService.deleteClaim(claim);
         return getUsersClaimsManagement(groupID, page);
+    }
+
+    @GetMapping("/admin/group/control/group-users/delete/{user}/{group}/{page}")
+    public ModelAndView deleteUserFromGroup(@PathVariable("user") String username,
+                                            @PathVariable("group") UUID groupID,
+                                            @PathVariable("page") int page) {
+        GroupService groupService = adminService.getGroupService();
+        UserService userService = adminService.getUserService();
+        User user = null;
+        Group group = null;
+        try {
+            user = userService.findUserByUsername(username);
+            group = groupService.findGroupById(groupID);
+        } catch (UserNotFoundException | GroupNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert group != null;
+        group.disconnectUser(user);
+        userService.saveUser(user);
+        groupService.saveGroup(group);
+        return getGroupUsers(groupID, page);
     }
 
     @GetMapping("/admin/group/control/claims/users/accept/{user}/{group}/{page}")
@@ -249,7 +288,7 @@ public class AdminController {
     private void paginateGroups(ModelAndView mav, int page) {
         List<GroupResponse> groups = adminService.getGroupService().findAllGroupsPageable(page - 1, PAGE_SIZE);
         if (groups.isEmpty() && page > 1) {
-            page = page - 1;
+            page--;
             mav.addObject("page", page);
             paginateGroups(mav, page);
         } else {
@@ -263,8 +302,29 @@ public class AdminController {
         List<UserResponse> users = adminService
                 .getUserService()
                 .findAllUsersByClaimPageable(claim, page - 1, PAGE_SIZE);
-        int pagesNumber = UserServiceImpl.totalUserClaimPages;
-        mav.addObject("pagesNumber", pagesNumber);
-        mav.addObject("users", users);
+        if (users.isEmpty() && page > 1) {
+            page--;
+            mav.addObject("page", page);
+            paginateUsersClaims(claim, mav, page);
+        } else {
+            int pagesNumber = UserServiceImpl.totalUserClaimPages;
+            mav.addObject("pagesNumber", pagesNumber);
+            mav.addObject("users", users);
+        }
+    }
+
+    private void paginateGroupUsers(Group group, ModelAndView mav, int page) {
+        List<UserResponse> users = adminService
+                .getUserService()
+                .findAllUsersByGroupPageable(group, page - 1, PAGE_SIZE);
+        if (users.isEmpty() && page > 1) {
+            page--;
+            mav.addObject("page", page);
+            paginateGroupUsers(group, mav, page);
+        } else {
+            int pagesNumber = UserServiceImpl.totalGroupUsersPages;
+            mav.addObject("pagesNumber", pagesNumber);
+            mav.addObject("users", users);
+        }
     }
 }

@@ -4,6 +4,7 @@ import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.dto.user.response.UserResponse;
 import by.shcharbunou.core.exception.UserNotFoundException;
 import by.shcharbunou.core.exception.ValidationException;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 
 import java.util.List;
@@ -93,7 +94,16 @@ public interface UserService {
      * @param claim claim
      * @param page page
      * @param pageSize page size
-     * @return list of users {@link User}
+     * @return list of user responses {@link UserResponse}
      */
     List<UserResponse> findAllUsersByClaimPageable(UUID claim, int page, int pageSize);
+
+    /**
+     * Find all users by group pageable.
+     * @param group group
+     * @param page group
+     * @param pageSize page size
+     * @return list of user responses {@link UserResponse}
+     */
+    List<UserResponse> findAllUsersByGroupPageable(Group group, int page, int pageSize);
 }
