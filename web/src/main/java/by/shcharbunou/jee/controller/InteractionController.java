@@ -188,8 +188,14 @@ public class InteractionController {
     private void paginateAgeGroups(GroupAge age, ModelAndView mav, int page) {
         log.info("Group age: " + age);
         List<GroupResponse> groups = groupService.findGroupsByAgePageable(age, page - 1, PAGE_SIZE);
-        int pagesNumber = GroupServiceImpl.totalAgePages;
-        mav.addObject("pagesNumber", pagesNumber);
-        mav.addObject("groups", groups);
+        if (groups.isEmpty() && page > 1) {
+            page--;
+            mav.addObject("page", page);
+            paginateAgeGroups(age, mav, page);
+        } else {
+            int pagesNumber = GroupServiceImpl.totalAgePages;
+            mav.addObject("pagesNumber", pagesNumber);
+            mav.addObject("groups", groups);
+        }
     }
 }
