@@ -91,7 +91,7 @@
                 <button class="main__group__card__button" type="button">Покинуть группу</button>
             </a>
             <a style="margin-left: 375px; margin-top: 230px; position: absolute; border-radius: 15px"
-               href="<c:url value=""/>">
+               href="<c:url value="/office/homework/${group.id}"/>">
                 <button class="main__group__card__button" type="button">Домашнее задание</button>
             </a>
             <a style="margin-left: 720px; margin-top: 230px; position: absolute; border-radius: 15px"

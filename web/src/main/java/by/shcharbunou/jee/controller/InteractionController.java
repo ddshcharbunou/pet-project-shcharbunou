@@ -155,6 +155,11 @@ public class InteractionController {
         return signInToOffice(authentication);
     }
 
+    @GetMapping("/office/homework/{group}")
+    public ModelAndView showGroupHomework(@PathVariable("group") UUID groupID) {
+        return null;
+    }
+
     @GetMapping("/office/claims/create/{group}")
     public ModelAndView createUserGroupClaim(@PathVariable("group") UUID groupID,
                                              @SessionAttribute("user") UserResponse userResponse) {
