@@ -37,22 +37,13 @@
         </div>
     </a>
 </header>
-<div class="adm__panel__text">
-    <p>AdmPanel</p>
-</div>
-<div class="admin__service__buttons">
-    <a href="<c:url value="/admin/homework/control/add-homework/1"/>">
-        <button type="button" class="admin__service__buttons__each">Добавить ДЗ</button>
-    </a>
-    <a href="<c:url value="/admin/group/control/del-group/1"/>">
-        <button type="button" class="admin__service__buttons__each">Удалить ДЗ</button>
-    </a>
-</div>
-<div class="adm__message">
-    <c:if test="${requestScope.message != null}">
-        <c:out value="${requestScope.message}"/>
-    </c:if>
-</div>
+<form id="form" method="POST" action="">
+    <label>
+        <input class="admin__service__buttons__each" type="text" id="additionalInformation" name="textField[]" placeholder="Время (искл.)">
+    </label>
+    <button type="submit" class="admin__service__buttons__each">SUBMIT</button>
+</form>
+<button onclick="add_field()">ADD FIELD</button>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

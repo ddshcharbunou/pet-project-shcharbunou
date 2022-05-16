@@ -34,6 +34,7 @@ public class Homework extends BaseEntity {
 
     public void connectSubTheme(SubTheme subTheme) {
         this.subThemes.add(subTheme);
+        subTheme.setHomework(this);
     }
 
     @Deprecated

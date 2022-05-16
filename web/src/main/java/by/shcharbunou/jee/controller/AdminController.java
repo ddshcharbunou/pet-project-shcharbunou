@@ -285,6 +285,21 @@ public class AdminController {
         return getUsersClaimsManagement(groupID, page);
     }
 
+    @GetMapping("/admin/homework/control/add-homework/{page}")
+    public ModelAndView showHomeworkGroups(@PathVariable("page") int page) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("page", page);
+        paginateGroups(mav, page);
+        mav.setViewName("/admin/homework/homework-groups");
+        return mav;
+    }
+
+    @GetMapping("/admin/homework/control/add-homework/{group}/{page}")
+    public ModelAndView showAddHomeworkGroupPanel(@PathVariable("group") UUID groupID,
+                                                  @PathVariable("page") int page) {
+        return new ModelAndView("/admin/homework/add-homework");
+    }
+
     private void paginateGroups(ModelAndView mav, int page) {
         List<GroupResponse> groups = adminService.getGroupService().findAllGroupsPageable(page - 1, PAGE_SIZE);
         if (groups.isEmpty() && page > 1) {
