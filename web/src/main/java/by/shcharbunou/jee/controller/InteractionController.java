@@ -3,10 +3,7 @@ package by.shcharbunou.jee.controller;
 import by.shcharbunou.core.dto.user.request.UserRequest;
 import by.shcharbunou.core.dto.user.response.GroupResponse;
 import by.shcharbunou.core.dto.user.response.UserResponse;
-import by.shcharbunou.core.exception.ClaimDuplicateException;
-import by.shcharbunou.core.exception.UserNotActivatedException;
-import by.shcharbunou.core.exception.UserNotFoundException;
-import by.shcharbunou.core.exception.ValidationException;
+import by.shcharbunou.core.exception.*;
 import by.shcharbunou.core.exception.message.UserMessage;
 import by.shcharbunou.core.service.user.ClaimService;
 import by.shcharbunou.core.service.user.GroupService;
@@ -14,9 +11,11 @@ import by.shcharbunou.core.service.user.UserService;
 import by.shcharbunou.core.service.user.impl.GroupServiceImpl;
 import by.shcharbunou.dal.entity.enums.group.GroupAge;
 import by.shcharbunou.dal.entity.user.Claim;
+import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -135,6 +134,25 @@ public class InteractionController {
         paginateAgeGroups(age, mav, page);
         mav.setViewName("/office/groups/adults");
         return mav;
+    }
+
+    @GetMapping("/office/leave/{user}/{group}")
+    public ModelAndView disconnectUserFromGroup(@PathVariable("user") String username,
+                                                @PathVariable("group") UUID groupID,
+                                                Authentication authentication) {
+        User user = null;
+        Group group = null;
+        try {
+            user = userService.findUserByUsername(username);
+            group = groupService.findGroupById(groupID);
+        } catch (UserNotFoundException | GroupNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert group != null;
+        group.disconnectUser(user);
+        userService.saveUser(user);
+        groupService.saveGroup(group);
+        return signInToOffice(authentication);
     }
 
     @GetMapping("/office/claims/create/{group}")

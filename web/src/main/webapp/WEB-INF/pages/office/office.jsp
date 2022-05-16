@@ -86,6 +86,18 @@
                     <p>!${group.additionalInformation}!</p>
                 </c:if>
             </c:if>
+            <a style="margin-left: 30px; margin-top: 230px; position: absolute; border-radius: 15px"
+               href="<c:url value="/office/leave/${user.username}/${group.id}"/>">
+                <button class="main__group__card__button" type="button">Покинуть группу</button>
+            </a>
+            <a style="margin-left: 375px; margin-top: 230px; position: absolute; border-radius: 15px"
+               href="<c:url value=""/>">
+                <button class="main__group__card__button" type="button">Домашнее задание</button>
+            </a>
+            <a style="margin-left: 720px; margin-top: 230px; position: absolute; border-radius: 15px"
+               href="<c:url value=""/>">
+                <button class="main__group__card__button" type="button">Материалы</button>
+            </a>
         </div>
     </c:when>
 </c:choose>
