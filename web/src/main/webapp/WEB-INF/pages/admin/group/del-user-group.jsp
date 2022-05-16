@@ -26,12 +26,14 @@
             <a href="<c:url value="/admin/other/control"/>">Прочее</a>
         </div>
     </nav>
-    <a href="<c:url value="/sign-out"/>">
+    <a href="<c:url value="/admin"/>">
         <div class="sign__in">
             <div class="sign__in__logo">
                 <p><img src="<c:url value="/assets/img/sign-in.png"/>" width="24px" height="24px" alt="Logo"></p>
             </div>
-            <div class="sign__in__text">Выйти</div>
+            <div class="sign__in__text">
+                <c:out value="${sessionScope.user.username}"/>
+            </div>
         </div>
     </a>
 </header>
