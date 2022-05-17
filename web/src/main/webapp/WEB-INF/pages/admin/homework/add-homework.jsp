@@ -37,13 +37,19 @@
         </div>
     </a>
 </header>
-<form id="form" method="POST" action="">
+<form class="admin__service__buttons" id="form" method="post" action=<c:url value="/admin/homework/control/${group}/${page}/themes"/>>
     <label>
-        <input class="admin__service__buttons__each" type="text" id="additionalInformation" name="textField[]" placeholder="Время (искл.)">
+        <input class="admin__service__buttons__each" type="text" id="theme" name="theme" placeholder="Тема">
     </label>
-    <button type="submit" class="admin__service__buttons__each">SUBMIT</button>
+    <label>
+        <input class="admin__service__buttons__each" type="date" id="date" name="date" placeholder="Дата">
+    </label>
+    <label>
+        <input class="admin__service__buttons__each" type="text" id="subTheme[]" name="subTheme[]" placeholder="Подтема">
+    </label>
+    <button type="button" class="admin__service__buttons__each" onclick="add_field()">Добавить подтему</button>
+    <button type="submit" class="admin__service__buttons__each">Добавить</button>
 </form>
-<button onclick="add_field()">ADD FIELD</button>
 <script src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@ import by.shcharbunou.core.service.user.impl.UserServiceImpl;
 import by.shcharbunou.dal.entity.user.Claim;
 import by.shcharbunou.dal.entity.user.Group;
 import by.shcharbunou.dal.entity.user.User;
+import by.shcharbunou.dal.entity.user.office.homework.Homework;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletRequest;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -93,7 +96,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/group/control/add-group")
-    public ModelAndView addGroup(GroupRequest groupRequest) throws UserNotFoundException {
+    public ModelAndView addGroup(GroupRequest groupRequest) {
         ModelAndView mav = new ModelAndView();
         Group group;
         try {
@@ -298,6 +301,15 @@ public class AdminController {
     public ModelAndView showAddHomeworkGroupPanel(@PathVariable("group") UUID groupID,
                                                   @PathVariable("page") int page) {
         return new ModelAndView("/admin/homework/add-homework");
+    }
+
+    @PostMapping("/admin/homework/control/{group}/{page}/themes")
+    public ModelAndView addThemesToHomework(@PathVariable("group") UUID groupID,
+                                            @PathVariable("page") int page,
+                                            ServletRequest request) {
+        ModelAndView mav = new ModelAndView();
+        Enumeration<String> arg = request.getAttributeNames();
+        return null;
     }
 
     private void paginateGroups(ModelAndView mav, int page) {
